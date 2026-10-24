@@ -45,7 +45,9 @@ shows a static half/half colour instead. `NEAR_NEXT_M` in `index.html` sets the 
 
 ### Coastal tide card
 
-The panel's **Coastal tide** card shows:
+The panel shows the tide as a compact one-line chip, e.g. `🌊 Tide 1.74 m ↑ · L 1:16pm 0.3 · H 7:11pm 1.6 ▾`
+(⚠ is added when the gauge is in flood or near the next class). Click it to expand the details;
+open/closed persists as `twinfo.tideOpen.v1` (collapsed by default). Expanded, it shows:
 
 - the live BOM **Mooloolaba Tide** gauge from `data.json` (height, tendency arrow, reading time, datum,
   distance to Minor, and a warning when it is in flood or within 0.2 m of the next class);
@@ -66,6 +68,28 @@ which may differ from the gauge datum (LGH). Per BOM's
 [Tidal Information Conditions of Use](https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf),
 the card shows "Tide predictions © Commonwealth of Australia, Bureau of Meteorology" and a *disclaimer*
 link that expands BOM's required disclaimer text (also stored in `tides.json`).
+
+All standing credits and disclaimers (BOM, tide copyright + disclaimer, QLDTraffic CC BY 4.0,
+RainViewer, OSM, the "not for safety decisions" line) sit at the **bottom of the panel**; the
+first-visit notice is still shown once and can be dismissed.
+
+### Wind arrows
+
+The **Wind (BOM)** layer (on by default; persisted as `twinfo.wind.v1`) draws an arrow at each BOM
+automatic weather station inside the 20 km circle that reports wind (currently Sunshine Coast Airport
+and Nambour). `update_wind.py` (stdlib) reads the official BOM Queensland 10-minute observations
+product [IDQ60920](https://www.bom.gov.au/fwo/IDQ60920.xml) and writes `wind.json` (speed km/h and
+knots, gust, max gust today, direction, observation time).
+
+- BOM direction is meteorological: where the wind blows **from**. Popups say e.g. "from NE (45°)".
+- The arrow is drawn flying **downwind** (the way the air moves, i.e. direction + 180°), like a
+  streamline; the number in the middle is the speed in km/h. A circle means calm.
+- Colour and length scale with speed: grey <5, green 5–19, yellow 20–29, orange 30–39,
+  red 40–61, purple 62+ km/h.
+- Attribution: "Wind observations © Commonwealth of Australia, Bureau of Meteorology", with a
+  link to the station's BOM observations page. Live Wind (live-wind.com.au) is linked only as an
+  optional "more wind maps" link; none of its data is used or copied.
+- Data are as fresh as the last workflow run (≈30 min) plus BOM's 10-minute obs cycle.
 
 ### Rain radar overlay
 
@@ -148,7 +172,8 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
 - `update_roads.py` – stdlib-only; writes `closures.json`, `roadworks.json`, `hazards.json`,
   `crashes.json` and `cameras.json` from QLDTraffic (see above). Imports `REGIONS` from `update_data.py`.
 - `update_tides.py` – stdlib-only; writes `tides.json` (Mooloolaba tide predictions, see *Coastal tide card*).
-- `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json` (and the radar
+- `update_wind.py` – stdlib-only; writes `wind.json` (BOM wind observations, see *Wind arrows*).
+- `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json`, `wind.json` (and the radar
   frame list) every 5 minutes.
 - `.github/workflows/update.yml` – runs every 30 minutes (and manually), runs both scripts (the road
   step runs even if the BOM step fails) and commits the data files when they change.
@@ -186,6 +211,8 @@ Bulletins (configured in `BULLETINS` in `update_data.py`):
 | [IDQ60287](https://www.bom.gov.au/fwo/IDQ60287.html) (primary) | Mooloolah, Maroochy, Noosa, Mary | Sunshine Coast and hinterland (upper Mary) |
 | [IDQ60286](https://www.bom.gov.au/fwo/IDQ60286.html) | Stanley, Brisbane, Bremer, Lockyer, Pine/Caboolture | upper Stanley River gauges on the southern edge of the circle |
 
+Wind: BOM Queensland 10-minute observations [IDQ60920](https://www.bom.gov.au/fwo/IDQ60920.xml).
+
 Other Qld bulletins have no gauges within the 20 km circle. If a bulletin fails to download, the
 previous readings for that bulletin are kept (marked `stale` in `bulletins`).
 
@@ -202,7 +229,7 @@ Coordinates, in priority order (`source` field in `stations.json`):
 - Hosted on GitHub Pages from `main`, folder `/` (root):
   https://alanjhaase-lang.github.io/sunshine-coast-flood-map/
 - `.github/workflows/update.yml` runs every 30 minutes (and on demand via *Run workflow*), runs
-  `update_data.py`, `update_roads.py` and `update_tides.py`, and commits the data files when they change; Pages redeploys
+  `update_data.py`, `update_roads.py`, `update_tides.py` and `update_wind.py`, and commits the data files when they change; Pages redeploys
   after each data commit. The map itself re-fetches the data every 5 minutes.
 
 Note: GitHub's cron is best-effort (runs can be delayed), and scheduled workflows are
@@ -215,6 +242,7 @@ activity, but if it stops, re-enable it in the Actions tab.
 python3 update_data.py           # writes data.json
 python3 update_roads.py          # writes closures/roadworks/hazards/crashes/cameras.json
 python3 update_tides.py          # writes tides.json
+python3 update_wind.py           # writes wind.json
 python3 -m http.server 8000      # open http://localhost:8000/
 ```
 

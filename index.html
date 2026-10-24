@@ -21,7 +21,13 @@
            display: flex; align-items: center; justify-content: center;
            font: bold 15px/1 system-ui, sans-serif; color: #111; box-shadow: 0 1px 3px rgba(0,0,0,.5); }
   .gauge.stale { opacity: .55; border-style: dashed; }
-  .disc { font-size: 11.5px; color: #555; margin-top: 3px; }
+  .disc { font-size: 10.5px; color: #666; margin-top: 4px; padding-top: 3px; border-top: 1px solid #e3e3e3; }
+  .credits { font-size: 10px; line-height: 1.3; color: #666; margin-top: 6px; padding-top: 4px; border-top: 1px solid #e3e3e3; }
+  .credits a { color: #555; }
+  .title .credits b { font-size: inherit; }
+  .credits details { display: inline; }
+  .credits summary { display: inline; cursor: pointer; color: #01579b; text-decoration: underline; }
+  .credits details[open] span { display: block; margin: 2px 0; }
   .disc a { color: #555; }
   #notice { position: absolute; z-index: 1100; left: 50%; bottom: 28px; transform: translateX(-50%);
             width: min(460px, calc(100% - 24px)); box-sizing: border-box; background: #fff; border-left: 4px solid #a15c00;
@@ -108,6 +114,12 @@
   .ev.closed { outline: 2px solid #222; outline-offset: 0; }
   .roads .ev { transform: scale(.85); }
   .roads .ev.hz { transform: rotate(45deg) scale(.8); }
+  /* BOM wind arrows */
+  .wind { position: relative; width: 44px; height: 44px; pointer-events: auto; }
+  .wind svg { position: absolute; left: 0; top: 0; filter: drop-shadow(0 0 1.5px rgba(0,0,0,.8)); }
+  .wind span { position: absolute; left: 50%; top: 100%; transform: translate(-50%, -2px); background: rgba(255,255,255,.9);
+               border-radius: 7px; padding: 0 3px; font: bold 10px/13px system-ui, sans-serif; color: #111; white-space: nowrap; }
+  .legend .wsw { display: inline-block; width: 14px; height: 6px; border-radius: 2px; margin: 0 3px 0 0; border: 1px solid #333; }
   /* gauge within 0.2 m of the next flood class: flash current colour <-> next class colour */
   @keyframes nearminor { 0%, 100% { background: #2ecc40; } 50% { background: #ffdc00; } }
   @keyframes nearmoderate { 0%, 100% { background: #ffdc00; } 50% { background: #ff851b; } }
@@ -125,10 +137,16 @@
   .legend .nm.nearmoderate { animation: nearmoderate 1.2s ease-in-out infinite; }
   .legend .nm.nearmajor { animation: nearmajor 1.2s ease-in-out infinite; }
   /* Coastal tide card */
-  .tide { margin-top: 2px; padding: 5px 7px; border: 1px solid #b3d4ea; border-left: 4px solid #0277bd;
-          border-radius: 4px; background: #f2f8fc; }
+  .tide { margin-top: 4px; padding: 2px 6px; border: 1px solid #b3d4ea; border-left: 3px solid #0277bd;
+          border-radius: 4px; background: #f2f8fc; font-size: 12px; }
+  .tide .chip { display: flex; align-items: center; gap: 6px; cursor: pointer; white-space: nowrap; overflow: hidden;
+                font-variant-numeric: tabular-nums; user-select: none; }
+  .tide .chip .sum { overflow: hidden; text-overflow: ellipsis; flex: 1; }
+  .tide .chip .tchev { color: #01579b; font-size: 11px; flex: none; }
+  .tide .chip.flash { color: #a15c00; }
+  .tide .det { border-top: 1px solid #d6e6f2; margin-top: 2px; padding: 2px 0 1px; }
   .title .tide b { font-size: inherit; }
-  .tide .big { font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .tide .big { font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; }
   .tide .row { display: flex; gap: 8px; flex-wrap: wrap; font-variant-numeric: tabular-nums; }
   .tide .muted { color: #555; font-size: 11.5px; }
   .tide a { color: #01579b; }
@@ -177,6 +195,7 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Data: <a href="https://www.bom.gov.au/qld/flood/rain_river.shtml">Bureau of Meteorology</a>'
 }).addTo(map);
+map.attributionControl.addAttribution('Wind &copy; <a href="https://www.bom.gov.au/qld/observations/" target="_blank" rel="noopener">BOM</a>');
 map.attributionControl.addAttribution('Road data &copy; State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>), ' +
   '<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>');
 
@@ -208,6 +227,11 @@ function isOn(id) { return true; }              // single area: always shown
 function inFlood(s) { return ["minor", "moderate", "major"].includes(classKey(effectiveClass(s))); }
 
 const LS_NOTICE = "twinfo.disclaimer.v1";
+// wind speed colour bands (km/h, roughly Beaufort: calm, light, moderate, fresh, strong, gale+)
+const WIND_BANDS = [
+  { max: 5,   c: "#9e9e9e", t: "&lt;5" },  { max: 20, c: "#43a047", t: "5–19" }, { max: 30, c: "#fdd835", t: "20–29" },
+  { max: 40,  c: "#fb8c00", t: "30–39" }, { max: 62, c: "#e53935", t: "40–61" }, { max: 1e9, c: "#8e24aa", t: "62+" },
+];
 const DISCLAIMER = 'Unofficial community map. Data from the Bureau of Meteorology may be delayed or contain ' +
   'faulty readings. Do not rely on it for safety decisions. Check ' +
   '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings (bom.gov.au)</a>, ' +
@@ -229,12 +253,21 @@ info.onAdd = () => {
   const d = L.DomUtil.create("div", "panel title");
   d.innerHTML = '<div class="hdr" id="hdr"><b>Twin Waters Info</b>' +
     '<span class="chev" id="chev"></span></div>' +
+    '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
+    '<div class="tide" id="tide">Tide\u2026</div>' +
+    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="radar" id="radar"></div>' +
+    // standing credits / data notes: bottom of the panel (inside the collapsible body)
+    '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind &amp; tide gauge \u00a9 ' +
+    '<a href="https://www.bom.gov.au/" target="_blank" rel="noopener">Bureau of Meteorology</a>; ' +
+    'tide predictions \u00a9 Commonwealth of Australia, Bureau of Meteorology (astronomical only, no wind/surge/flood effects; ' +
+    'tide-table datum may differ from the gauge) &middot; <details id="tidedet"><summary>tide disclaimer</summary><span id="tidedisctext">Loading\u2026</span></details>; ' +
+    'roads &amp; cameras \u00a9 State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>, CC BY 4.0) \u2014 check QLDTraffic before travelling; ' +
+    'radar <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>; map \u00a9 OpenStreetMap contributors. ' +
+    'More wind maps: <a href="https://www.live-wind.com.au/" target="_blank" rel="noopener">live-wind.com.au</a> (external, not a data source).</div>' +
+    '</div>' +
     '<div class="disc">Unofficial community map \u2014 not for safety decisions. ' +
     '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings</a> &middot; ' +
-    '<a href="#" id="discmore">more</a></div>' +
-    '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
-    '<div class="sec">Coastal tide</div><div class="tide" id="tide">Loading tide\u2026</div>' +
-    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="radar" id="radar"></div></div>';
+    '<a href="#" id="discmore">more</a></div>';
   L.DomEvent.disableClickPropagation(d);
   L.DomEvent.disableScrollPropagation(d);
   d.querySelector("#discmore").onclick = (e) => { e.preventDefault(); showNotice(); };
@@ -267,7 +300,9 @@ legend.onAdd = () => {
     "<br><span class='sym'><span class='ev rw'></span></span>Roadworks" +
     "<br><span class='sym'><span class='ev hz'></span></span>Hazard" +
     "<br><span class='sym'><span class='ev cr'></span></span>Crash" +
-    "<br><span style='opacity:.7'>Outlined = road closed; dashed line = partial</span></div>";
+    "<br><span style='opacity:.7'>Outlined = road closed; dashed line = partial</span>" +
+    "<br><b>Wind (BOM, km/h)</b><br><span style='opacity:.8'>Arrow flies with the wind (popup: blowing from)</span><br>" +
+    WIND_BANDS.map(b => `<span class="wsw" style="background:${b.c}"></span>${b.t}`).join(" &nbsp;") + "</div>";
   L.DomEvent.disableClickPropagation(d);
   const body = d.querySelector("#lgb");
   if (window.innerWidth < 600 || window.innerHeight < 950) body.style.display = "none";   // tall legend: start collapsed unless lots of room
@@ -562,8 +597,7 @@ function buildRoadsUi() {
     <label><input type="checkbox" id="camon" ${roads.camerasOn ? "checked" : ""}>
       <span class="cam" style="width:16px;height:16px;flex:none">${CAM_SVG}</span>
       <span>Flood cameras <span class="ct" id="ct-cameras"></span></span></label>
-    <div class="stale" id="roadstale"></div>
-    <div class="note">QLDTraffic, within the Twin Waters area. Check <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">qldtraffic.qld.gov.au</a> before travelling.</div>`;
+    <div class="stale" id="roadstale"></div>`;
   el.querySelector("#rdon").onchange = (e) => { roads.closuresOn = e.target.checked; lsSet(LS_CLOSURES, roads.closuresOn); syncRoadLayers(); };
   el.querySelector("#camon").onchange = (e) => { roads.camerasOn = e.target.checked; lsSet(LS_CAMERAS, roads.camerasOn); syncRoadLayers(); };
 }
@@ -682,9 +716,75 @@ async function loadEvents() {
   if (Object.keys(groups).length) drawEvents();
 }
 
+// ---- Wind: BOM Queensland 10-minute observations (wind.json; update_wind.py) ----
+// BOM wind direction is where the wind blows FROM; the arrow is drawn flying downwind (deg + 180).
+const LS_WIND = "twinfo.wind.v1";
+const wind = { on: lsGet(LS_WIND, true) !== false, data: null, err: "", group: L.layerGroup() };
+function windBand(k) { return WIND_BANDS.find(b => (k || 0) < b.max); }
+function windIcon(s) {
+  const k = s.wind_spd_kmh || 0, col = windBand(k).c, calm = s.wind_dir_deg == null;
+  const len = Math.min(20, 9 + k / 3);                 // half-length of the shaft: longer = stronger
+  const svg = calm
+    ? `<svg width="44" height="44"><circle cx="22" cy="22" r="9" fill="none" stroke="${col}" stroke-width="3"/></svg>`
+    : `<svg width="44" height="44" style="transform:rotate(${(s.wind_dir_deg + 180) % 360}deg)">
+        <line x1="22" y1="${22 + len}" x2="22" y2="${22 - len + 6}" stroke="${col}" stroke-width="4" stroke-linecap="round"/>
+        <polygon points="22,${22 - len - 2} ${15},${22 - len + 9} ${29},${22 - len + 9}" fill="${col}" stroke="#222" stroke-width="1"/></svg>`;
+  return L.divIcon({ className: "", iconSize: [44, 44], iconAnchor: [22, 22], popupAnchor: [0, -14],
+                     html: `<div class="wind">${svg}<span>${Math.round(k)}</span></div>` });
+}
+function windFrom(s) { return s.wind_dir_deg == null ? "Calm" : `from ${esc(s.wind_dir || "")} (${Math.round(s.wind_dir_deg)}°)`; }
+function windPopup(s) {
+  const t = s.time ? bneText(s.time) : "—";
+  const rows = [["Station", `<b>${esc(s.name)}</b> <span style="color:#777">(${s.distance_km} km)</span>`],
+    ["Wind", `<b>${Math.round(s.wind_spd_kmh || 0)} km/h</b>${s.wind_spd_kt != null ? ` (${Math.round(s.wind_spd_kt)} kt)` : ""}`],
+    ["Direction", `<b>${windFrom(s)}</b>`]];
+  if (s.gust_kmh != null) rows.push(["Gust", `${Math.round(s.gust_kmh)} km/h`]);
+  if (s.max_gust_kmh != null) rows.push(["Max gust today", `${Math.round(s.max_gust_kmh)} km/h${s.max_gust_dir ? " from " + esc(s.max_gust_dir) : ""}`]);
+  rows.push(["Observed", t]);
+  const stale = wind.data && wind.data.stale ? `<p class="warn" style="margin:4px 0 0">BOM feed unavailable since ${bneText(wind.data.stale_since)}.</p>` : "";
+  return `<div class="popup"><table>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table>${stale}
+    <p style="margin:6px 0 0"><a href="${esc(s.url)}" target="_blank" rel="noopener"><b>BOM observations →</b></a>
+    <span style="color:#777">${esc(wind.data ? wind.data.attribution : "Bureau of Meteorology")}</span></p></div>`;
+}
+function drawWind() {
+  wind.group.clearLayers();
+  for (const s of (wind.data && wind.data.stations) || []) {
+    const title = `Wind ${s.name}: ${Math.round(s.wind_spd_kmh || 0)} km/h ${s.wind_dir_deg == null ? "calm" : "from " + (s.wind_dir || "")}`;
+    L.marker([s.lat, s.lon], { icon: windIcon(s), title, zIndexOffset: 700, keyboard: true })
+      .bindPopup(() => windPopup(s), popOpts({ maxWidth: 300 })).bindTooltip(title).addTo(wind.group);
+  }
+  syncWind();
+}
+function syncWind() {
+  if (wind.on && !map.hasLayer(wind.group)) wind.group.addTo(map);
+  if (!wind.on && map.hasLayer(wind.group)) map.removeLayer(wind.group);
+  const ct = document.getElementById("ct-wind"), st = document.getElementById("windstale");
+  if (ct) ct.textContent = wind.data ? `(${(wind.data.stations || []).length} stations)` : wind.err ? "(unavailable)" : "";
+  if (st) st.innerHTML = wind.err ? "Could not load wind: " + esc(wind.err)
+    : wind.data && wind.data.stale ? `BOM wind feed unavailable since ${bneText(wind.data.stale_since)}; showing last known.`
+    : wind.data && wind.data.issued ? `Latest BOM obs ${bneText(wind.data.issued)}` : "";
+}
+(function buildWindUi() {
+  const el = document.getElementById("wind");
+  el.innerHTML = `<label><input type="checkbox" id="on-wind" ${wind.on ? "checked" : ""}>
+      <span style="flex:none;width:18px;text-align:center;color:#43a047;font-weight:bold">↗</span>
+      <span>Wind (BOM) <span class="ct" id="ct-wind"></span></span></label><div class="stale" id="windstale" style="color:#555"></div>`;
+  el.querySelector("#on-wind").onchange = (e) => { wind.on = e.target.checked; lsSet(LS_WIND, wind.on); syncWind(); };
+})();
+async function loadWind() {
+  try {
+    const d = await loadJson("wind.json");
+    if (!Array.isArray(d.stations)) throw new Error("bad format");
+    wind.data = d; wind.err = "";
+  } catch (e) { wind.err = e.message; }    // keep the last good copy on screen
+  drawWind();
+}
+
 // ---- Coastal tide card: live BOM Mooloolaba Tide gauge (data.json) + BOM predictions (tides.json; update_tides.py) ----
 const TIDE_GAUGE = "Mooloolaba Tide";
-const tide = { data: null, err: "", marker: null, disc: false };
+const LS_TIDE_OPEN = "twinfo.tideOpen.v1";
+const tide = { data: null, err: "", marker: null, disc: false, open: lsGet(LS_TIDE_OPEN, false) === true };
+const fmtTideShort = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", hour: "numeric", minute: "2-digit", hour12: true });
 const fmtTide = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short", hour: "numeric", minute: "2-digit", hour12: true });
 function tideStation() { return lastData ? (lastData.stations || []).find(s => s.name === TIDE_GAUGE) : null; }
 function nextTides() {     // {high, low} = first predicted high / low after now (computed in the browser)
@@ -705,6 +805,20 @@ function tideRows() {
 function renderTide() {
   const el = document.getElementById("tide"); if (!el) return;
   const s = tideStation(), n = nextTides(), h = [];
+  // compact one-line chip (always shown); details below only when expanded (persisted, default collapsed)
+  const chip = [];
+  if (s && s.height_m != null) chip.push(`<b>${s.height_m.toFixed(2)} m</b> ${ARROWS[(s.tendency || "").toLowerCase()] || ""}`);
+  const order0 = [["high", "H"], ["low", "L"]].filter(([k]) => n[k]).sort((a, b) => new Date(n[a[0]].time) - new Date(n[b[0]].time));
+  for (const [k, t] of order0) chip.push(`${t} ${fmtTideShort.format(new Date(n[k].time)).replace(" ", "")} ${Number(n[k].height_m).toFixed(1)}`);
+  const alert = s && (inFlood(s) || nearNext(s));
+  const head = `<div class="chip${alert ? " flash" : ""}" id="tidechip" role="button" tabindex="0" aria-expanded="${tide.open}"
+      title="Mooloolaba tide (BOM gauge + predictions). Click for details.">\ud83c\udf0a
+      <span class="sum">Tide ${chip.join(" \u00b7 ") || (lastData ? "\u2014" : "\u2026")}${alert ? " \u26a0" : ""}</span>
+      <span class="tchev">${tide.open ? "\u25b4" : "\u25be"}</span></div>`;
+  if (!tide.open) {
+    el.innerHTML = head;
+    bindTideChip(el); return;
+  }
   if (s && s.height_m != null) {
     const arrow = ARROWS[(s.tendency || "").toLowerCase()] || "";
     h.push(`<div class="big">${s.height_m.toFixed(2)} m ${arrow} ${esc(s.tendency || "")}</div>`);
@@ -726,10 +840,8 @@ function renderTide() {
   h.push(`<div class="surge"><b>Storm tide / coastal inundation:</b> not forecast here. Check
     <a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings</a> and the
     <a href="https://disaster.sunshinecoast.qld.gov.au/" target="_blank" rel="noopener">Sunshine Coast Disaster Hub</a>.</div>`);
-  if (tide.data) h.push(`<div class="bomdisc">Predictions are astronomical only (no wind, surge or flood effects); heights on the BOM tide-table
-    datum, which may differ from the gauge. ${esc(tide.data.attribution)} &middot; <a href="#" id="tidedisc">${tide.disc ? "hide" : "disclaimer"}</a>
-    ${tide.disc ? `<div>${esc(tide.data.disclaimer)} <a href="${esc(tide.data.conditions_url)}" target="_blank" rel="noopener">Conditions of use</a></div>` : ""}</div>`);
-  el.innerHTML = h.join("");
+  el.innerHTML = head + `<div class="det">${h.join("")}</div>`;
+  bindTideChip(el);
   el.querySelector("#tidego").onclick = () => {
     const st = tideStation(); if (!st) return;
     if (!gaugesOn) { gaugesOn = true; lsSet(LS_GAUGES, true); const c = document.getElementById("gon"); if (c) c.checked = true; syncGauges(); }
@@ -737,14 +849,20 @@ function renderTide() {
     map.setView([st.lat, st.lon], Math.max(map.getZoom(), 13));
     if (tide.marker) tide.marker.openPopup();
   };
-  const dl = el.querySelector("#tidedisc");
-  if (dl) dl.onclick = (e) => { e.preventDefault(); tide.disc = !tide.disc; renderTide(); };
+}
+function bindTideChip(el) {
+  const c = el.querySelector("#tidechip"); if (!c) return;
+  const tog = () => { tide.open = !tide.open; lsSet(LS_TIDE_OPEN, tide.open); renderTide(); };
+  c.onclick = tog;
+  c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
 }
 async function loadTides() {
   try {
     const d = await loadJson("tides.json");
     if (!Array.isArray(d.predictions)) throw new Error("bad format");
     tide.data = d; tide.err = "";
+    const dt_ = document.getElementById("tidedisctext");
+    if (dt_) dt_.innerHTML = `${esc(d.attribution || "")}. ${esc(d.disclaimer || "")} <a href="${esc(d.conditions_url || "https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf")}" target="_blank" rel="noopener">Conditions of use</a>`;
   } catch (e) { tide.err = e.message; }
   renderTide();
 }
@@ -862,7 +980,7 @@ buildRadarUi();
 if (radar.on) refreshRadar();
 
 async function load() {
-  loadRoads(); loadEvents(); loadTides();
+  loadRoads(); loadEvents(); loadTides(); loadWind();
   try {
     const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);

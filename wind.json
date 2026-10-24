@@ -1,0 +1,54 @@
+{
+ "generated_at": "2026-10-25T07:17:25+10:00",
+ "stale": false,
+ "issued": "2026-10-25T07:11:03+10:00",
+ "source_url": "https://www.bom.gov.au/fwo/IDQ60920.xml",
+ "page_url": "https://www.bom.gov.au/qld/observations/seqld.shtml",
+ "attribution": "Wind observations © Commonwealth of Australia 2026, Bureau of Meteorology",
+ "convention": "wind_dir / wind_dir_deg = direction the wind blows FROM (degrees true)",
+ "centre": {
+  "name": "Twin Waters, QLD",
+  "lat": -26.6336,
+  "lon": 153.0814
+ },
+ "radius_km": 20.0,
+ "count": 2,
+ "stations": [
+  {
+   "id": "040861",
+   "wmo": "94569",
+   "name": "Sunshine Coast Airport",
+   "stn_name": "SUNSHINE COAST AIRPORT",
+   "lat": -26.599,
+   "lon": 153.0912,
+   "distance_km": 4.0,
+   "time": "2026-10-25T07:10:00+10:00",
+   "wind_dir": "WNW",
+   "wind_dir_deg": 301.0,
+   "wind_spd_kmh": 17.0,
+   "wind_spd_kt": 9.0,
+   "gust_kmh": 24.0,
+   "max_gust_kmh": 39.0,
+   "max_gust_dir": "NNE",
+   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml"
+  },
+  {
+   "id": "040988",
+   "wmo": "95572",
+   "name": "Nambour",
+   "stn_name": "NAMBOUR DAFF - HILLSIDE",
+   "lat": -26.6442,
+   "lon": 152.9383,
+   "distance_km": 14.3,
+   "time": "2026-10-25T07:10:00+10:00",
+   "wind_dir": "NNE",
+   "wind_dir_deg": 24.0,
+   "wind_spd_kmh": 2.0,
+   "wind_spd_kt": 1.0,
+   "gust_kmh": 4.0,
+   "max_gust_kmh": 20.0,
+   "max_gust_dir": "NNW",
+   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.95572.shtml"
+  }
+ ]
+}

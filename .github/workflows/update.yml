@@ -37,16 +37,22 @@ jobs:
         continue-on-error: true
         run: python update_tides.py
 
+      # BOM 10-minute observations: wind at stations in the circle (wind.json).
+      - name: Fetch BOM wind observations (wind.json)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: python update_wind.py
+
       - name: Commit data files if they changed
         if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json
+          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json wind.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Update river gauge and road data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
+            git commit -m "Update river gauge, road, tide and wind data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
             git pull --rebase || { git rebase --abort; exit 1; }
             git push
           fi
