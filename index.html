@@ -915,7 +915,7 @@ function renderRain() {
       <span class="sum">${sum}${stale ? " \u23f1" : ""}</span><span class="tchev">${rain.open ? "\u25b4" : "\u25be"}</span></div>`;
   if (!rain.open || !s) { el.innerHTML = head; bindRainChip(el); return; }
   const h = [];
-  h.push(`<div class="big">Today ${mm1(s.today_mm)} mm \u00b7 Week ${mm1(s.week_mm)} mm</div>`);
+  h.push(`<div class="big">${tl === "Rain today" ? "Today" : "Since 9am"} ${mm1(s.today_mm)} mm \u00b7 7 days ${mm1(s.week_mm)} mm</div>`);
   h.push(`<div class="muted"><b>${esc(s.name)}</b> (BOM ${esc(s.id)}, ${s.distance_km} km) \u00b7 obs ${s.obs_time ? bneText(s.obs_time) : "\u2014"}</div>`);
   const days = rainDays(s), mx = Math.max(1, ...days.map(d => d.mm || 0));
   h.push(`<div class="days">${days.map(d => `<div class="${d.part ? "part" : ""}" title="${esc(d.tip)}: ${d.mm == null ? "no data" : mm1(d.mm) + " mm"}">
