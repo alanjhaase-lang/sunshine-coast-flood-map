@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-25T08:01:55+10:00",
- "generated_at_text": "Sun 25 Oct 2026 08:01 AM AEST",
+ "generated_at": "2026-10-25T08:53:01+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 08:53 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-10-25T08:00:50+10:00",
+  "feed_published": "2026-10-25T08:52:38+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,53 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 836870,
-   "road": "Bruce Highway",
-   "description": "2kms from Caloundra Rd on ramp",
-   "locality": "Corbould Park",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-10-25T07:25:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-10-25T07:27:13+10:00",
-   "last_updated_text": "Sun 25 Oct 2026 07:27 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836870",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.79499,
-    153.04435
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.79499,
-      153.04435
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
