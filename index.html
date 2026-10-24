@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="icon" href="data:,">
+<title>Sunshine Coast flood map: river gauges, road closures &amp; flood cameras</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<style>
+  html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; }
+  #map { position: absolute; inset: 0; }
+  .panel { background: rgba(255,255,255,.93); padding: 8px 10px; border-radius: 6px;
+           box-shadow: 0 1px 5px rgba(0,0,0,.35); font-size: 13px; line-height: 1.35; }
+  .title b { font-size: 15px; }
+  .legend i { display: inline-block; width: 14px; height: 14px; border-radius: 50%;
+              margin-right: 6px; vertical-align: -2px; border: 1px solid #333; }
+  .gauge { width: 24px; height: 24px; border-radius: 50%; border: 2px solid #222;
+           display: flex; align-items: center; justify-content: center;
+           font: bold 15px/1 system-ui, sans-serif; color: #111; box-shadow: 0 1px 3px rgba(0,0,0,.5); }
+  .gauge.stale { opacity: .55; border-style: dashed; }
+  .disc { font-size: 11.5px; color: #555; margin-top: 3px; }
+  .disc a { color: #555; }
+  #notice { position: absolute; z-index: 1100; left: 50%; bottom: 28px; transform: translateX(-50%);
+            width: min(460px, calc(100% - 24px)); box-sizing: border-box; background: #fff; border-left: 4px solid #a15c00;
+            border-radius: 6px; box-shadow: 0 2px 10px rgba(0,0,0,.4); padding: 10px 12px; font: 13px/1.4 system-ui, sans-serif; }
+  #notice p { margin: 0 0 8px; }
+  #notice button { font: inherit; padding: 4px 12px; border: 1px solid #888; border-radius: 4px; background: #f3f3f3; cursor: pointer; }
+  .popup table { border-collapse: collapse; font-size: 12.5px; }
+  .popup td { padding: 1px 6px 1px 0; vertical-align: top; }
+  .popup td:first-child { color: #555; white-space: nowrap; }
+  .warn { color: #a15c00; }
+  .fl-lv { display: inline-block; padding: 0 4px; margin: 1px 0; border: 1px solid #ccc; border-radius: 3px;
+           font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .fl-lv.on { border-color: #222; font-weight: bold; color: #111; }
+  #err { color: #b00; }
+  .title { max-width: 300px; }
+  .title .hdr { display: flex; align-items: center; gap: 8px; cursor: pointer; user-select: none; }
+  .title .hdr b { flex: 1; }
+  .title .chev { font-size: 12px; opacity: .7; }
+  .regions { margin-top: 6px; border-top: 1px solid #ddd; padding-top: 5px; }
+  .regions label { display: flex; align-items: center; gap: 6px; padding: 3px 0; cursor: pointer; }
+  .regions input { width: 17px; height: 17px; margin: 0; flex: none; }
+  .regions .sw { width: 12px; height: 12px; border: 2px dashed; border-radius: 50%; flex: none; }
+  .regions .nm { flex: 1; }
+  .regions .ct { color: #555; font-variant-numeric: tabular-nums; }
+  .regions .fl { color: #c62828; font-weight: bold; }
+  .regions button { font: inherit; font-size: 11.5px; padding: 2px 7px; border: 1px solid #aaa;
+                    border-radius: 4px; background: #f6f6f6; cursor: pointer; flex: none; }
+  .regions .row2 { display: flex; align-items: center; gap: 6px; margin-top: 4px; padding-top: 4px; border-top: 1px solid #eee; }
+  .regions .row2 label { flex: 1; }
+  .radar { margin-top: 6px; border-top: 1px solid #ddd; padding-top: 5px; }
+  .radar label { display: flex; align-items: center; gap: 6px; padding: 3px 0; cursor: pointer; }
+  .radar input[type=checkbox] { width: 17px; height: 17px; margin: 0; flex: none; }
+  .radar .rc { display: flex; align-items: center; gap: 6px; margin-top: 3px; flex-wrap: wrap; }
+  .radar button { font: inherit; font-size: 12px; padding: 2px 8px; border: 1px solid #aaa; border-radius: 4px;
+                  background: #f6f6f6; cursor: pointer; min-width: 34px; }
+  .radar .ts { flex: 1; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .radar input[type=range] { flex: 1; min-width: 90px; margin: 0; }
+  .radar .scale { height: 8px; border-radius: 4px; margin: 4px 0 1px; border: 1px solid #bbb;
+    background: linear-gradient(to right, #88ddee, #00a3e0, #005588, #ffee00, #ffaa00, #ff4400, #c10000, #ffaaff); }
+  .radar .sl { display: flex; justify-content: space-between; font-size: 11px; color: #555; }
+  .radar .note { font-size: 11px; color: #555; }
+  .leaflet-radar-pane img { pointer-events: none; }
+  .roads { margin-top: 6px; border-top: 1px solid #ddd; padding-top: 5px; }
+  .roads label { display: flex; align-items: center; gap: 6px; padding: 3px 0; cursor: pointer; }
+  .roads input { width: 17px; height: 17px; margin: 0; flex: none; }
+  .roads .ct { color: #555; font-variant-numeric: tabular-nums; }
+  .roads .note { font-size: 11px; color: #555; }
+  .roads.gg { margin-top: 0; border-top: 0; padding-top: 0; }
+  .roads.gg + .roads { margin-top: 2px; border-top: 0; padding-top: 0; }
+  .roads .sub { padding-left: 23px; }
+  .roads .sub.off { opacity: .45; }
+  .roads .sub.off label { cursor: default; }
+  .roads .fl { color: #c62828; font-weight: bold; }
+  .gico { width: 14px; height: 14px; border-radius: 50%; border: 2px solid #222; background: #4caf50; box-sizing: border-box; flex: none; }
+  .sec { margin-top: 7px; padding-top: 4px; border-top: 1px solid #ddd; font-size: 10.5px; font-weight: 600;
+         letter-spacing: .06em; text-transform: uppercase; color: #777; }
+  .sec + .regions, .sec + .roads { margin-top: 0; border-top: 0; padding-top: 0; }
+  .roads .stale { color: #a15c00; font-size: 11.5px; }
+  .ne { width: 18px; height: 18px; border-radius: 50%; background: #d50000; border: 2px solid #fff; box-sizing: border-box;
+        box-shadow: 0 0 0 1px #7f0000, 0 1px 3px rgba(0,0,0,.5); display: flex; align-items: center; justify-content: center; }
+  .ne::after { content: ""; width: 9px; height: 3px; background: #fff; border-radius: 1px; }
+  .ne.part { background: #ffab00; box-shadow: 0 0 0 1px #8a5a00, 0 1px 3px rgba(0,0,0,.5); border-radius: 3px; transform: rotate(45deg); width: 15px; height: 15px; }
+  .ne.part::after { width: 3px; height: 8px; background: #222; transform: rotate(-45deg); }
+  .cam { width: 22px; height: 22px; border-radius: 50%; background: #263238; border: 2px solid #fff; box-sizing: border-box;
+         box-shadow: 0 1px 3px rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; }
+  .cam.old { background: #78909c; }
+  .cam svg { width: 13px; height: 13px; fill: #fff; }
+  .legend .sym { display: inline-flex; width: 20px; justify-content: center; margin-right: 4px; vertical-align: -4px; }
+  .legend .ln { display: inline-block; width: 18px; height: 0; border-top: 3px solid #d50000; margin: 0 5px 0 1px; vertical-align: 3px; }
+  .legend .ln.part { border-top: 3px dashed #ffab00; }
+  .campop { width: min(280px, calc(100vw - 80px)); }
+  .campop img { display: block; width: 100%; height: auto; min-height: 60px; background: #eee; border-radius: 3px; margin: 4px 0; }
+  .ctr { width: 10px; height: 10px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 2px #000; }
+  #body { max-height: calc(100vh - 150px); overflow-y: auto; }
+  @media (max-width: 600px) { .panel { font-size: 12px; } .title b { font-size: 13px; }
+                              .title { max-width: 230px; } .regions label, .roads label { padding: 5px 0; } .sec { margin-top: 5px; } }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script>
+const COLORS = {
+  "below flood level": "#2ecc40",
+  "minor": "#ffdc00",
+  "moderate": "#ff851b",
+  "major": "#e3261c",
+  "none": "#9e9e9e"
+};
+const LABELS = [["below flood level","Below Flood Level"],["minor","Minor"],
+                ["moderate","Moderate"],["major","Major"],["none","None / unknown"]];
+const Z = { "major": 800, "moderate": 700, "minor": 600, "below flood level": 300, "none": 0 };
+const CAM_SVG = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4H9zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5z"/></svg>';
+const ARROWS = { rising: "\u2191", falling: "\u2193", steady: "\u2013" };
+
+function classKey(fc) {
+  const k = (fc || "").trim().toLowerCase();
+  if (k.startsWith("below")) return "below flood level";
+  if (k.startsWith("minor")) return "minor";
+  if (k.startsWith("moderate")) return "moderate";
+  if (k.startsWith("major")) return "major";
+  return "none";
+}
+// Prefer class computed from height vs flood levels (incl. community estimates);
+// fall back to the BOM bulletin class when we have no levels for the gauge.
+function effectiveClass(s) {
+  if (s.computed_class) return s.computed_class;
+  return s.flood_class;
+}
+function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+
+const map = L.map("map", { zoomControl: true }).setView([-26.62, 153.03], 10);
+L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  maxZoom: 18,
+  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Data: <a href="https://www.bom.gov.au/qld/flood/rain_river.shtml">Bureau of Meteorology</a>'
+}).addTo(map);
+map.attributionControl.addAttribution('Road data &copy; State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>), ' +
+  '<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>');
+
+const LS_FLOOD = "scfloodmap.floodOnly.v1", LS_OPEN = "scfloodmap.panelOpen.v1",
+      LS_RADAR = "scfloodmap.radar.v1", LS_CLOSURES = "scfloodmap.closures.v1", LS_CAMERAS = "scfloodmap.cameras.v1",
+      LS_GAUGES = "scfloodmap.gauges.v1";
+let gaugesOn = lsGet(LS_GAUGES, true) !== false;
+function lsGet(k, dflt) { try { const v = localStorage.getItem(k); return v == null ? dflt : JSON.parse(v); } catch (e) { return dflt; } }
+function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
+
+let floodOnly = !!lsGet(LS_FLOOD, false);
+const groups = {};                              // region id -> {layer, markers, boundary, meta}
+let lastData = null, fitted = false, uiBuilt = false;
+
+function isOn(id) { return true; }              // single area: always shown
+function inFlood(s) { return ["minor", "moderate", "major"].includes(classKey(effectiveClass(s))); }
+
+const LS_NOTICE = "scfloodmap.disclaimer.v1";
+const DISCLAIMER = 'Unofficial community map. Data from the Bureau of Meteorology may be delayed or contain ' +
+  'faulty readings. Do not rely on it for safety decisions. Check ' +
+  '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings (bom.gov.au)</a>, ' +
+  'your council disaster dashboard, and call SES <a href="tel:132500">132 500</a> or ' +
+  '<a href="tel:000">000</a> in an emergency.';
+function showNotice() {
+  if (document.getElementById("notice")) return;
+  const n = document.createElement("div");
+  n.id = "notice"; n.setAttribute("role", "dialog"); n.setAttribute("aria-label", "Disclaimer");
+  n.innerHTML = `<p><b>Please note:</b> ${DISCLAIMER}</p><button type="button">OK, got it</button>`;
+  L.DomEvent.disableClickPropagation(n); L.DomEvent.disableScrollPropagation(n);
+  n.querySelector("button").onclick = () => { lsSet(LS_NOTICE, true); n.remove(); };
+  document.getElementById("map").appendChild(n);
+}
+if (!lsGet(LS_NOTICE, false)) showNotice();
+
+const info = L.control({ position: "topright" });
+info.onAdd = () => {
+  const d = L.DomUtil.create("div", "panel title");
+  d.innerHTML = '<div class="hdr" id="hdr"><b>Sunshine Coast flood map</b>' +
+    '<span class="chev" id="chev"></span></div>' +
+    '<div class="disc">Unofficial community map \u2014 not for safety decisions. ' +
+    '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings</a> &middot; ' +
+    '<a href="#" id="discmore">more</a></div>' +
+    '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
+    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="radar" id="radar"></div></div>';
+  L.DomEvent.disableClickPropagation(d);
+  L.DomEvent.disableScrollPropagation(d);
+  d.querySelector("#discmore").onclick = (e) => { e.preventDefault(); showNotice(); };
+  const body = d.querySelector("#body"), chev = d.querySelector("#chev");
+  let open = lsGet(LS_OPEN, window.innerWidth >= 600);
+  const apply = () => { body.style.display = open ? "" : "none"; chev.textContent = open ? "\u25B4 hide" : "\u25BE layers"; };
+  d.querySelector("#hdr").onclick = () => { open = !open; lsSet(LS_OPEN, open); apply(); };
+  apply();
+  return d;
+};
+info.addTo(map);
+
+const legend = L.control({ position: "bottomright" });
+legend.onAdd = () => {
+  const d = L.DomUtil.create("div", "panel legend");
+  d.innerHTML = "<b id='lgt' style='cursor:pointer'>Legend ▾</b><div id='lgb'><b>Flood class</b><br>" +
+    LABELS.map(([k, t]) => `<i style="background:${COLORS[k]}"></i>${t}`).join("<br>") +
+    "<br><b>Tendency</b><br>\u2191 rising &nbsp; \u2193 falling &nbsp; \u2013 steady &nbsp; ? unknown" +
+    "<br><span style='opacity:.7'>Dashed = no current reading</span>" +
+    "<br>Dashed circle = Sunshine Coast area (40 km)" +
+    "<br><b>Roads (QLDTraffic, flooding)</b>" +
+    "<br><span class='sym'><span class='ne'></span></span>Road closed <span class='ln'></span>" +
+    "<br><span class='sym'><span class='ne part'></span></span>Lanes affected / restricted <span class='ln part'></span>" +
+    "<br><span class='sym'><span class='cam'>" + CAM_SVG + "</span></span>Flood camera</div>";
+  L.DomEvent.disableClickPropagation(d);
+  const body = d.querySelector("#lgb");
+  if (window.innerWidth < 600) body.style.display = "none";
+  d.querySelector("#lgt").onclick = () => { body.style.display = body.style.display === "none" ? "" : "none"; };
+  return d;
+};
+legend.addTo(map);
+
+function ensureGroups(regions) {
+  for (const r of regions) {
+    if (groups[r.id]) { groups[r.id].meta = r; continue; }
+    const boundary = L.circle([r.lat, r.lon], { radius: r.radius_km * 1000, color: r.color, weight: 2,
+      fill: true, fillOpacity: 0.04, dashArray: "6 6", interactive: false });
+    const centre = L.marker([r.lat, r.lon], { icon: L.divIcon({ className: "", html: `<div class="ctr" style="background:${r.color}"></div>`,
+                                    iconSize: [14, 14], iconAnchor: [7, 7] }), zIndexOffset: -1000 });
+    centre.bindPopup(`<b>${esc(r.name)}</b><br>Centre: ${esc(r.centre_name)}<br>${r.lat}, ${r.lon}<br>Radius: ${r.radius_km} km`);
+    const markers = L.layerGroup();
+    const layer = L.layerGroup([boundary, centre, markers]);
+    groups[r.id] = { layer, markers, boundary, meta: r };
+    if (isOn(r.id)) layer.addTo(map);
+  }
+}
+
+function enabledBounds() {
+  let b = null;
+  for (const id in groups) if (isOn(id)) {
+    const gb = groups[id].boundary.getBounds();
+    b = b ? b.extend(gb) : L.latLngBounds(gb.getSouthWest(), gb.getNorthEast());
+  }
+  return b;
+}
+function fitEnabled() {
+  const b = enabledBounds();
+  if (b) map.fitBounds(b, { padding: [10, 10] });
+}
+
+function buildUi(regions) {
+  // Single area: show it with its gauge count and a zoom button (no toggles).
+  const el = document.getElementById("regions");
+  el.innerHTML = regions.map(r => `<label style="cursor:default">
+      <span class="sw" style="border-color:${r.color}"></span>
+      <span class="nm">${esc(r.name)} (${r.radius_km} km)
+        <span class="ct" id="ct-${esc(r.id)}"></span></span>
+      <button type="button" data-z="${esc(r.id)}" title="Zoom to ${esc(r.name)}">Zoom</button></label>`).join("");
+  buildGaugesUi();
+  el.querySelectorAll("button[data-z]").forEach(btn => btn.onclick = (ev) => {
+    ev.preventDefault(); ev.stopPropagation();
+    map.fitBounds(groups[btn.dataset.z].boundary.getBounds(), { padding: [10, 10] });
+  });
+  uiBuilt = true;
+}
+
+const CLS = [["minor", "Minor"], ["moderate", "Moderate"], ["major", "Major"]];
+function m2(v) { return `${Number(v).toFixed(2)} m`; }
+function floodNext(s) {            // short text: next class + metres to go
+  if (!s.flood_levels || s.height_m == null) return "";
+  if (s.next_class) return `Next: ${s.next_class} at ${m2(s.next_level_m)}, ${m2(s.delta_m)} to go`;
+  if (s.above_major_m != null) return `Above Major by ${m2(s.above_major_m)}`;
+  return "";
+}
+function floodRows(s) {
+  const lv = s.flood_levels;
+  if (!lv) {
+    const why = (s.flood_levels_note || "").startsWith("datum mismatch")
+      ? `<span class="warn">Flood levels not compared (${esc(s.flood_levels_note)})</span>`
+      : '<span style="color:#777">No official flood levels for this gauge</span>';
+    return [["Flood levels", why]];
+  }
+  const cur = classKey(s.computed_class);
+  const list = CLS.filter(([k]) => lv[k] != null).map(([k, t]) => {
+    const on = cur === k;
+    return `<span class="fl-lv${on ? " on" : ""}" style="${on ? `background:${COLORS[k]}` : ""}">${t} ${Number(lv[k]).toFixed(2)}</span>`;
+  }).join(" ");
+  const rows = [];
+  if (s.height_m == null) rows.push(["Next", "\u2014 (no current reading)"]);
+  else if (s.next_class) rows.push(["Next", `<b>${esc(s.next_class)} at ${m2(s.next_level_m)}, ${m2(s.delta_m)} to go</b>`]);
+  else if (s.above_major_m != null) rows.push(["Next", `<b>None \u2014 above Major by ${m2(s.above_major_m)}</b>`]);
+  rows.push(["Flood levels", `${list} <span style="color:#777">m ${esc(lv.datum)}</span>`]);
+  if (lv.source === "user")
+    rows.push(["", `<span style="color:#777">Community estimate (not official BOM)</span>`]);
+  if (s.class_check && s.class_check.startsWith("differs"))
+    rows.push(["", `<span class="warn">Computed ${esc(s.computed_class)}; ${esc(s.class_check)}</span>`]);
+  return rows;
+}
+
+function popupHtml(s) {
+  const geo = s.geocoded ? '<span class="warn">approximate (geocoded from name)</span>' : esc(s.coord_source);
+  const rows = [
+    ["Station", esc(s.name)],
+    ["Height", s.height_m == null ? "\u2014" : `${s.height_m.toFixed(2)} m ${esc(s.datum)}`],
+    ["Time", esc(s.time) || "\u2014"],
+    ["Tendency", esc(s.tendency) || "\u2014"],
+    ["Flood class", esc(s.flood_class) || (s.computed_class ? esc(s.computed_class) + ' <span style="color:#777">(from levels)</span>' : "\u2014")],
+    ...floodRows(s),
+    ["Distance", `${s.distance_km} km from ${esc(s.distance_from || "Sunshine Coast centre")}`],
+    ["Location", `${s.lat.toFixed(4)}, ${s.lon.toFixed(4)} (${geo})`],
+    ["Bulletin", `<a href="https://www.bom.gov.au/fwo/${esc(s.bulletin)}.html" target="_blank" rel="noopener">${esc(s.bulletin)}</a>`]
+  ];
+  return `<div class="popup"><table>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table>
+    <p style="margin:6px 0 0"><a href="${esc(s.plot_url)}" target="_blank" rel="noopener"><b>BOM plot \u2192</b></a>
+    ${s.table_url ? ` | <a href="${esc(s.table_url)}" target="_blank" rel="noopener">table</a>` : ""}</p></div>`;
+}
+
+function legacyRegions(data) {  // fallback if data.json has no regions list
+  const h = data.home;
+  return [{ id: "sunshine", name: "Sunshine Coast", lat: h.lat, lon: h.lon, radius_km: data.radius_km,
+            centre_name: h.name, color: "#c2185b", count: data.count }];
+}
+
+function syncGauges() {
+  for (const id in groups) {
+    const g = groups[id];
+    if (gaugesOn) g.layer.addLayer(g.markers); else g.layer.removeLayer(g.markers);
+  }
+  const sub = document.getElementById("fosub"), fo = document.getElementById("fo");
+  if (sub) { sub.classList.toggle("off", !gaugesOn); fo.disabled = !gaugesOn; }
+}
+function buildGaugesUi() {
+  const el = document.getElementById("gauges");
+  el.innerHTML = `<label><input type="checkbox" id="gon" ${gaugesOn ? "checked" : ""}>
+      <span class="gico"></span>
+      <span>River gauges <span class="ct" id="ct-gauges"></span></span></label>
+    <div class="sub" id="fosub"><label><input type="checkbox" id="fo" ${floodOnly ? "checked" : ""}> <span title="Gauges only; road closures and cameras stay visible">In flood only</span></label></div>`;
+  el.querySelector("#gon").onchange = (e) => { gaugesOn = e.target.checked; lsSet(LS_GAUGES, gaugesOn); syncGauges(); };
+  el.querySelector("#fo").onchange = (e) => { floodOnly = e.target.checked; lsSet(LS_FLOOD, floodOnly); if (lastData) drawMarkers(lastData); };
+  syncGauges();
+}
+function updateGaugeCount() {
+  const c = document.getElementById("ct-gauges"); if (!c || !lastData) return;
+  let n = 0, f = 0;
+  for (const s of lastData.stations) { const rid = s.region || "sunshine"; if (groups[rid] && isOn(rid)) { n++; if (inFlood(s)) f++; } }
+  c.innerHTML = `(${n})` + (f ? ` <span class="fl" title="in flood">\u26A0 ${f} in flood</span>` : "");
+}
+function drawMarkers(data) {
+  const counts = {}, floods = {};
+  for (const id in groups) { groups[id].markers.clearLayers(); counts[id] = 0; floods[id] = 0; }
+  for (const s of data.stations) {
+    const rid = s.region || "sunshine", g = groups[rid];
+    if (!g) continue;
+    counts[rid]++; if (inFlood(s)) floods[rid]++;
+    if (floodOnly && !inFlood(s)) continue;
+    const key = classKey(effectiveClass(s));
+    const arrow = ARROWS[(s.tendency || "").toLowerCase()] || "?";
+    const stale = s.height_m == null ? " stale" : "";
+    const icon = L.divIcon({ className: "", iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -12],
+      html: `<div class="gauge${stale}" style="background:${COLORS[key]}">${arrow}</div>` });
+    L.marker([s.lat, s.lon], { icon, title: s.name + (floodNext(s) ? ` \u2014 ${floodNext(s)}` : ""), zIndexOffset: Z[key] })
+      .bindPopup(popupHtml(s), { maxWidth: 320 })
+      .addTo(g.markers);
+  }
+  for (const id in groups) {
+    const c = document.getElementById("ct-" + id);
+    if (c) c.innerHTML = `(${counts[id]})` + (floods[id] ? ` <span class="fl" title="in flood">\u26A0 ${floods[id]}</span>` : "");
+  }
+  updateGaugeCount();
+}
+
+function render(data) {
+  lastData = data;
+  const regions = data.regions && data.regions.length ? data.regions : legacyRegions(data);
+  ensureGroups(regions);
+  if (!uiBuilt) buildUi(regions);
+  drawMarkers(data);
+  const bl = (data.bulletins || []).map(b => b.id + (b.stale ? " (stale)" : "")).join(", ");
+  document.getElementById("upd").innerHTML =
+    `Last updated: ${esc(data.generated_at_text || data.generated_at)}<br>${data.count} gauges &middot; bulletins ${esc(bl)}`;
+  document.getElementById("err").textContent = "";
+  if (!fitted) { fitEnabled(); fitted = true; }
+  if (!roadsDrawn) { roadsDrawn = true; drawRoads(); }
+}
+let roadsDrawn = false;
+
+// ---- QLDTraffic layers: road closures (flooding) and flood cameras; built by update_roads.py ----
+const roads = {
+  closuresOn: lsGet(LS_CLOSURES, true) !== false, camerasOn: lsGet(LS_CAMERAS, false) === true,
+  closures: null, cameras: null, cErr: "", kErr: "",
+  cGroups: {}, kGroups: {}               // region id -> L.layerGroup
+};
+map.createPane("closureLines");
+map.getPane("closureLines").style.zIndex = 450;   // above region circles (overlay pane 400), below markers (600)
+const fmtBneFull = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short", day: "numeric",
+  month: "short", hour: "numeric", minute: "2-digit", hour12: true });
+function bneText(iso) { if (!iso) return ""; const d = new Date(iso); return isNaN(d) ? esc(iso) : fmtBneFull.format(d) + " AEST"; }
+// keep popups clear of the layer panel on phones (top right control)
+function popOpts(o) {
+  return Object.assign({ autoPanPaddingTopLeft: L.point(10, window.innerWidth < 600 ? 90 : 10), autoPanPaddingBottomRight: L.point(10, 10) }, o);
+}
+function roadGroup(store, rid) { return store[rid] || (store[rid] = L.layerGroup()); }
+function syncRoadLayers() {
+  for (const [store, on] of [[roads.cGroups, roads.closuresOn], [roads.kGroups, roads.camerasOn]])
+    for (const rid in store) {
+      const want = on && isOn(rid) && !!groups[rid];
+      if (want && !map.hasLayer(store[rid])) store[rid].addTo(map);
+      if (!want && map.hasLayer(store[rid])) map.removeLayer(store[rid]);
+    }
+}
+function closurePopup(c) {
+  const sev = c.severity === "closed" ? '<b style="color:#c62828">Road closed</b>' : '<b style="color:#a15c00">Lanes affected / restricted</b>';
+  const rows = [
+    ["Road", `<b>${esc(c.road)}</b>`],
+    ["Locality", esc([c.locality, c.lga].filter(Boolean).join(", ")) || "\u2014"],
+    ["Impact", `${sev}<br>${esc(c.impact || "")}${c.direction && c.direction !== "Unknown" ? ` (${esc(c.direction)})` : ""}`],
+    ["Cause", esc([c.event_subtype, c.due_to].filter(x => x && x !== "None").join(" \u2014 ")) || "\u2014"],
+  ];
+  if (c.description) rows.push(["Details", esc(c.description)]);
+  if (c.advice) rows.push(["Advice", esc(c.advice)]);
+  rows.push(["Since", bneText(c.start) || "\u2014"]);
+  rows.push(["Updated", bneText(c.last_updated) || "\u2014"]);
+  if (c.provided_by) rows.push(["Reported by", esc(c.provided_by)]);
+  const stale = roads.closures && roads.closures.stale
+    ? `<p class="warn" style="margin:4px 0 0">Closure feed unavailable since ${bneText(roads.closures.stale_since)}; this may be out of date.</p>` : "";
+  return `<div class="popup"><table>${rows.map(r => `<tr><td>${r[0]}</td><td>${r[1]}</td></tr>`).join("")}</table>${stale}
+    <p style="margin:6px 0 0"><a href="${esc(c.source_link || "https://qldtraffic.qld.gov.au/")}" target="_blank" rel="noopener"><b>QLDTraffic \u2192</b></a>
+    <span style="color:#777">qldtraffic.qld.gov.au</span></p></div>`;
+}
+function drawClosures() {
+  for (const rid in roads.cGroups) roads.cGroups[rid].clearLayers();
+  const d = roads.closures; if (!d) return;
+  for (const c of d.closures || []) {
+    if (!c.marker || !groups[c.region]) continue;
+    const g = roadGroup(roads.cGroups, c.region), closed = c.severity === "closed";
+    const color = closed ? "#d50000" : "#ffab00", title = `${c.road} \u2014 ${c.impact || ""}`;
+    const pop = () => closurePopup(c);
+    for (const line of (c.geometry && c.geometry.lines) || []) {
+      L.polyline(line, { pane: "closureLines", color: "#fff", weight: 8, opacity: .8, interactive: false }).addTo(g);
+      L.polyline(line, { pane: "closureLines", color, weight: 5, opacity: .95, dashArray: closed ? null : "8 6" })
+        .bindPopup(pop, popOpts({ maxWidth: 320 })).bindTooltip(title, { sticky: true }).addTo(g);
+    }
+    const icon = L.divIcon({ className: "", iconSize: [20, 20], iconAnchor: [10, 10], popupAnchor: [0, -10],
+                             html: `<div class="ne${closed ? "" : " part"}"></div>` });
+    L.marker(c.marker, { icon, title, zIndexOffset: closed ? 900 : 850, keyboard: true }).bindPopup(pop, popOpts({ maxWidth: 320 })).addTo(g);
+  }
+}
+function cameraPopup(k) {
+  const src = k.image_url + (k.image_url.includes("?") ? "&" : "?") + "t=" + Date.now();   // cache-buster on every open
+  const when = k.image_stale && k.image_time
+    ? `<span class="warn">Image from ${bneText(k.image_time)} (older than 3 h at last check; camera may be offline or only update 6am\u20136pm)</span>`
+    : `Live image, loaded ${fmtBneFull.format(new Date())} AEST`;
+  return `<div class="popup campop"><b>${esc(k.name)}</b>
+    <a href="${esc(src)}" target="_blank" rel="noopener" title="Open full image">
+      <img src="${esc(src)}" alt="Flood camera: ${esc(k.name)}" loading="eager"
+           onerror="this.outerHTML='<p class=&quot;warn&quot;>Image could not be loaded \u2014 tap to open it.</p>'"></a>
+    <div style="font-size:12px">${when}</div>
+    ${k.info ? `<div style="font-size:11.5px;color:#555;margin-top:2px">${esc(k.info)}</div>` : ""}
+    <div style="font-size:11.5px;color:#555;margin-top:2px">${esc([k.direction && `Facing ${k.direction}`, k.image_sourced_from].filter(Boolean).join(" \u00b7 "))}</div>
+    <p style="margin:5px 0 0"><a href="${esc(src)}" target="_blank" rel="noopener">Open image</a> &middot;
+      <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic \u2192</a></p></div>`;
+}
+function drawCameras() {
+  for (const rid in roads.kGroups) roads.kGroups[rid].clearLayers();
+  const d = roads.cameras; if (!d) return;
+  for (const k of d.cameras || []) {
+    if (k.lat == null || !groups[k.region] || !/^https:\/\//.test(k.image_url || "")) continue;
+    const icon = L.divIcon({ className: "", iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10],
+                             html: `<div class="cam${k.image_stale ? " old" : ""}">${CAM_SVG}</div>` });
+    // popup content is a function so the cache-busting URL is rebuilt every time it opens
+    L.marker([k.lat, k.lon], { icon, title: "Flood camera: " + k.name, zIndexOffset: 700 })
+      .bindPopup(() => cameraPopup(k), popOpts({ maxWidth: 300, minWidth: 200 }))
+      .addTo(roadGroup(roads.kGroups, k.region));
+  }
+}
+function updateRoadCounts() {
+  const cc = document.getElementById("ct-closures"), kc = document.getElementById("ct-cameras"), st = document.getElementById("roadstale");
+  if (!cc) return;
+  if (roads.closures) {
+    const list = (roads.closures.closures || []).filter(c => isOn(c.region));
+    const closed = list.filter(c => c.severity === "closed").length;
+    cc.innerHTML = `(${closed} closed, ${list.length - closed} partial)`;
+  } else cc.textContent = roads.cErr ? "(unavailable)" : "";
+  if (roads.cameras) kc.textContent = `(${(roads.cameras.cameras || []).filter(k => isOn(k.region)).length})`;
+  else kc.textContent = roads.kErr ? "(unavailable)" : "";
+  const msgs = [];
+  const age = (d) => d && d.generated_at ? (Date.now() - new Date(d.generated_at)) / 3600e3 : 0;
+  if (roads.closures && roads.closures.stale) msgs.push(`Closure feed unavailable since ${bneText(roads.closures.stale_since)}; showing last known closures.`);
+  else if (roads.closures && age(roads.closures) > 3) msgs.push(`Closure data last changed ${bneText(roads.closures.generated_at)}.`);
+  if (roads.cErr) msgs.push("Could not load closures: " + roads.cErr);
+  if (roads.kErr) msgs.push("Could not load cameras: " + roads.kErr);
+  st.textContent = msgs.join(" ");
+}
+function buildRoadsUi() {
+  const el = document.getElementById("roads");
+  el.innerHTML = `<label><input type="checkbox" id="rdon" ${roads.closuresOn ? "checked" : ""}>
+      <span class="ne" style="width:14px;height:14px;flex:none"></span>
+      <span>Road closures (flooding) <span class="ct" id="ct-closures"></span></span></label>
+    <label><input type="checkbox" id="camon" ${roads.camerasOn ? "checked" : ""}>
+      <span class="cam" style="width:16px;height:16px;flex:none">${CAM_SVG}</span>
+      <span>Flood cameras <span class="ct" id="ct-cameras"></span></span></label>
+    <div class="stale" id="roadstale"></div>
+    <div class="note">QLDTraffic, within the Sunshine Coast area. Check <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">qldtraffic.qld.gov.au</a> before travelling.</div>`;
+  el.querySelector("#rdon").onchange = (e) => { roads.closuresOn = e.target.checked; lsSet(LS_CLOSURES, roads.closuresOn); syncRoadLayers(); };
+  el.querySelector("#camon").onchange = (e) => { roads.camerasOn = e.target.checked; lsSet(LS_CAMERAS, roads.camerasOn); syncRoadLayers(); };
+}
+buildRoadsUi();
+async function loadJson(name) {
+  const r = await fetch(name + "?t=" + Date.now(), { cache: "no-store" });
+  if (!r.ok) throw new Error("HTTP " + r.status);
+  return r.json();
+}
+async function loadRoads() {
+  const [c, k] = await Promise.allSettled([loadJson("closures.json"), loadJson("cameras.json")]);
+  if (c.status === "fulfilled" && Array.isArray(c.value.closures)) { roads.closures = c.value; roads.cErr = ""; }
+  else roads.cErr = c.status === "rejected" ? c.reason.message : "bad format";   // keep the last good copy on screen
+  if (k.status === "fulfilled" && Array.isArray(k.value.cameras)) { roads.cameras = k.value; roads.kErr = ""; }
+  else roads.kErr = k.status === "rejected" ? k.reason.message : "bad format";
+  if (!Object.keys(groups).length) return;   // regions not known yet; render() calls drawRoads()
+  drawRoads();
+}
+function drawRoads() {
+  try { drawClosures(); } catch (e) { roads.cErr = "draw failed: " + e.message; }
+  try { drawCameras(); } catch (e) { roads.kErr = "draw failed: " + e.message; }
+  syncRoadLayers(); updateRoadCounts();
+}
+
+// ---- Rain radar (RainViewer public Weather Maps API: past 2 h, 10-min frames, max zoom 7, Universal Blue) ----
+const RV_API = "https://api.rainviewer.com/public/weather-maps.json";
+const RV_ATTR = 'Radar &copy; <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>';
+const RV_COLOR = 2, RV_OPTS = "1_0";            // 2 = Universal Blue (only free scheme); smoothed, no snow colours
+map.createPane("radar");
+map.getPane("radar").style.zIndex = 350;         // above base tiles (200), below region circles (400) and gauges (600)
+map.getPane("radar").style.pointerEvents = "none";
+const radarSaved = lsGet(LS_RADAR, {});
+const radar = { on: radarSaved.on === true, opacity: typeof radarSaved.opacity === "number" ? radarSaved.opacity : 0.6,
+                host: "", frames: [], layers: {}, idx: -1, playing: false, timer: null, err: "" };
+function saveRadar() { lsSet(LS_RADAR, { on: radar.on, opacity: radar.opacity }); }
+const fmtBne = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", hour: "2-digit", minute: "2-digit",
+                                                   hour12: false, weekday: "short" });
+function radarLayer(f) {
+  if (!radar.layers[f.path]) {
+    // 512 px tiles with zoomOffset -1: map zoom z requests tile zoom z-1. Tile zoom is capped at 7 by RainViewer,
+    // so maxNativeZoom 8 (= tile zoom 7); beyond that Leaflet upscales the z7 tiles instead of dropping them.
+    radar.layers[f.path] = L.tileLayer(`${radar.host}${f.path}/512/{z}/{x}/{y}/${RV_COLOR}/${RV_OPTS}.png`, {
+      pane: "radar", tileSize: 512, zoomOffset: -1, minNativeZoom: 1, maxNativeZoom: 8, maxZoom: 18,
+      opacity: 0, attribution: RV_ATTR, keepBuffer: 1, updateWhenIdle: true });
+  }
+  return radar.layers[f.path];
+}
+function showFrame(i) {
+  if (!radar.frames.length) return;
+  radar.idx = (i + radar.frames.length) % radar.frames.length;
+  const cur = radar.frames[radar.idx];
+  for (const f of radar.frames) {
+    const lyr = radar.layers[f.path];
+    if (f === cur) { const l = radarLayer(f); if (!map.hasLayer(l)) l.addTo(map); l.setOpacity(radar.opacity); }
+    else if (lyr) { if (radar.playing) lyr.setOpacity(0); else map.removeLayer(lyr); }
+  }
+  updateRadarUi();
+}
+function preloadFrames() { for (const f of radar.frames) { const l = radarLayer(f); if (!map.hasLayer(l)) l.addTo(map); } }
+function stopAnim() { radar.playing = false; clearTimeout(radar.timer); radar.timer = null; }
+function tick() {   // loops oldest -> latest, holding a little longer on the latest frame
+  showFrame(radar.idx + 1);
+  radar.timer = setTimeout(tick, radar.idx === radar.frames.length - 1 ? 1800 : 600);
+}
+function togglePlay() {
+  if (radar.playing) { stopAnim(); showFrame(radar.idx); return; }
+  radar.playing = true; preloadFrames(); showFrame(0);
+  radar.timer = setTimeout(tick, 600);
+}
+function clearRadarLayers() { for (const k in radar.layers) map.removeLayer(radar.layers[k]); }
+async function refreshRadar() {
+  if (!radar.on) return;
+  try {
+    const r = await fetch(RV_API, { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    const d = await r.json();
+    const past = (d.radar && d.radar.past) || [];
+    if (!past.length) throw new Error("no radar frames listed");
+    const atLatest = radar.idx < 0 || radar.idx === radar.frames.length - 1;
+    radar.host = d.host;
+    const keep = new Set(past.map(f => f.path));
+    for (const k in radar.layers) if (!keep.has(k)) { map.removeLayer(radar.layers[k]); delete radar.layers[k]; }
+    const curPath = radar.frames[radar.idx] && radar.frames[radar.idx].path;
+    radar.frames = past;
+    radar.err = "";
+    if (!radar.on) return;
+    if (radar.playing) preloadFrames();
+    let i = past.length - 1;
+    if (!atLatest && curPath) { const j = past.findIndex(f => f.path === curPath); if (j >= 0) i = j; }
+    showFrame(i);
+  } catch (e) {
+    radar.err = "Radar unavailable: " + e.message;
+    updateRadarUi();
+  }
+}
+function setRadarOn(on) {
+  radar.on = on; saveRadar();
+  if (!on) { stopAnim(); clearRadarLayers(); radar.idx = -1; updateRadarUi(); return; }
+  updateRadarUi(); refreshRadar();
+}
+function updateRadarUi() {
+  const ctl = document.getElementById("rvctl"); if (!ctl) return;
+  ctl.style.display = radar.on ? "" : "none";
+  const f = radar.frames[radar.idx];
+  const ts = document.getElementById("rvts"), btn = document.getElementById("rvplay");
+  if (radar.err) ts.textContent = radar.err;
+  else if (!f) ts.textContent = "Loading radar\u2026";
+  else {
+    const mins = Math.round((Date.now() / 1000 - f.time) / 60);
+    const latest = radar.idx === radar.frames.length - 1;
+    ts.textContent = `${fmtBne.format(new Date(f.time * 1000))} AEST (${latest ? "latest, " : ""}${mins} min ago)`;
+  }
+  btn.textContent = radar.playing ? "\u23F8" : "\u25B6";
+  btn.title = radar.playing ? "Pause" : "Play the last 2 hours";
+}
+function buildRadarUi() {
+  const el = document.getElementById("radar");
+  el.innerHTML = `<label><input type="checkbox" id="rvon" ${radar.on ? "checked" : ""}> <span>Rain radar</span></label>
+    <div id="rvctl">
+      <div class="rc"><button type="button" id="rvplay">\u25B6</button><span class="ts" id="rvts"></span></div>
+      <div class="rc"><span>Opacity</span><input type="range" id="rvop" min="0.1" max="1" step="0.05" value="${radar.opacity}"></div>
+      <div class="scale"></div><div class="sl"><span>light</span><span>moderate</span><span>heavy</span><span>intense</span></div>
+      <div class="note">Past 2 h, 10-min frames. Coarse resolution (max zoom 7), so blocky when zoomed in.</div>
+    </div>`;
+  el.querySelector("#rvon").onchange = (e) => setRadarOn(e.target.checked);
+  el.querySelector("#rvplay").onclick = togglePlay;
+  el.querySelector("#rvop").oninput = (e) => {
+    radar.opacity = +e.target.value; saveRadar();
+    const f = radar.frames[radar.idx]; if (f && radar.layers[f.path]) radar.layers[f.path].setOpacity(radar.opacity);
+  };
+  updateRadarUi();
+}
+document.addEventListener("visibilitychange", () => { if (document.hidden && radar.playing) { stopAnim(); showFrame(radar.idx); } });
+buildRadarUi();
+if (radar.on) refreshRadar();
+
+async function load() {
+  loadRoads();
+  try {
+    const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error("HTTP " + r.status);
+    render(await r.json());
+  } catch (e) {
+    document.getElementById("err").textContent = "Could not load data.json: " + e.message;
+  }
+}
+load();
+setInterval(() => { load(); refreshRadar(); }, 5 * 60 * 1000);
+</script>
+</body>
+</html>

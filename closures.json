@@ -1,0 +1,321 @@
+{
+ "generated_at": "2026-10-25T06:57:43+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 06:57 AM AEST",
+ "stale": false,
+ "source": {
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-10-25T06:45:14+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
+ },
+ "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "filter": "event_type == 'Flooding' or 'flood' in event_due_to (case-insensitive); any vertex inside the Sunshine Coast circle (40 km). severity 'closed' = road closed / all lanes blocked, 'partial' = lanes affected, restricted or partial closure. Coordinates [lat, lon].",
+ "regions": [
+  {
+   "id": "sunshine",
+   "name": "Sunshine Coast",
+   "count": 7,
+   "closed": 3,
+   "partial": 4
+  }
+ ],
+ "count": 7,
+ "excluded": [],
+ "closures": [
+  {
+   "id": 836360,
+   "road": "Cooroy Mountain Road",
+   "description": null,
+   "locality": "Cooroy Mountain",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Water over road",
+   "impact": "Road closed to all traffic",
+   "impact_type": "Closures",
+   "severity": "closed",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-23T07:00:00+10:00",
+   "last_updated": "2026-10-25T06:12:01+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 06:12 AM AEST",
+   "provided_by": "Noosa Shire Council",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836360",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.42221,
+    152.95956
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.42221,
+      152.95956
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 836486,
+   "road": "Grahams Road",
+   "description": null,
+   "locality": "Pomona",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Water over road",
+   "impact": "Road closed to through traffic",
+   "impact_type": "Closures",
+   "severity": "closed",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-23T12:15:00+10:00",
+   "last_updated": "2026-10-25T06:10:01+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 06:10 AM AEST",
+   "provided_by": "Noosa Shire Council",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836486",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.34178,
+    152.86347
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.34178,
+      152.86347
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 836431,
+   "road": "Louis Bazzo Drive",
+   "description": "Six Mile Creek",
+   "locality": "Pomona",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Water over road",
+   "impact": "Road closed to all traffic",
+   "impact_type": "Closures",
+   "severity": "closed",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-23T09:50:00+10:00",
+   "last_updated": "2026-10-25T06:05:19+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 06:05 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836431",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.3415,
+    152.89137
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.3415,
+      152.89137
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 836462,
+   "road": "Coral Fern Drive",
+   "description": "Water over road",
+   "locality": "Cooroibah",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Heavy rain",
+   "impact": "All lanes affected",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-23T11:00:00+10:00",
+   "last_updated": "2026-10-24T12:38:02+10:00",
+   "last_updated_text": "Sat 24 Oct 2026 12:38 PM AEST",
+   "provided_by": "Noosa Shire Council",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836462",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.36479,
+    152.97632
+   ],
+   "geometry": {
+    "points": [],
+    "lines": [
+     [
+      [
+       -26.3648,
+       152.97673
+      ],
+      [
+       -26.36479,
+       152.97668
+      ],
+      [
+       -26.36478,
+       152.97637
+      ],
+      [
+       -26.36479,
+       152.97632
+      ],
+      [
+       -26.3648,
+       152.97612
+      ],
+      [
+       -26.36481,
+       152.97599
+      ],
+      [
+       -26.36482,
+       152.97593
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": 836388,
+   "road": "Eumundi Noosa Road",
+   "description": "At Doonan Creek",
+   "locality": "Doonan",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Water over road",
+   "impact": "All lanes affected",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-23T08:00:00+10:00",
+   "last_updated": "2026-10-25T04:04:26+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 04:04 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836388",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.45271,
+    153.01405
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.45271,
+      153.01405
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 836861,
+   "road": "Mill Street",
+   "description": null,
+   "locality": "Pomona",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Heavy rain",
+   "impact": "All lanes affected",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-22T20:59:00+10:00",
+   "last_updated": "2026-10-25T06:14:04+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 06:14 AM AEST",
+   "provided_by": "Noosa Shire Council",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836861",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.36186,
+    152.85784
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.36186,
+      152.85784
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 836729,
+   "road": "Station Street",
+   "description": "Water over road",
+   "locality": "Pomona",
+   "lga": "Noosa Shire",
+   "event_type": "Flooding",
+   "event_subtype": "Flash flooding",
+   "due_to": "Water over road",
+   "impact": "All lanes affected",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Do not drive in flood waters",
+   "information": null,
+   "status": "Published",
+   "start": "2026-05-18T12:15:00+10:00",
+   "last_updated": "2026-10-25T06:14:01+10:00",
+   "last_updated_text": "Sun 25 Oct 2026 06:14 AM AEST",
+   "provided_by": "Noosa Shire Council",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/836729",
+   "region": "sunshine",
+   "region_name": "Sunshine Coast",
+   "marker": [
+    -26.36674,
+    152.85847
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.36674,
+      152.85847
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
+}

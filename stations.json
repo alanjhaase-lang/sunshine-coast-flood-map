@@ -1,0 +1,3275 @@
+{
+ "note": "Station coordinate lookup keyed by BOM station number. source=bom_nfgn: BOM National Flood Gauge Network feature service (https://hosting.wsapi.cloud.bom.gov.au/arcgis/rest/services/flood/National_Flood_Gauge_Network/FeatureServer/5/query). source=bom_section3: BOM 'Index of Queensland River Height Stations' (https://www.bom.gov.au/qld/flood/networks/section3.shtml). source=geocoded_*: name-based fallback (OpenStreetMap Nominatim), approximate; geocoded=true.",
+ "stations": [
+  {
+   "station_no": "040365",
+   "name": "Wide Bay Creek at Woolooga",
+   "bom_name": "Woolooga (Wide Bay Creek)",
+   "awrc": "138901A",
+   "lat": -26.0528,
+   "lon": 152.3919,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040386",
+   "name": "Mary River at Kenilworth Bridge",
+   "bom_name": "Kenilworth Bridge (Mary River)",
+   "awrc": "138101B",
+   "lat": -26.5892,
+   "lon": 152.7322,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040387",
+   "name": "Brisbane River at Linville",
+   "bom_name": "Linville (Brisbane River)",
+   "awrc": "143944A",
+   "lat": -26.8242,
+   "lon": 152.2741,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040440",
+   "name": "Warrill Creek at Kalbar",
+   "bom_name": "Kalbar (Warrill Ck)",
+   "awrc": "143937A",
+   "lat": -27.9233,
+   "lon": 152.6008,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040441",
+   "name": "Brisbane River at Lowood",
+   "bom_name": "Lowood (Brisbane River)",
+   "awrc": "143907A",
+   "lat": -27.4708,
+   "lon": 152.5894,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040443",
+   "name": "Mary River at Maryborough (Portside)",
+   "bom_name": "Maryborough (Portside Alert) (Mary River)",
+   "awrc": "138904A",
+   "lat": -25.5411,
+   "lon": 152.7056,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040444",
+   "name": "Lockyer Creek at Gatton",
+   "bom_name": "Gatton (Lockyer Creek)",
+   "awrc": "143904A",
+   "lat": -27.555,
+   "lon": 152.275,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040647",
+   "name": "Brisbane Bar",
+   "bom_name": "Brisbane Bar",
+   "awrc": "143935A",
+   "lat": -27.3608,
+   "lon": 153.1719,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040679",
+   "name": "Tinana Creek at Bauple East",
+   "bom_name": "Bauple East (Tinana Creek)",
+   "awrc": "138903A",
+   "lat": -25.8222,
+   "lon": 152.7211,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040702",
+   "name": "Bremer River at Stokes Crossing",
+   "bom_name": "Stokes Crossing (Bremer River)",
+   "awrc": "143940A",
+   "lat": -27.7641,
+   "lon": 152.5374,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040713",
+   "name": "Brisbane River at Jindalee (Centenary Bridge)",
+   "bom_name": "Jindalee (Centenary Bridge) (Brisbane River)",
+   "awrc": "143982A",
+   "lat": -27.5283,
+   "lon": 152.9467,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040716",
+   "name": "Laidley Creek at Laidley",
+   "bom_name": "Laidley (Mulgowie Rd) (Laidley Creek)",
+   "awrc": "143943A",
+   "lat": -27.6514,
+   "lon": 152.3808,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040751",
+   "name": "Laidley Creek at Thornton",
+   "bom_name": "Thornton (Laidley Creek)",
+   "awrc": "143923A",
+   "lat": -27.7956,
+   "lon": 152.3753,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040755",
+   "name": "Six Mile Creek at Cooran",
+   "bom_name": "Cooran (Six Mile Creek)",
+   "awrc": "138909A",
+   "lat": -26.5575,
+   "lon": 152.7714,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040777",
+   "name": "Yabba Creek at Imbil",
+   "bom_name": "Imbil (Yabba Creek)",
+   "awrc": "138908A",
+   "lat": -26.4572,
+   "lon": 152.6803,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040778",
+   "name": "Amamoor Creek at Zachariah",
+   "bom_name": "Zachariah (Amamoor Creek)",
+   "awrc": "138102B",
+   "lat": -26.3583,
+   "lon": 152.6283,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040780",
+   "name": "Kandanga Creek at Hygait",
+   "bom_name": "Hygait (Kandanga Creek)",
+   "awrc": "138113A",
+   "lat": -26.3817,
+   "lon": 152.6483,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040788",
+   "name": "Oxley Creek at Forestdale (Johnson Rd)",
+   "bom_name": "Forestdale (Johnson Rd) (Oxley Creek)",
+   "awrc": "143928A",
+   "lat": -27.6583,
+   "lon": 153.0,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040789",
+   "name": "Blunder Creek at Durack (King Ave)",
+   "bom_name": "Durack (King Ave) (Blunder Creek)",
+   "awrc": "143860A",
+   "lat": -27.5936,
+   "lon": 152.9968,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040791",
+   "name": "Stable Swamp Creek at Coopers Plains (Musgrave Rd)",
+   "bom_name": "Coopers Plains (Musgrave Road) (Stable Swamp Ck)",
+   "awrc": "143858A",
+   "lat": -27.565,
+   "lon": 153.0269,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040796",
+   "name": "Oxley Creek at Acacia Ridge (Beatty Rd)",
+   "bom_name": "Beatty Road (Archerfield) (Oxley Creek)",
+   "awrc": "143855A",
+   "lat": -27.5875,
+   "lon": 153.0094,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040811",
+   "name": "Wide Bay Creek at Kilkivan",
+   "bom_name": "Kilkivan (Wide Bay Creek)",
+   "awrc": "138010A",
+   "lat": -26.0833,
+   "lon": 152.2167,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040812",
+   "name": "Brisbane River at Moggill",
+   "bom_name": "Moggill (Brisbane River)",
+   "awrc": "143951A",
+   "lat": -27.5861,
+   "lon": 152.8578,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040813",
+   "name": "Moggill Creek at Upper Brookfield",
+   "bom_name": "Upper Brookfield (Moggill Creek)",
+   "awrc": "143032A",
+   "lat": -27.4833,
+   "lon": 152.8833,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040816",
+   "name": "Warrill Creek at Amberley DRDMW",
+   "bom_name": "Amberley DRDMW (Warrill Creek)",
+   "awrc": "143108A",
+   "lat": -27.6658,
+   "lon": 152.6989,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040817",
+   "name": "Lockyer Creek at Rifle Range Rd",
+   "bom_name": "Rifle Range Rd (Lockyer Creek)",
+   "awrc": "143210B",
+   "lat": -27.4667,
+   "lon": 152.5333,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040820",
+   "name": "Stanley River at Somerset Dam",
+   "bom_name": "Somerset Dam (Stanley River)",
+   "awrc": "143311A",
+   "lat": -27.1169,
+   "lon": 152.555,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040824",
+   "name": "Mary River at Fishermans Pocket",
+   "bom_name": "Fishermans Pocket (Mary River)",
+   "awrc": "138007A",
+   "lat": -26.1711,
+   "lon": 152.5994,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040825",
+   "name": "Munna Creek at Marodian",
+   "bom_name": "Marodian (Munna Creek)",
+   "awrc": "138004B",
+   "lat": -25.9,
+   "lon": 152.3497,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040826",
+   "name": "Mary River at Miva",
+   "bom_name": "Miva (Mary River)",
+   "awrc": "138001A",
+   "lat": -25.95,
+   "lon": 152.5,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040831",
+   "name": "Bremer River at Ipswich",
+   "bom_name": "Ipswich (Bremer River)",
+   "awrc": "143954A",
+   "lat": -27.6117,
+   "lon": 152.7611,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040833",
+   "name": "Mary River at Home Park",
+   "bom_name": "Home Park (Mary River)",
+   "awrc": "138014A",
+   "lat": -25.7683,
+   "lon": 152.525,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040835",
+   "name": "Laidley Creek at Mulgowie",
+   "bom_name": "Mulgowie (Laidley Creek)",
+   "awrc": "143209B",
+   "lat": -27.7317,
+   "lon": 152.3633,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040836",
+   "name": "Bremer River at One Mile Bridge",
+   "bom_name": "One Mile Bridge (Bremer River)",
+   "awrc": "143953A",
+   "lat": -27.6272,
+   "lon": 152.7461,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040838",
+   "name": "Bremer River at Three Mile Bridge",
+   "bom_name": "Three Mile Bridge (Bremer River)",
+   "awrc": "143956A",
+   "lat": -27.6322,
+   "lon": 152.7269,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040872",
+   "name": "Bundamba Creek at Blackstone Bridge",
+   "bom_name": "Blackstone Bridge (Bundamba Creek)",
+   "awrc": "143958A",
+   "lat": -27.6219,
+   "lon": 152.7978,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040873",
+   "name": "Bundamba Creek at Harding Street",
+   "bom_name": "Harding St (Bundamba Creek)",
+   "awrc": "143959A",
+   "lat": -27.6375,
+   "lon": 152.7903,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040874",
+   "name": "Woogaroo Creek at Brisbane Road",
+   "bom_name": "Brisbane Rd (Woogaroo Creek)",
+   "awrc": "143962A",
+   "lat": -27.6078,
+   "lon": 152.9083,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040875",
+   "name": "Bundamba Creek at Bundamba School",
+   "bom_name": "Bundamba School (Bundamba Creek)",
+   "awrc": "143955A",
+   "lat": -27.6117,
+   "lon": 152.8064,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040896",
+   "name": "Tinana Creek at Teddington Weir (HG)",
+   "bom_name": "Teddington Weir (HG) (Tinana Creek)",
+   "awrc": "138913A",
+   "lat": -25.6517,
+   "lon": 152.6633,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040985",
+   "name": "Woogaroo Creek at Bellbird Park (Purser Rd)",
+   "bom_name": "Bellbird Park (Purser Rd) (Woogaroo Creek)",
+   "awrc": "143999A",
+   "lat": -27.6692,
+   "lon": 152.8731,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "040993",
+   "name": "Mary River at Gympie",
+   "bom_name": "Gympie (Mary River)",
+   "awrc": "138923A",
+   "lat": -26.1925,
+   "lon": 152.655,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "140004",
+   "name": "Brisbane River at Eleanor Schonell Bridge (UQ)",
+   "bom_name": "Eleanor Schonell Bridge (UQ) (Brisbane River)",
+   "awrc": "144000A",
+   "lat": -27.4975,
+   "lon": 153.0187,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "140024",
+   "name": "Warrill Creek at Willowbank",
+   "bom_name": null,
+   "awrc": null,
+   "lat": -27.68199,
+   "lon": 152.67465,
+   "source": "geocoded_nominatim: 'Willowbank' -> Willowbank, Brisbane, Queensland, Australia",
+   "geocoded": true
+  },
+  {
+   "station_no": "540027",
+   "name": "Tinana Creek at Tinana Barrage (HG)",
+   "bom_name": "Tinana Barrage (HG) (Tinana Creek)",
+   "awrc": "138008A",
+   "lat": -25.5736,
+   "lon": 152.7161,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540039",
+   "name": "Mary River at The Barrage",
+   "bom_name": "The Barrage (Mary River)",
+   "awrc": "138013B",
+   "lat": -25.5906,
+   "lon": 152.6236,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540043",
+   "name": "Wide Bay Creek at Brooyar",
+   "bom_name": "Brooyar (Wide Bay Creek)",
+   "awrc": "138002C",
+   "lat": -26.0067,
+   "lon": 152.4108,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540057",
+   "name": "Warrill Creek at Kalbar Weir TW",
+   "bom_name": "Kalbar Weir TW (Warrill Creek)",
+   "awrc": "143117A",
+   "lat": -27.9356,
+   "lon": 152.5983,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540058",
+   "name": "Warrill Creek at Kalbar Weir HG",
+   "bom_name": "Kalbar Weir HG (Warrill Creek)",
+   "awrc": "143118A",
+   "lat": -27.9353,
+   "lon": 152.5978,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540059",
+   "name": "Stanley River at Peachester",
+   "bom_name": "Peachester (Stanley River)",
+   "awrc": "143990A",
+   "lat": -26.8385,
+   "lon": 152.8416,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540061",
+   "name": "Moggill Creek at Kenmore (Fortose St)",
+   "bom_name": "Kenmore (Misty Morn) (Moggill Creek)",
+   "awrc": "143870A",
+   "lat": -27.5167,
+   "lon": 152.9333,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540062",
+   "name": "Purga Creek at Loamside",
+   "bom_name": "Loamside (Purga Creek)",
+   "awrc": "143983A",
+   "lat": -27.6831,
+   "lon": 152.7297,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540063",
+   "name": "Brisbane River at Colleges Crossing",
+   "bom_name": "Colleges Crossing (Brisbane River)",
+   "awrc": "143868A",
+   "lat": -27.5572,
+   "lon": 152.7975,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540064",
+   "name": "Western Creek at Grandchester",
+   "bom_name": "Grandchester (Western Creek)",
+   "awrc": "143861A",
+   "lat": -27.6631,
+   "lon": 152.4611,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540065",
+   "name": "Purga Creek at Peak Crossing",
+   "bom_name": "Peak Crossing (Purga Creek)",
+   "awrc": "143869A",
+   "lat": -27.7806,
+   "lon": 152.7311,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540071",
+   "name": "Oxley Creek at Corinda (Corinda High School)",
+   "bom_name": "Corinda High (Oxley Creek)",
+   "awrc": "143859A",
+   "lat": -27.5483,
+   "lon": 152.9867,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540083",
+   "name": "Paynter Creek at Diddillibah",
+   "bom_name": "Diddillibah (Paynter Creek)",
+   "awrc": "141906A",
+   "lat": -26.6406,
+   "lon": 152.9944,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540087",
+   "name": "Eudlo Creek at Kiels Mountain",
+   "bom_name": "Kiels Mountain (Eudlo Creek)",
+   "awrc": "141902A",
+   "lat": -26.6619,
+   "lon": 153.0185,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540088",
+   "name": "Petrie Creek at Warana Bridge",
+   "bom_name": "Warana Bridge (Petrie Creek)",
+   "awrc": "141901A",
+   "lat": -26.6227,
+   "lon": 152.9584,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540089",
+   "name": "South Maroochy River at Kiamba",
+   "bom_name": "Kiamba (South Maroochy River)",
+   "awrc": "141903A",
+   "lat": -26.5995,
+   "lon": 152.904,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540092",
+   "name": "South Maroochy River at Yandina",
+   "bom_name": "Yandina (South Maroochy River)",
+   "awrc": "141905A",
+   "lat": -26.5621,
+   "lon": 152.9392,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540093",
+   "name": "North Maroochy River at Eumundi",
+   "bom_name": "Eumundi (North Maroochy River)",
+   "awrc": "141904A",
+   "lat": -26.4945,
+   "lon": 152.9616,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540094",
+   "name": "Maroochy River at Picnic Point",
+   "bom_name": "Picnic Point (Maroochy River)",
+   "awrc": "141908A",
+   "lat": -26.6444,
+   "lon": 153.0825,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540095",
+   "name": "Maroochy River at Dunethin Rock",
+   "bom_name": "Dunethin Rock (Maroochy River)",
+   "awrc": "141907A",
+   "lat": -26.5758,
+   "lon": 153.0092,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540097",
+   "name": "Oxley Creek at New Beith Road (Greenbank)",
+   "bom_name": "New Beith Road (Greenbank) (Oxley Creek)",
+   "awrc": "143841A",
+   "lat": -27.7297,
+   "lon": 152.9481,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540107",
+   "name": "Gold Creek Reservoir",
+   "bom_name": "Gold Ck Reservoir (Gold Creek)",
+   "awrc": "143992A",
+   "lat": -27.4667,
+   "lon": 152.8831,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540111",
+   "name": "Kedron Brook at Mitchelton (Osborne Rd)",
+   "bom_name": "Mitchelton (Osborne Rd) (Kedron Brook)",
+   "awrc": "142806A",
+   "lat": -27.4047,
+   "lon": 152.9775,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540113",
+   "name": "Little Cabbage Tree Creek at Aspley (Stringybark Dr)",
+   "bom_name": "Aspley (Little Cabbage Tree Creek)",
+   "awrc": "142808A",
+   "lat": -27.3714,
+   "lon": 153.0039,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540118",
+   "name": "Enoggera Creek at Kelvin Grove (Bancroft Park)",
+   "bom_name": "Kelvin Grove (Enoggera Creek)",
+   "awrc": "143863A",
+   "lat": -27.4369,
+   "lon": 153.0044,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540119",
+   "name": "Enoggera Creek at Enoggera Dam",
+   "bom_name": "Enoggera Dam (Enoggera Creek)",
+   "awrc": "143846A",
+   "lat": -27.4469,
+   "lon": 152.9264,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540120",
+   "name": "Downfall Creek at Geebung (Brickyard Rd)",
+   "bom_name": "Geebung (Downfall Creek)",
+   "awrc": "142805A",
+   "lat": -27.3839,
+   "lon": 153.0578,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540121",
+   "name": "Cabbage Tree Creek at Everton Hills",
+   "bom_name": "Everyton Hills (Cabbage Tree Ck)",
+   "awrc": "142809A",
+   "lat": -27.3822,
+   "lon": 152.9783,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540122",
+   "name": "Cabbage Tree Creek at Zillmere (Pineapple St)",
+   "bom_name": "Zillmere (Pineapple St) (Cabbage Tree Creek)",
+   "awrc": "142810A",
+   "lat": -27.3544,
+   "lon": 153.0308,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540124",
+   "name": "Cabbage Tree Creek at Deagon (Burralong St)",
+   "bom_name": "Deagon (Cabbage Tree Creek)",
+   "awrc": "142811A",
+   "lat": -27.3358,
+   "lon": 153.0575,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540126",
+   "name": "Bulimba Creek at Mansfield (Edwards Park)",
+   "bom_name": "Mansfield (Merion Pl) (Bulimba Creek)",
+   "awrc": null,
+   "lat": -27.53,
+   "lon": 153.105,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540127",
+   "name": "Bulimba Creek at Wishart (Greenwood St)",
+   "bom_name": "Wishart (Greenwood St) (Bulimba Creek)",
+   "awrc": "143843A",
+   "lat": -27.5617,
+   "lon": 153.1031,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540128",
+   "name": "Bulimba Creek at Carindale (Old Cleveland Rd)",
+   "bom_name": "Carindale (Old Cleveland Rd) (Bulimba Creek)",
+   "awrc": "143844A",
+   "lat": -27.5028,
+   "lon": 153.1044,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540129",
+   "name": "Bulimba Creek at Hemmant (Doughboy Pde)",
+   "bom_name": "Hemmant (Doughboy Pde) (Bulimba Creek)",
+   "awrc": "143847A",
+   "lat": -27.4503,
+   "lon": 153.125,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540130",
+   "name": "Breakfast Creek at Bowen Hills (Mayne Railway Yards)",
+   "bom_name": "Bowen Hills (Breakfast Creek)",
+   "awrc": "143851A",
+   "lat": -27.4436,
+   "lon": 153.0328,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540132",
+   "name": "Norman Creek at East Brisbane (Caswell St)",
+   "bom_name": "East Brisbane (Caswell St) (Norman Creek)",
+   "awrc": "143848A",
+   "lat": -27.4911,
+   "lon": 153.0489,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540134",
+   "name": "Norman Creek at Holland Park West (Joachim St)",
+   "bom_name": "Holland Park West (Joachim St) (Norman Creek)",
+   "awrc": "143850A",
+   "lat": -27.5231,
+   "lon": 153.0542,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540139",
+   "name": "Brisbane River at Gregor Creek",
+   "bom_name": "Gregor Creek (Brisbane River)",
+   "awrc": "143800A",
+   "lat": -26.9906,
+   "lon": 152.4042,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540141",
+   "name": "Emu Creek at Boat Mountain",
+   "bom_name": "Boat Mountain (Emu Creek)",
+   "awrc": "143802A",
+   "lat": -26.9789,
+   "lon": 152.2847,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540142",
+   "name": "Cressbrook Creek at Cressbrook Dam",
+   "bom_name": "Cressbrook Dam (Cressbrook Creek)",
+   "awrc": "143957A",
+   "lat": -27.2653,
+   "lon": 152.195,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540143",
+   "name": "Lockyer Creek at Helidon",
+   "bom_name": "Helidon (Lockyer Creek)",
+   "awrc": "143862A",
+   "lat": -27.5439,
+   "lon": 152.1133,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540146",
+   "name": "Cooyar Creek",
+   "bom_name": "Cooyar Creek",
+   "awrc": "143804A",
+   "lat": -26.7417,
+   "lon": 152.1367,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540147",
+   "name": "Bremer River at Five Mile Bridge",
+   "bom_name": "Five Mile Bridge (Bremer River)",
+   "awrc": "143805A",
+   "lat": -27.6289,
+   "lon": 152.6681,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540148",
+   "name": "Cressbrook Creek at Rosentreters Bridge",
+   "bom_name": "Rosentreters Bridge (Cressbrook Creek)",
+   "awrc": "143806A",
+   "lat": -27.1383,
+   "lon": 152.3294,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540149",
+   "name": "Lockyer Creek at Glenore Grove",
+   "bom_name": "Glenore Grove (Lockyer Creek)",
+   "awrc": "143807A",
+   "lat": -27.5231,
+   "lon": 152.4092,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540150",
+   "name": "Brisbane River at Savages Crossing",
+   "bom_name": "Savages Crossing (Brisbane River)",
+   "awrc": "143808A",
+   "lat": -27.4411,
+   "lon": 152.6683,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540151",
+   "name": "Warrill Creek at Kalbar Weir HW",
+   "bom_name": "Kalbar Weir HW (Warril Creek)",
+   "awrc": "143809A",
+   "lat": -27.9353,
+   "lon": 152.5978,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540152",
+   "name": "Tenthill Creek at Tenthill",
+   "bom_name": "Tenthill (Tenthill Creek)",
+   "awrc": "143810A",
+   "lat": -27.6358,
+   "lon": 152.2144,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540153",
+   "name": "Lockyer Creek at O'Reilly's Weir",
+   "bom_name": "O'Reilly's Weir (Lockyer Creek)",
+   "awrc": "143811A",
+   "lat": -27.4197,
+   "lon": 152.5892,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540155",
+   "name": "Caboonbah",
+   "bom_name": "Caboonbah",
+   "awrc": null,
+   "lat": -27.1464,
+   "lon": 152.4903,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540156",
+   "name": "Lockyer Creek at Gatton",
+   "bom_name": "Gatton (Lockyer Creek)",
+   "awrc": "143814A",
+   "lat": -27.55,
+   "lon": 152.2686,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540157",
+   "name": "Bremer River at Adams Bridge",
+   "bom_name": "Adams Bridge (Bremer River)",
+   "awrc": "143815A",
+   "lat": -27.8294,
+   "lon": 152.5108,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540158",
+   "name": "Laidley Creek at Showground Weir",
+   "bom_name": "Showground Weir (Laidley Creek)",
+   "awrc": "143816A",
+   "lat": -27.6386,
+   "lon": 152.3844,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540174",
+   "name": "Lockyer Creek at Lyons Bridge",
+   "bom_name": "LYONS BRIDGE ALERT-P",
+   "awrc": null,
+   "lat": -27.47,
+   "lon": 152.52472,
+   "source": "bom_section3",
+   "geocoded": false
+  },
+  {
+   "station_no": "540177",
+   "name": "Brisbane River at Wivenhoe Dam HG",
+   "bom_name": "Wivenhoe Dam HG (Brisbane River)",
+   "awrc": "143822A",
+   "lat": -27.3944,
+   "lon": 152.6097,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540178",
+   "name": "Brisbane River at Wivenhoe Dam TW",
+   "bom_name": "Wivenhoe Dam TW (Brisbane River)",
+   "awrc": "143823A",
+   "lat": -27.4022,
+   "lon": 152.6069,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540180",
+   "name": "Warrill Creek at Amberley",
+   "bom_name": "Amberley (Warrill Creek)",
+   "awrc": "143825A",
+   "lat": -27.6783,
+   "lon": 152.6989,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540182",
+   "name": "Brisbane River at Lowood",
+   "bom_name": "Lowood (Brisbane River)",
+   "awrc": "143827A",
+   "lat": -27.47,
+   "lon": 152.5956,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540183",
+   "name": "Brisbane River at Lowood Pump Stn",
+   "bom_name": "Lowood Pump Stn (Brisbane River)",
+   "awrc": "143828A",
+   "lat": -27.4731,
+   "lon": 152.5931,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540188",
+   "name": "Brisbane River at Devon Hills",
+   "bom_name": "Devon Hills (Brisbane River)",
+   "awrc": "143831A",
+   "lat": -26.8997,
+   "lon": 152.3208,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540192",
+   "name": "Brisbane River at Jindalee Alert",
+   "bom_name": "Jindalee Alert (Brisbane River)",
+   "awrc": null,
+   "lat": -27.5322,
+   "lon": 152.9239,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540194",
+   "name": "Western Creek at Kuss Road",
+   "bom_name": "Kuss Rd (Western Creek)",
+   "awrc": "143834A",
+   "lat": -27.6658,
+   "lon": 152.5414,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540195",
+   "name": "Purga Creek at Washpool",
+   "bom_name": "Washpool (Purga Creek)",
+   "awrc": "143835A",
+   "lat": -27.8292,
+   "lon": 152.7553,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540198",
+   "name": "Brisbane River at Brisbane City",
+   "bom_name": "Brisbane City (Brisbane River)",
+   "awrc": "143838A",
+   "lat": -27.4707,
+   "lon": 153.0341,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540199",
+   "name": "Brisbane River at Mt Crosby",
+   "bom_name": "Mt Crosby (Brisbane River)",
+   "awrc": "143839A",
+   "lat": -27.5364,
+   "lon": 152.7992,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540201",
+   "name": "Brisbane River at Moggill (Aitcheson St East)",
+   "bom_name": "Moggill (Aitcheson St East) (Brisbane River)",
+   "awrc": "143708A",
+   "lat": -27.5871,
+   "lon": 152.8641,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540204",
+   "name": "Sideling Creek at Lake Kurwongbah",
+   "bom_name": "Lake Kurwongbah (Sideling Creek)",
+   "awrc": "142803A",
+   "lat": -27.25,
+   "lon": 152.95,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540205",
+   "name": "South Pine River at Drapers Crossing Alert",
+   "bom_name": "Drapers Crossing Alert (South Pine River)",
+   "awrc": "142804A",
+   "lat": -27.35,
+   "lon": 152.9167,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540215",
+   "name": "Mary River at Gympie Weir",
+   "bom_name": "Gympie Weir (Mary River)",
+   "awrc": "138020A",
+   "lat": -26.1944,
+   "lon": 152.6569,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540216",
+   "name": "Bremer River at Berry's Lagoon",
+   "bom_name": "Berry's Lagoon (Bremer River)",
+   "awrc": "143115A",
+   "lat": -27.6417,
+   "lon": 152.7444,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540218",
+   "name": "Doonan Creek",
+   "bom_name": "Doonan Creek",
+   "awrc": "141911A",
+   "lat": -26.4842,
+   "lon": 153.0425,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540220",
+   "name": "Mountain Creek at Dixon Road",
+   "bom_name": "Mountain Creek (Dixon Road)",
+   "awrc": "141910A",
+   "lat": -26.7028,
+   "lon": 153.0714,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540222",
+   "name": "Eudlo Creek at Eudlo",
+   "bom_name": "Eudlo (Eudlo Creek)",
+   "awrc": "141909A",
+   "lat": -26.725,
+   "lon": 152.9569,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540223",
+   "name": "Yandina Creek",
+   "bom_name": "Yandina Creek",
+   "awrc": "141912A",
+   "lat": -26.5256,
+   "lon": 153.0214,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540242",
+   "name": "Burpengary Creek at Burpengary (Dale St)",
+   "bom_name": "Burpengary (Dale St) (Burpengary Creek)",
+   "awrc": "142813A",
+   "lat": -27.1492,
+   "lon": 152.9617,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540243",
+   "name": "Caboolture River at Caboolture WTP",
+   "bom_name": "Caboolture WTP (Caboolture River)",
+   "awrc": "142815A",
+   "lat": -27.0861,
+   "lon": 152.9394,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540244",
+   "name": "Wararba Creek at Wamuran",
+   "bom_name": "Wamuran (Wararba Creek)",
+   "awrc": "142816A",
+   "lat": -27.0478,
+   "lon": 152.8594,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540245",
+   "name": "Burpengary Creek at Burpengary (Rowley Rd)",
+   "bom_name": "Burpengary (Rowley Rd) (Burpengary Creek)",
+   "awrc": "142814A",
+   "lat": -27.1642,
+   "lon": 152.9375,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540248",
+   "name": "Deebing Creek at Churchill",
+   "bom_name": "Churchill (Deebing Creek)",
+   "awrc": "143857A",
+   "lat": -27.6339,
+   "lon": 152.7542,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540249",
+   "name": "Bundamba Creek at Bundamba (Hanlon St)",
+   "bom_name": "Bundamba (Hanlon St) (Bundamba Creek)",
+   "awrc": "143854A",
+   "lat": -27.5914,
+   "lon": 152.7964,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540250",
+   "name": "Bremer River at Brassall (Hancocks Bridge)",
+   "bom_name": "Brassall (Hancocks Bridge) (Bremer River)",
+   "awrc": "143852A",
+   "lat": -27.6036,
+   "lon": 152.7439,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540256",
+   "name": "Brisbane River at Kholo Bridge",
+   "bom_name": "Kholo Bridge (Brisbane River)",
+   "awrc": "143864A",
+   "lat": -27.565,
+   "lon": 152.7486,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540257",
+   "name": "Brisbane River at Burtons Bridge Alert",
+   "bom_name": "Burtons Bridge Alert (Brisbane River)",
+   "awrc": "143952A",
+   "lat": -27.5003,
+   "lon": 152.6889,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540260",
+   "name": "Splityard Creek at Splityard Creek Dam",
+   "bom_name": "Splityard Creek Dam (Splityard Creek)",
+   "awrc": "143867A",
+   "lat": -27.3711,
+   "lon": 152.6278,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540261",
+   "name": "Brisbane River at Linville Alert",
+   "bom_name": "Linville Alert (Brisbane River)",
+   "awrc": "143865A",
+   "lat": -26.8044,
+   "lon": 152.2719,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540272",
+   "name": "Little Oakey Creek",
+   "bom_name": "Little Oakey Creek",
+   "awrc": "143871A",
+   "lat": -27.2906,
+   "lon": 152.1994,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540274",
+   "name": "Oxley Creek Mouth at Graceville",
+   "bom_name": "Oxley Creek Mouth (Oxley Creek)",
+   "awrc": "143872A",
+   "lat": -27.5261,
+   "lon": 152.9936,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540276",
+   "name": "Cressbrook Creek at Upper Cressbrook",
+   "bom_name": "Upper Cressbrook (Cressbrook Creek)",
+   "awrc": "143873A",
+   "lat": -27.2597,
+   "lon": 152.1525,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540277",
+   "name": "North Pine River at North Pine Dam",
+   "bom_name": "North Pine Dam (North Pine River)",
+   "awrc": "142818A",
+   "lat": -27.2667,
+   "lon": 152.9333,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540278",
+   "name": "Wynnum Creek at Wynnum (Byrneside Tce)",
+   "bom_name": "Wynnum (Byrneside Tce) (Wynnum Creek)",
+   "awrc": "145805A",
+   "lat": -27.4417,
+   "lon": 153.1708,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540279",
+   "name": "Lota Creek at Ransome (Rickertt Rd)",
+   "bom_name": "Ransome (Lota Creek)",
+   "awrc": "143875A",
+   "lat": -27.4872,
+   "lon": 153.1703,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540286",
+   "name": "Breakfast Creek Mouth at Newstead",
+   "bom_name": "Breakfast Creek Mouth (Brisbane River)",
+   "awrc": "143877A",
+   "lat": -27.4431,
+   "lon": 153.0461,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540288",
+   "name": "Tinana Creek at Tagigan Road",
+   "bom_name": "Tagigan Rd (Tinana Creek)",
+   "awrc": "138009A",
+   "lat": -26.0789,
+   "lon": 152.7828,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540296",
+   "name": "Pullen Pullen Creek at Pinjarra Hills",
+   "bom_name": "Pullen Pullen Creek (Brisbane River)",
+   "awrc": "143878A",
+   "lat": -27.5606,
+   "lon": 152.8933,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540298",
+   "name": "Perseverance Creek at Perseverance Dam",
+   "bom_name": "Preseverance Dam (Preseverance Creek)",
+   "awrc": null,
+   "lat": -27.29,
+   "lon": 152.1228,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540308",
+   "name": "Lake Cootharaba at Boreen Point",
+   "bom_name": "Boreen Point (Lake Cootharaba)",
+   "awrc": "140903A",
+   "lat": -26.2858,
+   "lon": 152.9964,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540309",
+   "name": "Noosa River at Lake Cooroibah",
+   "bom_name": "Lake Cooroibah (Noosa River)",
+   "awrc": "140904A",
+   "lat": -26.35,
+   "lon": 153.0414,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540310",
+   "name": "Noosa River at Tewantin",
+   "bom_name": "Tewantin (Noosa River)",
+   "awrc": "140905A",
+   "lat": -26.395,
+   "lon": 153.0408,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540311",
+   "name": "Noosa Bar",
+   "bom_name": "Noosa Bar",
+   "awrc": "140906A",
+   "lat": -26.3808,
+   "lon": 153.0794,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540312",
+   "name": "Black Snake Creek at Marburg",
+   "bom_name": "Marburg (Black Snake Creek)",
+   "awrc": "143984A",
+   "lat": -27.5778,
+   "lon": 152.5936,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540313",
+   "name": "Western Creek at Rosewood WWTP",
+   "bom_name": "Rosewood WWTP (Western Creek)",
+   "awrc": "143985A",
+   "lat": -27.6475,
+   "lon": 152.5883,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540314",
+   "name": "Bremer River at Spressers Bridge",
+   "bom_name": "Spressers Bridge (Bremer River)",
+   "awrc": "143986A",
+   "lat": -27.6631,
+   "lon": 152.5906,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540316",
+   "name": "Warrill Creek at Churchbank Weir Alert",
+   "bom_name": "Churchbank Weir Alert (Warrill Creek)",
+   "awrc": "143988A",
+   "lat": -27.7706,
+   "lon": 152.685,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540317",
+   "name": "Spring Creek at Greys Plains Rd",
+   "bom_name": "Greys Plains Rd (Spring Creek)",
+   "awrc": "143989A",
+   "lat": -27.8025,
+   "lon": 152.4361,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540326",
+   "name": "Six Mile Creek at Cooran Alert",
+   "bom_name": "Cooran Alert (Six Mile Creek)",
+   "awrc": "138914A",
+   "lat": -26.3297,
+   "lon": 152.8136,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540327",
+   "name": "Six Mile Creek at Lake Macdonald Drive",
+   "bom_name": "Lake Macdonald Drive (Six Mile Creek)",
+   "awrc": "138915A",
+   "lat": -26.3719,
+   "lon": 152.9242,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540330",
+   "name": "Mary River at Moy Pocket",
+   "bom_name": "Moy Pocket (Mary River)",
+   "awrc": "138916A",
+   "lat": -26.5261,
+   "lon": 152.7439,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540331",
+   "name": "Mary River at Kenilworth Homestead",
+   "bom_name": "Kenilworth Homestead (Mary River)",
+   "awrc": "138917A",
+   "lat": -26.5803,
+   "lon": 152.7322,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540332",
+   "name": "Mary River at Bellbird Creek",
+   "bom_name": "Bellbird Creek (Mary River)",
+   "awrc": "138918A",
+   "lat": -26.6274,
+   "lon": 152.7046,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540338",
+   "name": "Stanley River at Woodford",
+   "bom_name": "Woodford (Stanley River)",
+   "awrc": "143830A",
+   "lat": -26.9352,
+   "lon": 152.761,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540342",
+   "name": "Coochin Creek at Old Gympie Rd",
+   "bom_name": "Old Gympie Rd (Coochin Creek)",
+   "awrc": "141913A",
+   "lat": -26.8572,
+   "lon": 152.9381,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540343",
+   "name": "Coochin Creek at Beerwah",
+   "bom_name": "Beerwah (Coochin Creek)",
+   "awrc": "141914A",
+   "lat": -26.8664,
+   "lon": 152.9617,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540344",
+   "name": "Mooloolah River at Jordan St",
+   "bom_name": "Jordan St (Mooloolah River)",
+   "awrc": "141915A",
+   "lat": -26.7669,
+   "lon": 153.0553,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540345",
+   "name": "Mooloolah River at Mooloolah",
+   "bom_name": "Mooloolah (Mooloolah River)",
+   "awrc": "141916A",
+   "lat": -26.7614,
+   "lon": 152.9822,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540346",
+   "name": "Mooloolah River at Ewen Maddock Dam HW",
+   "bom_name": "Ewen Maddock Dam HW (Mooloolah River)",
+   "awrc": "141917A",
+   "lat": -26.7797,
+   "lon": 153.0101,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540347",
+   "name": "Mooloolaba Tide",
+   "bom_name": "Mooloolaba Tide",
+   "awrc": "141918A",
+   "lat": -26.6842,
+   "lon": 153.1331,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540348",
+   "name": "Mooloolah River at Parrearra Weir US",
+   "bom_name": "Parrearra Weir US (Mooloolah River)",
+   "awrc": "141919A",
+   "lat": -26.7258,
+   "lon": 153.12,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540350",
+   "name": "Mooloolah River at Palmview",
+   "bom_name": "Palmview (Mooloolah River)",
+   "awrc": "141920A",
+   "lat": -26.745,
+   "lon": 153.0831,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540351",
+   "name": "Currumundi Creek at Meridan Way",
+   "bom_name": "Meridan Way (Currumundi Creek )",
+   "awrc": "141921A",
+   "lat": -26.7636,
+   "lon": 153.0997,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540357",
+   "name": "Caboolture River at Upper Caboolture (Hausman Lane)",
+   "bom_name": "Upper Caboolture (Hausman Lane) (Caboolture Creek)",
+   "awrc": "142819A",
+   "lat": -27.0978,
+   "lon": 152.8914,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540373",
+   "name": "Kilcoy Creek at Kilcoy Weir (DS)",
+   "bom_name": "Kilcoy Weir (DS) (Kilcoy Creek)",
+   "awrc": "143312A",
+   "lat": -26.92,
+   "lon": 152.5819,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540378",
+   "name": "Wolston Creek at Sumner (Brumby Cct)",
+   "bom_name": "Sumner (Wolston Creek)",
+   "awrc": "143995A",
+   "lat": -27.5658,
+   "lon": 152.93,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540386",
+   "name": "Sandy Creek at Sandy Creek Road",
+   "bom_name": "Sandy Creek Rd (Sandy Creek)",
+   "awrc": "143996A",
+   "lat": -27.5711,
+   "lon": 152.1781,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540387",
+   "name": "Warrill Creek at Harrisville",
+   "bom_name": "Harrisville (Warrill Creek)",
+   "awrc": "143997A",
+   "lat": -27.8133,
+   "lon": 152.6417,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540388",
+   "name": "Bremer River at Rosewood",
+   "bom_name": "Rosewood (Bremer River)",
+   "awrc": "143998A",
+   "lat": -27.6592,
+   "lon": 152.6042,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540398",
+   "name": "South Pine River at Drapers Crossing Tm",
+   "bom_name": "Drapers Crossing Tm (South Pine River)",
+   "awrc": "142202A",
+   "lat": -27.3467,
+   "lon": 152.9239,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540403",
+   "name": "Obi Obi Creek at Gardners Falls",
+   "bom_name": "Gardners Falls (Obi Obi Creek)",
+   "awrc": "138120A",
+   "lat": -26.7591,
+   "lon": 152.873,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540404",
+   "name": "Glastonbury Creek at Glastonbury",
+   "bom_name": "Glastonbury (Glastonbury Creek)",
+   "awrc": "138003D",
+   "lat": -26.2178,
+   "lon": 152.5206,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540405",
+   "name": "Flagstone Creek at Lilydale",
+   "bom_name": "Lilydale (Flagstone Creek)",
+   "awrc": "143233A",
+   "lat": -27.6061,
+   "lon": 152.1314,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540406",
+   "name": "Ma Ma Creek at Harms",
+   "bom_name": "Harms (Ma Ma Creek)",
+   "awrc": "143213B",
+   "lat": -27.6578,
+   "lon": 152.1619,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540412",
+   "name": "North Pine River at Youngs Crossing",
+   "bom_name": "Youngs Crossing (North Pine River)",
+   "awrc": "142904A",
+   "lat": -27.2667,
+   "lon": 152.9542,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540413",
+   "name": "Four Mile Creek at John Bray Park",
+   "bom_name": "John Bray Park (Four Mile Creek)",
+   "awrc": "142905A",
+   "lat": -27.2967,
+   "lon": 152.985,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540415",
+   "name": "South Pine River at Cash's Crossing",
+   "bom_name": "Cash's Crossing (South Pine River)",
+   "awrc": "142908A",
+   "lat": -27.3428,
+   "lon": 152.9608,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540416",
+   "name": "Samford Creek at Samford Village",
+   "bom_name": "Samford Village (Samford Creek)",
+   "awrc": "142909A",
+   "lat": -27.3703,
+   "lon": 152.8883,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540417",
+   "name": "North Pine River at Murrumba Downs",
+   "bom_name": "Murrumba Downs (North Pine River)",
+   "awrc": "142906A",
+   "lat": -27.2881,
+   "lon": 153.0175,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540419",
+   "name": "Petrie Creek at West Woombye",
+   "bom_name": "West Woombye (Petrie Creek)",
+   "awrc": "141922A",
+   "lat": -26.6669,
+   "lon": 152.9189,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540420",
+   "name": "Paynter Creek at Palmwoods Sportsground",
+   "bom_name": "Palmwoods Sportsground (Paynter Creek)",
+   "awrc": "141923A",
+   "lat": -26.6761,
+   "lon": 152.9544,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540421",
+   "name": "Mountain Creek at Tanawha",
+   "bom_name": "Tanawha (Mountain Creek)",
+   "awrc": "141924A",
+   "lat": -26.7075,
+   "lon": 153.0469,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540424",
+   "name": "Maroochy River at Stoney Wharf Road",
+   "bom_name": "Stoney Wharf Rd (Maroochy River)",
+   "awrc": "141925A",
+   "lat": -26.5964,
+   "lon": 153.0567,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540426",
+   "name": "Obi Obi Creek at Baroon Pocket Dam (HG)",
+   "bom_name": "Baroon Pocket Dam (HG) (Obi Obi Creek)",
+   "awrc": "138919A",
+   "lat": -26.712,
+   "lon": 152.8804,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540431",
+   "name": "Zillman Waterholes at Boondall (Frank Sleeman Park)",
+   "bom_name": "Frank Sleeman Park (Zillman Waterholes)",
+   "awrc": "142911A",
+   "lat": -27.3631,
+   "lon": 153.0564,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540432",
+   "name": "Stable Swamp Creek at Rocklea (Marshall Rd)",
+   "bom_name": "Marshall Rd (Stable Swamp Creek)",
+   "awrc": "143881A",
+   "lat": -27.5553,
+   "lon": 153.0086,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540433",
+   "name": "Rocky Waterholes at Moorooka (Muriel Ave)",
+   "bom_name": "Muriel Ave (Rocky Water Holes Creek)",
+   "awrc": "143882A",
+   "lat": -27.5436,
+   "lon": 153.0125,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540439",
+   "name": "North Pine River at Lawnton",
+   "bom_name": "Lawnton (North Pine River)",
+   "awrc": "142910A",
+   "lat": -27.2756,
+   "lon": 152.9936,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540441",
+   "name": "Esk Creek at Falls Rd",
+   "bom_name": "Falls Rd (Esk Creek)",
+   "awrc": "143017A",
+   "lat": -27.2358,
+   "lon": 152.4453,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540442",
+   "name": "North Pine River at Dayboro",
+   "bom_name": "Dayboro (North Pine River)",
+   "awrc": "142914A",
+   "lat": -27.2203,
+   "lon": 152.8386,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540444",
+   "name": "Cedar Creek at Cedar Ck Rd",
+   "bom_name": "Cedar Ck Rd (Cedar Creek)",
+   "awrc": "142912A",
+   "lat": -27.3278,
+   "lon": 152.8647,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540445",
+   "name": "Saltwater Creek at Lipscombe Rd",
+   "bom_name": "Lipscombe Rd (Saltwater Creek)",
+   "awrc": "142913A",
+   "lat": -27.2031,
+   "lon": 153.0147,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540446",
+   "name": "Maronghi Creek at Glendale",
+   "bom_name": "Glendale (Maronghi Creek)",
+   "awrc": "143016A",
+   "lat": -26.9781,
+   "lon": 152.3336,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540448",
+   "name": "Golden Beach",
+   "bom_name": "Golden Beach",
+   "awrc": "141926A",
+   "lat": -26.8335,
+   "lon": 153.12,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540450",
+   "name": "Black Swamp Creek at Maryborough Road",
+   "bom_name": "Black Swamp Creek (Maryborough Rd)",
+   "awrc": "138921A",
+   "lat": -25.3756,
+   "lon": 152.7683,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540452",
+   "name": "Bunya Creek at Booral Road",
+   "bom_name": "Booral Rd (Bunya Creek)",
+   "awrc": "138922A",
+   "lat": -25.3439,
+   "lon": 152.8269,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540460",
+   "name": "Cooloolabin Dam HW",
+   "bom_name": "Cooloolabin Dam HW",
+   "awrc": "141927A",
+   "lat": -26.5555,
+   "lon": 152.8786,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540461",
+   "name": "Poona Dam HW",
+   "bom_name": "Poona Dam HW",
+   "awrc": "141928A",
+   "lat": -26.5939,
+   "lon": 152.9117,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540462",
+   "name": "South Maroochy River at Wappa Dam",
+   "bom_name": "Wappa Dam (South Maroochy River)",
+   "awrc": "141929A",
+   "lat": -26.5697,
+   "lon": 152.9218,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540463",
+   "name": "Six Mile Creek at Lake Macdonald Dam (HG)",
+   "bom_name": "Lake Macdonald Dam (HG) (Six Mile Creek)",
+   "awrc": "138802A",
+   "lat": -26.3814,
+   "lon": 152.9297,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540468",
+   "name": "Cannery Creek at Northgate (Crockford Street)",
+   "bom_name": "Cannery Creek (Crockford St)",
+   "awrc": "142915A",
+   "lat": -27.3947,
+   "lon": 153.0797,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540469",
+   "name": "Pound Creek at Hendra",
+   "bom_name": "Hendra (Pound Creek)",
+   "awrc": "142916A",
+   "lat": -27.4019,
+   "lon": 153.0747,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540474",
+   "name": "Reynolds Creek at Moogerah Dam HG",
+   "bom_name": "Moogerah Dam HG (Reynolds Creek)",
+   "awrc": null,
+   "lat": -28.0314,
+   "lon": 152.55,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540476",
+   "name": "Deep Creek at Cedar Pocket Dam HG",
+   "bom_name": "Cedar Pocket Dam HG (Deep Creek)",
+   "awrc": "138801A",
+   "lat": -26.2114,
+   "lon": 152.7927,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540478",
+   "name": "Kedron Brook at Gordon Park (McCord St)",
+   "bom_name": "Mccord St (Kedron Brook)",
+   "awrc": "142917A",
+   "lat": -27.4178,
+   "lon": 153.0308,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540483",
+   "name": "Kobble Creek at Mt Samson Road",
+   "bom_name": "Mt Samson Road (Kobble Creek)",
+   "awrc": "142107A",
+   "lat": -27.2475,
+   "lon": 152.8372,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540484",
+   "name": "North Pine River at Dayboro WWTP",
+   "bom_name": "Dayboro WWTP (North Pine River)",
+   "awrc": "142106A",
+   "lat": -27.2186,
+   "lon": 152.8403,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540495",
+   "name": "Moreton Bay at Whyte Island",
+   "bom_name": "Whyte Island (Moreton Bay)",
+   "awrc": "143891A",
+   "lat": -27.4017,
+   "lon": 153.1575,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540496",
+   "name": "Beachmere",
+   "bom_name": "Beachmere",
+   "awrc": "142919A",
+   "lat": -27.1369,
+   "lon": 153.0497,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540499",
+   "name": "Doonan Creek at Coolum West",
+   "bom_name": "Coolum West (Doonan Creek)",
+   "awrc": "141930A",
+   "lat": -26.5331,
+   "lon": 153.0506,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540501",
+   "name": "Mountain Creek at Springfield Lakes",
+   "bom_name": "Springfield Lakes (Mountain Creek)",
+   "awrc": "143894A",
+   "lat": -27.6808,
+   "lon": 152.8972,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540503",
+   "name": "Moson's Gully at Rosewood Detention Basin",
+   "bom_name": "Rosewood Detention Basin (Moson's Gully)",
+   "awrc": "143892A",
+   "lat": -27.6272,
+   "lon": 152.5914,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540504",
+   "name": "Bremer River at Walloon",
+   "bom_name": "Walloon (Bremer River)",
+   "awrc": "143896A",
+   "lat": -27.6033,
+   "lon": 152.6928,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540506",
+   "name": "Petrie Creek and Bli Bli",
+   "bom_name": "Bli Bli (Petrie Creek)",
+   "awrc": "138926A",
+   "lat": -26.6336,
+   "lon": 153.0386,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540508",
+   "name": "Burpengary Creek at Narangba (Oakey Flat Rd)",
+   "bom_name": "Narangba (Oakey Flat Rd) (Burpengary Creek)",
+   "awrc": "142920A",
+   "lat": -27.1753,
+   "lon": 152.9222,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540513",
+   "name": "Reynolds Creek at Moogerah Dam TW",
+   "bom_name": "Moogerah Dam TW (Reynolds Creek)",
+   "awrc": "143112A",
+   "lat": -28.0267,
+   "lon": 152.5514,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540514",
+   "name": "Yabba Creek at Borumba Dam TW",
+   "bom_name": "Borumba Dam TW (Yabba Creek)",
+   "awrc": "138119B",
+   "lat": -26.5015,
+   "lon": 152.5866,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540516",
+   "name": "Sandy Creek at Forest Hill",
+   "bom_name": "Forest Hill (Sandy Creek)",
+   "awrc": "143930A",
+   "lat": -27.5839,
+   "lon": 152.3503,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540527",
+   "name": "Murphys Creek at Spring Bluff ALERT",
+   "bom_name": "Spring Bluff Alert",
+   "awrc": null,
+   "lat": -27.4692,
+   "lon": 151.9836,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540529",
+   "name": "Laidley Creek at Warrego Highway",
+   "bom_name": "Warrego Highway (Laidley Creek)",
+   "awrc": "143929A",
+   "lat": -27.5533,
+   "lon": 152.3889,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540532",
+   "name": "Teewah Creek at Coops Corner",
+   "bom_name": "Coops Corner (Tweewah Creek)",
+   "awrc": "140907A",
+   "lat": -26.0569,
+   "lon": 153.0419,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540533",
+   "name": "Coochin Creek at Mawsons Rd",
+   "bom_name": "Mawsons Rd (Coochin Creek)",
+   "awrc": "141931A",
+   "lat": -26.8775,
+   "lon": 153.0041,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540535",
+   "name": "Forest Lake Dam at Lakeside Crescent",
+   "bom_name": "Lakeside Crescent",
+   "awrc": "143945A",
+   "lat": -27.625,
+   "lon": 152.9619,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540536",
+   "name": "Coonowrin Creek at Glasshouse Mountains",
+   "bom_name": "Glasshouse Mountains (Coonowrin Creek)",
+   "awrc": "141932A",
+   "lat": -26.8994,
+   "lon": 152.9586,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540542",
+   "name": "Sheep Station Creek at Morayfield",
+   "bom_name": "Sheep Station Creek (Morayfield)",
+   "awrc": "142921A",
+   "lat": -27.11,
+   "lon": 152.9486,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540543",
+   "name": "Six Mile Creek at Elimbah (Rose Creek Rd)",
+   "bom_name": "Elimbah (Rose Creek Rd)  (Six Mile Creek)",
+   "awrc": "142820A",
+   "lat": -27.0131,
+   "lon": 152.9458,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540546",
+   "name": "Lake Clarendon Dam HW",
+   "bom_name": "Lake Clarendon Dam HW",
+   "awrc": "143235A",
+   "lat": -27.5156,
+   "lon": 152.3531,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540547",
+   "name": "Buaraba Ck at Atkinson Dam HG",
+   "bom_name": "Atkinson Dam HG (Buaraba Creek)",
+   "awrc": "143234A",
+   "lat": -27.4319,
+   "lon": 152.4642,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540548",
+   "name": "Kedron Brook at Toombul (Nudgee Rd)",
+   "bom_name": "Toombul (Nudgee Rd) (Kedron Brook)",
+   "awrc": "142922A",
+   "lat": -27.407,
+   "lon": 153.074,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540549",
+   "name": "Warrill Creek at Toohills Crossing",
+   "bom_name": "Toohills Crossing (Warrill Creek)",
+   "awrc": "143887A",
+   "lat": -27.9753,
+   "lon": 152.5231,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540557",
+   "name": "Lagoon Creek at Moodlu (Williams Rd)",
+   "bom_name": "Moodlu (Williams Rd) (Lagoon Creek)",
+   "awrc": "142925A",
+   "lat": -27.0506,
+   "lon": 152.9117,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540558",
+   "name": "Caboolture River at Beachmere (Riversleigh Rd)",
+   "bom_name": "Beachmere (Riversleigh Rd) (Caboolture River)",
+   "awrc": "142923A",
+   "lat": -27.1042,
+   "lon": 153.0072,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540560",
+   "name": "Reedy Creek at Mt Byron",
+   "bom_name": "Mt Byron (Reedy Creek)",
+   "awrc": "143306B",
+   "lat": -27.135,
+   "lon": 152.6175,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540561",
+   "name": "King John Creek at Caboolture (Pumicestone Rd)",
+   "bom_name": "Caboolture (Pumicestone Rd)  (King John Creek)",
+   "awrc": "142926A",
+   "lat": -27.0531,
+   "lon": 152.9628,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540562",
+   "name": "Todds Gully at Lawnton (Todds Rd)",
+   "bom_name": "Lawnton (Todds Rd) (Todds Gully)",
+   "awrc": "142924A",
+   "lat": -27.2825,
+   "lon": 152.9686,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540563",
+   "name": "Lake Dyer at Bill Gunn Dam",
+   "bom_name": "Bill Gunn Dam (Lake Dyer)",
+   "awrc": "143228A",
+   "lat": -27.6317,
+   "lon": 152.3792,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540566",
+   "name": "Lockyer Creek at Upper Lockyer",
+   "bom_name": "Upper Lockyer (Lockyer Creek)",
+   "awrc": "143703A",
+   "lat": -27.4922,
+   "lon": 152.0819,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540567",
+   "name": "Sandy Creek at Moon Road",
+   "bom_name": "Moon Rd (Sandy Creek)",
+   "awrc": "143702A",
+   "lat": -27.6619,
+   "lon": 152.32,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540568",
+   "name": "Blackfellow Creek at Junction View",
+   "bom_name": "Junction View (Blackfellow Creek)",
+   "awrc": "143701A",
+   "lat": -27.8011,
+   "lon": 152.1875,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540569",
+   "name": "Mary River at Dagun Pocket",
+   "bom_name": "DAGUN POCKET ALERT",
+   "awrc": null,
+   "lat": -26.3225,
+   "lon": 152.7025,
+   "source": "bom_section3",
+   "geocoded": false
+  },
+  {
+   "station_no": "540574",
+   "name": "Bremer River at Lower Mt Walker",
+   "bom_name": "Lower Mt Walker (Bremer River)",
+   "awrc": "143704A",
+   "lat": -27.704,
+   "lon": 152.551,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540575",
+   "name": "Yabba Creek at Borumba Dam (HG)",
+   "bom_name": "Borumba Dam (HG) (Yabba Creek)",
+   "awrc": "138925A",
+   "lat": -26.5078,
+   "lon": 152.5828,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540599",
+   "name": "South Maroochy River at Maroochy Intake Weir",
+   "bom_name": "Maroochy Intake Weir (South Maroochy River)",
+   "awrc": "141933A",
+   "lat": -26.588,
+   "lon": 152.891,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540604",
+   "name": "Enoggera Creek at Enoggera Dam HG",
+   "bom_name": "Enoggera Dam HG (Enoggera Creek)",
+   "awrc": "143047A",
+   "lat": -27.4455,
+   "lon": 152.9275,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540605",
+   "name": "Sideling Creek at Lake Kurwongbah HG",
+   "bom_name": "Lake Kurwongbah HG (Sideling Creek)",
+   "awrc": "142108A",
+   "lat": -27.2572,
+   "lon": 152.9528,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540606",
+   "name": "Cabbage Tree Creek at Lake Manchester HG",
+   "bom_name": "Lake Manchester HG (Cabbage Tree Creek)",
+   "awrc": "143049A",
+   "lat": -27.4883,
+   "lon": 152.7515,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540609",
+   "name": "Gold Creek at Gold Ck Reservoir HG",
+   "bom_name": "Gold Ck Reservoir HG (Gold Creek)",
+   "awrc": "143048A",
+   "lat": -27.4605,
+   "lon": 152.8821,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540618",
+   "name": "Deep Creek at Cedar Pocket Dam TW",
+   "bom_name": "Cedar Pocket Dam TW (Deep Creek)",
+   "awrc": "138021A",
+   "lat": -26.21,
+   "lon": 152.792,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540619",
+   "name": "Burpengary Creek at Burpengary (Mathew Cr)",
+   "bom_name": "Burpengary (Mathew Cr) (Burpengary Creek)",
+   "awrc": "142825A",
+   "lat": -27.1647,
+   "lon": 152.9411,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540620",
+   "name": "Mary River at Conondale",
+   "bom_name": "Conondale (Mary River)",
+   "awrc": "138927A",
+   "lat": -26.7294,
+   "lon": 152.7133,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540623",
+   "name": "Little Burpengary Creek at Deception Bay (Creek Rd)",
+   "bom_name": "Deception Bay (Creek Rd) (Little Burpengary Creek)",
+   "awrc": "142826A",
+   "lat": -27.1733,
+   "lon": 152.9827,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540624",
+   "name": "King John Creek at Caboolture (Bruce Hwy)",
+   "bom_name": "Caboolture (Bruce Hwy) (King John Creek)",
+   "awrc": "142824A",
+   "lat": -27.0567,
+   "lon": 152.9769,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540625",
+   "name": "South Pine River at Strathpine (Gympie Rd)",
+   "bom_name": "Strathpine (Gympie Rd) (South Pine River)",
+   "awrc": "142827A",
+   "lat": -27.3156,
+   "lon": 153.0003,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540627",
+   "name": "King John Creek at Caboolture (Bribie Is Rd)",
+   "bom_name": "Caboolture (Bribie Is Rd) (King John Creek)",
+   "awrc": "142821A",
+   "lat": -27.0754,
+   "lon": 153.0111,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540628",
+   "name": "Terrors Creek at Dayboro",
+   "bom_name": "Dayboro (Terrors Creek)",
+   "awrc": "142822A",
+   "lat": -27.1883,
+   "lon": 152.8267,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540635",
+   "name": "Elimbah Creek at Toorbul (Donnybrook Rd)",
+   "bom_name": "Toorbul (Donnybrook Rd) (Elimbah Creek)",
+   "awrc": "142823A",
+   "lat": -27.0311,
+   "lon": 153.0397,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540636",
+   "name": "Downfall Creek at Everton Park (Trouts Rd)",
+   "bom_name": "Everton Park (Downfall Creek)",
+   "awrc": "142828A",
+   "lat": -27.3919,
+   "lon": 152.9969,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540637",
+   "name": "Mary River at Maryborough (Churchill Street)",
+   "bom_name": "Maryborough (Churchill Street) (Mary River)",
+   "awrc": "138928A",
+   "lat": -25.5344,
+   "lon": 152.7067,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540639",
+   "name": "Kin Kin Creek at Kin Kin",
+   "bom_name": "Kin Kin (Kin Kin Creek)",
+   "awrc": "140908A",
+   "lat": -26.2631,
+   "lon": 152.8789,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540646",
+   "name": "Oxley Creek at Goodna Road",
+   "bom_name": "Goodna Road  (Oxley Creek)",
+   "awrc": "142829A",
+   "lat": -27.705,
+   "lon": 152.9714,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540658",
+   "name": "Freshwater Creek at Kallangur",
+   "bom_name": "Kallangur (Freshwater Creek)",
+   "awrc": "142830A",
+   "lat": -27.2416,
+   "lon": 152.9912,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540659",
+   "name": "Saltwater Creek at Rothwell",
+   "bom_name": "Rothwell (Saltwater Creek)",
+   "awrc": "142831A",
+   "lat": -27.2173,
+   "lon": 153.0443,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540660",
+   "name": "Caboolture River at Caboolture (Short St)",
+   "bom_name": "Caboolture (Short St) (Caboolture River)",
+   "awrc": "142832A",
+   "lat": -27.0874,
+   "lon": 152.9608,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540661",
+   "name": "Bremer River at Karalee",
+   "bom_name": "Karalee (Bremer River)",
+   "awrc": "143963A",
+   "lat": -27.5843,
+   "lon": 152.8131,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540664",
+   "name": "Six Mile Ck at Redbank Plains Road",
+   "bom_name": "Redbank Plains Rd (Six Mile Creek)",
+   "awrc": "143965A",
+   "lat": -27.6409,
+   "lon": 152.8444,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540666",
+   "name": "Bundamba Creek at South Ripley (Wards Rd)",
+   "bom_name": "South Ripley (Wards Rd)  (Bundamba Creek)",
+   "awrc": "143967A",
+   "lat": -27.7264,
+   "lon": 152.8219,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540669",
+   "name": "Bremer River at Seven Mile Bridge",
+   "bom_name": "Seven Mile Bridge (Bremer River)",
+   "awrc": "143968A",
+   "lat": -27.6483,
+   "lon": 152.6347,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540670",
+   "name": "Brisbane River at Goodna",
+   "bom_name": "Goodna (Brisbane River)",
+   "awrc": "143969A",
+   "lat": -27.6003,
+   "lon": 152.8942,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540672",
+   "name": "Goodna Creek at Collingwood Park",
+   "bom_name": "Collingwood Park (Goodna Creek)",
+   "awrc": "143966A",
+   "lat": -27.6206,
+   "lon": 152.8667,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540677",
+   "name": "Tinana Creek at Bidwell",
+   "bom_name": "Bidwell (Tinana Creek)",
+   "awrc": "138929A",
+   "lat": -25.6342,
+   "lon": 152.6806,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540678",
+   "name": "Tinana Creek at Magnolia",
+   "bom_name": "Magnolia (Tinana Creek)",
+   "awrc": "138930A",
+   "lat": -25.7236,
+   "lon": 152.6661,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540680",
+   "name": "Sandy Creek at Woodlands Road",
+   "bom_name": "Woodlands Rd (Sandy Creek)",
+   "awrc": "143705A",
+   "lat": -27.6281,
+   "lon": 152.3299,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540682",
+   "name": "Brisbane River at Jindalee (Boat Ramp Park)",
+   "bom_name": "Jindalee Alert-B (Boat Ramp Park) (Brisbane River)",
+   "awrc": "143709A",
+   "lat": -27.532,
+   "lon": 152.9287,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540683",
+   "name": "Brisbane River at St Lucia",
+   "bom_name": "St Lucia (Brisbane River)",
+   "awrc": "143710A",
+   "lat": -27.504,
+   "lon": 153.0059,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540684",
+   "name": "Brisbane River at Brisbane Port Office",
+   "bom_name": "Brisbane Port Office (Brisbane River)",
+   "awrc": "143712A",
+   "lat": -27.4717,
+   "lon": 153.0308,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540685",
+   "name": "Brisbane River at Hawthorne",
+   "bom_name": "Hawthorne (Brisbane River)",
+   "awrc": "143711A",
+   "lat": -27.4603,
+   "lon": 153.0536,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540686",
+   "name": "Mary River at Owanyilla",
+   "bom_name": "Owanyilla (Mary River)",
+   "awrc": "138932A",
+   "lat": -25.6447,
+   "lon": 152.6242,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540687",
+   "name": "Mary River at Sexton",
+   "bom_name": "Sexton (Mary River)",
+   "awrc": "138931A",
+   "lat": -25.9725,
+   "lon": 152.5069,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540701",
+   "name": "Lockyer Creek at Clarendon",
+   "bom_name": "Clarendon (Lockyer Creek)",
+   "awrc": "143207B",
+   "lat": -27.4201,
+   "lon": 152.5308,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540702",
+   "name": "Brisbane River at Milton (Coronation Drive)",
+   "bom_name": "Coronation Drive DS (Brisbane River)",
+   "awrc": "143971A",
+   "lat": -27.4745,
+   "lon": 153.0036,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540706",
+   "name": "Mary River at Tiaro",
+   "bom_name": "Tiaro (Mary River)",
+   "awrc": "138933A",
+   "lat": -25.7244,
+   "lon": 152.5775,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540719",
+   "name": "Sandy Creek at Whiteway Rd Overflow",
+   "bom_name": "Whiteway Rd Overflow (Sandy Creek)",
+   "awrc": "143707A",
+   "lat": -27.5972,
+   "lon": 152.3456,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540720",
+   "name": "Sandy Creek at Whiteway Rd",
+   "bom_name": "Whiteway Rd (Sandy Creek)",
+   "awrc": "143706A",
+   "lat": -27.5972,
+   "lon": 152.3456,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540721",
+   "name": "Lagoon Creek at Narda Lagoon",
+   "bom_name": "Narda Lagoon (Lagoon Creek)",
+   "awrc": "143713A",
+   "lat": -27.6489,
+   "lon": 152.3908,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540722",
+   "name": "Laidley Creek at McGarrigal Rd",
+   "bom_name": "McGarrigal Rd (Laidley Creek)",
+   "awrc": "143714A",
+   "lat": -27.6969,
+   "lon": 152.3703,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540723",
+   "name": "Laidley Creek at Mulgowie Rd",
+   "bom_name": "Mulgowie Rd (Laidley Creek)",
+   "awrc": "143715A",
+   "lat": -27.7142,
+   "lon": 152.3675,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540727",
+   "name": "Bundamba Creek at South Ripley (James Ivory Bridge)",
+   "bom_name": "South Ripley (James Ivory Bridge) (Bundamba Creek)",
+   "awrc": null,
+   "lat": -27.6928,
+   "lon": 152.805,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540728",
+   "name": "Woogaroo Creek at Bellbird Park (Eugene St)",
+   "bom_name": "Bellbird Park (Eugene St) (Woogaroo Creek)",
+   "awrc": null,
+   "lat": -27.6333,
+   "lon": 152.9059,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540730",
+   "name": "Scarborough Tide",
+   "bom_name": "Scarborough Tide",
+   "awrc": "142834A",
+   "lat": -27.1936,
+   "lon": 153.1093,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540736",
+   "name": "Lagoon Creek at Caboolture (Machinery Pde)",
+   "bom_name": "Caboolture (Machinery Pde)  (Lagoon Creek)",
+   "awrc": "142839A",
+   "lat": -27.073,
+   "lon": 152.947,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540739",
+   "name": "South Pine River at Samford Valley",
+   "bom_name": "Samford Valley (South Pine River)",
+   "awrc": "142837A",
+   "lat": -27.367,
+   "lon": 152.876,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540740",
+   "name": "Caboolture River at Beachmere (St Smith Rd)",
+   "bom_name": "Beachmere (St Smith Rd) (Caboolture River)",
+   "awrc": null,
+   "lat": -27.1456,
+   "lon": 153.0361,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540741",
+   "name": "Saltwater Creek at Deception Bay (Major St)",
+   "bom_name": "Deception Bay (Major St) (Saltwater Creek)",
+   "awrc": null,
+   "lat": -27.2066,
+   "lon": 153.0265,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540750",
+   "name": "Cressbrook Creek at Cressbrook Dam HW",
+   "bom_name": "Cressbrook Dam HW (Cressbrook Creek)",
+   "awrc": "143803A",
+   "lat": -27.2633,
+   "lon": 152.2089,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540754",
+   "name": "Warrill Creek at Kents Lagoon",
+   "bom_name": "Kents Lagoon  (Warrill Creek)",
+   "awrc": "143975A",
+   "lat": -27.878,
+   "lon": 152.633,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540755",
+   "name": "Six Mile Creek at Lake Macdonald (HG)",
+   "bom_name": "Lake Macdonald (HG) (Six Mile Creek)",
+   "awrc": null,
+   "lat": -26.381,
+   "lon": 152.93,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540762",
+   "name": "Shorncliffe Tide",
+   "bom_name": "Shorncliffe Tide",
+   "awrc": null,
+   "lat": -27.321,
+   "lon": 153.0872,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540764",
+   "name": "Lamerough Creek at Koala Court",
+   "bom_name": "Koala Court  (Lamerough Creek)",
+   "awrc": "141934A",
+   "lat": -26.8004,
+   "lon": 153.0774,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540768",
+   "name": "Yarraman Creek at Emmert St",
+   "bom_name": "Emmert St (Yarraman Creek)",
+   "awrc": null,
+   "lat": -26.843,
+   "lon": 151.98,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540769",
+   "name": "Cooyar Creek at Cooyar-Kooralgin Rd",
+   "bom_name": "Cooyar-Kooralgin Rd  (Cooyar Creek)",
+   "awrc": null,
+   "lat": -26.969,
+   "lon": 151.856,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540770",
+   "name": "Mary River at Bells Bridge (Wide Bay Hwy)",
+   "bom_name": "Bells Bridge (Wide Bay Hwy) (Mary River)",
+   "awrc": null,
+   "lat": -26.1248,
+   "lon": 152.571,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540771",
+   "name": "Burpengary Creek at Morayfield Rd",
+   "bom_name": "Morayfield Rd  (Burpengary Creek)",
+   "awrc": null,
+   "lat": -27.1523,
+   "lon": 152.977,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540773",
+   "name": "King John Creek at Beerburrum Rd",
+   "bom_name": "Beerburrum Rd (King John Creek)",
+   "awrc": null,
+   "lat": -27.0516,
+   "lon": 152.9481,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540774",
+   "name": "Kin Kin Creek at Wahpunga Lane",
+   "bom_name": "Wahpunga Lane (Kin Kin Creek)",
+   "awrc": "140909A",
+   "lat": -26.2375,
+   "lon": 152.9075,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540775",
+   "name": "Cooroora Creek at Pomona (Hill Street)",
+   "bom_name": "Pomona (Hill St) (Cooroora Creek)",
+   "awrc": null,
+   "lat": -26.3664,
+   "lon": 152.8583,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540776",
+   "name": "Cooroora Creek at Pomona (Subway Ave)",
+   "bom_name": "Pomona (Subway Ave) (Cooroora Creek)",
+   "awrc": null,
+   "lat": -26.3664,
+   "lon": 152.8583,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540777",
+   "name": "Six Mile Creek at Liane Drive",
+   "bom_name": "Liane Drive (Six Mile Creek)",
+   "awrc": null,
+   "lat": -26.3825,
+   "lon": 152.9242,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540778",
+   "name": "Six Mile Creek at Cooroy (Elm Street)",
+   "bom_name": "Cooroy (Elm Street) (Six Mile Creek)",
+   "awrc": null,
+   "lat": -26.3997,
+   "lon": 152.9022,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540779",
+   "name": "Cooroy Creek at Cooroy (Garnet St)",
+   "bom_name": "Cooroy (Garnet St) (Cooroy Creek)",
+   "awrc": null,
+   "lat": -26.4181,
+   "lon": 152.9061,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540784",
+   "name": "Ithaca Creek at Bardon (Detention Basin)",
+   "bom_name": "Bardon (Detention Basin) (Ithaca Creek)",
+   "awrc": null,
+   "lat": -27.4587,
+   "lon": 152.9663,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540789",
+   "name": "Laidley Creek at Thornton (School Road)",
+   "bom_name": "Thornton (School Rd) (Laidley Creek)",
+   "awrc": null,
+   "lat": -27.7983,
+   "lon": 152.3728,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540793",
+   "name": "Wararba Creek at Wamuran (Eureka Ct)",
+   "bom_name": "Wamuran (Eureka Ct) (Wararba Creek)",
+   "awrc": null,
+   "lat": -27.0592,
+   "lon": 152.88,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540794",
+   "name": "South Pine River at Eatons Hill",
+   "bom_name": "Eatons Hill  (South Pine River)",
+   "awrc": null,
+   "lat": -27.3486,
+   "lon": 152.9531,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540795",
+   "name": "Limestone Park Detention Basin",
+   "bom_name": "Limestone Park Detention Basin",
+   "awrc": null,
+   "lat": -27.6211,
+   "lon": 152.7657,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540799",
+   "name": "Ithaca Creek at Bardon (Lugg St)",
+   "bom_name": "Ithaca (Lugg St) (Ithaca Creek)",
+   "awrc": "143902A",
+   "lat": -27.4492,
+   "lon": 152.9914,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540804",
+   "name": "Enoggera Creek at Ashgrove (Royal Pde)",
+   "bom_name": "Ashgrove (Royal Parade) (Enoggera Creek)",
+   "awrc": "143903A",
+   "lat": -27.4466,
+   "lon": 152.9701,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540805",
+   "name": "Oxley Creek at Upstream Ipswich Motorway",
+   "bom_name": "US Ipswich Rd  (Oxley Creek)",
+   "awrc": "143936A",
+   "lat": -27.5647,
+   "lon": 152.9904,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540806",
+   "name": "Franklin Vale Creek at Meadow Flat Road Bridge",
+   "bom_name": "Meadow Flat Rd Bridge (Franklin Vale Creek)",
+   "awrc": null,
+   "lat": -27.736,
+   "lon": 152.467,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540807",
+   "name": "Six Mile Creek at Riverview (Conway St)",
+   "bom_name": "Riverview (Conway St) (Six Mile Creek)",
+   "awrc": null,
+   "lat": -27.607,
+   "lon": 152.847,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540808",
+   "name": "Deebing Creek at Flinders View (Ash St)",
+   "bom_name": "Flinders View (Ash St) (Deebing Creek)",
+   "awrc": null,
+   "lat": -27.655,
+   "lon": 152.759,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540822",
+   "name": "Norman Creek at Ekibin Park South (Arnwood Rd)",
+   "bom_name": "Ekibin Park South (Norman Creek)",
+   "awrc": null,
+   "lat": -27.5133,
+   "lon": 153.0391,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540823",
+   "name": "Munna Creek at Biggenden Road",
+   "bom_name": "Biggenden Rd (Munna Creek)",
+   "awrc": null,
+   "lat": -25.6188,
+   "lon": 152.2336,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540824",
+   "name": "Springfield Lakes High Level Dam",
+   "bom_name": "High Level Dam (Springfield Lakes)",
+   "awrc": null,
+   "lat": -27.6756,
+   "lon": 152.9167,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540825",
+   "name": "Springfield Lakes Low Level Dam",
+   "bom_name": "Low Level Dam  (Springfield Lakes)",
+   "awrc": null,
+   "lat": -27.677,
+   "lon": 152.9131,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540826",
+   "name": "North Pine River at Lees Crossing",
+   "bom_name": "Lees Crossing (North Pine River)",
+   "awrc": null,
+   "lat": -27.2104,
+   "lon": 152.8101,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540827",
+   "name": "Mary River at Coles Crossing",
+   "bom_name": "Coles Crossing (Mary River)",
+   "awrc": null,
+   "lat": -26.3679,
+   "lon": 152.7424,
+   "source": "bom_nfgn",
+   "geocoded": false
+  },
+  {
+   "station_no": "540829",
+   "name": "Sandy Creek at Fords Road",
+   "bom_name": "Fords Rd (Sandy Creek)",
+   "awrc": null,
+   "lat": -27.529,
+   "lon": 152.1928,
+   "source": "bom_nfgn",
+   "geocoded": false
+  }
+ ]
+}
