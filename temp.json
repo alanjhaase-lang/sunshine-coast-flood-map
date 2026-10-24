@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-25T08:48:07+10:00",
+ "generated_at": "2026-10-25T08:59:02+10:00",
  "stale": false,
  "forecast_issued": "2026-10-25T03:10:00+10:00",
  "forecast_stale": false,
@@ -47,15 +47,15 @@
   "id": "040861",
   "wmo": "94569",
   "name": "Sunshine Coast Airport",
-  "obs_time": "2026-10-25T08:40:00+10:00",
+  "obs_time": "2026-10-25T08:50:00+10:00",
   "lat": -26.599,
   "lon": 153.0912,
   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
   "distance_km": 4.0,
-  "temp": 21.5,
+  "temp": 21.6,
   "max": {
    "value": 21.7,
-   "time": "2026-10-25T08:26:00+10:00",
+   "time": "2026-10-25T08:48:00+10:00",
    "start": "2026-10-25T06:00:00+10:00",
    "end": "2026-10-25T21:00:00+10:00"
   },
