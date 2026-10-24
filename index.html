@@ -276,7 +276,7 @@ info.onAdd = () => {
     '<span class="chev" id="chev"></span></div>' +
     '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
     '<div class="tide" id="tide">Tide\u2026</div><div class="tide rain" id="rain"></div><div class="tide temp" id="temp"></div>' +
-    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="roads" id="rainctl"></div><div class="roads" id="tempctl"></div><div class="radar" id="radar"></div>' +
+    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="radar" id="radar"></div>' +
     // standing credits / data notes: bottom of the panel (inside the collapsible body)
     '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind, rainfall, temperature forecasts/observations &amp; tide gauge \u00a9 ' +
     '<a href="https://www.bom.gov.au/" target="_blank" rel="noopener">Bureau of Meteorology</a>; ' +
@@ -929,8 +929,9 @@ async function loadTides() {
 // BOM rain day = 9am to 9am; a daily total is filed against the date its 24 h ends.
 const LS_RAIN = "twinfo.rain.v1";
 const rainSaved = lsGet(LS_RAIN, {});
-const rain = { on: rainSaved.on !== false, open: rainSaved.open === true, data: null, err: "" };
-function saveRain() { lsSet(LS_RAIN, { on: rain.on, open: rain.open }); }
+const rain = { on: true,  // chip always shown (no layer toggle)
+  open: rainSaved.open === true, data: null, err: "" };
+function saveRain() { lsSet(LS_RAIN, { open: rain.open }); }
 const fmtDay = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short" });
 const fmtDate = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short", day: "numeric", month: "short" });
 const fmtTime = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", hour: "numeric", minute: "2-digit", hour12: true });
@@ -988,13 +989,7 @@ function bindRainChip(el) {
   c.onclick = tog;
   c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
 }
-(function buildRainUi() {
-  const el = document.getElementById("rainctl");
-  el.innerHTML = `<label><input type="checkbox" id="on-rain" ${rain.on ? "checked" : ""}>
-      <span style="flex:none;width:18px;text-align:center">\ud83c\udf27</span><span>Rainfall totals (BOM)</span></label>`;
-  el.querySelector("#on-rain").onchange = (e) => { rain.on = e.target.checked; saveRain(); renderRain(); };
-  renderRain();
-})();
+renderRain();
 async function loadRain() {
   try {
     const d = await loadJson("rain.json");
@@ -1009,8 +1004,9 @@ async function loadRain() {
 // value is filled from the airport's running observed min (6pm-9am) / max (6am-9pm) and labelled "obs".
 const LS_TEMP = "twinfo.temp.v1";
 const tempSaved = lsGet(LS_TEMP, {});
-const temp = { on: tempSaved.on !== false, open: tempSaved.open === true, data: null, err: "" };
-function saveTemp() { lsSet(LS_TEMP, { on: temp.on, open: temp.open }); }
+const temp = { on: true,  // chip always shown (no layer toggle)
+  open: tempSaved.open === true, data: null, err: "" };
+function saveTemp() { lsSet(LS_TEMP, { open: temp.open }); }
 const BOM_ICON = { 1: "\u2600\ufe0f", 2: "\ud83c\udf19", 3: "\u26c5", 4: "\u2601\ufe0f", 6: "\ud83c\udf2b\ufe0f", 8: "\ud83c\udf26\ufe0f", 9: "\ud83d\udca8",
   10: "\ud83c\udf2b\ufe0f", 11: "\ud83c\udf26\ufe0f", 12: "\ud83c\udf27\ufe0f", 13: "\ud83d\udca8", 14: "\u2744\ufe0f", 15: "\u2744\ufe0f", 16: "\u26c8\ufe0f", 17: "\ud83c\udf26\ufe0f", 18: "\ud83c\udf27\ufe0f", 19: "\ud83c\udf00" };
 function deg(v) { return v == null ? "\u2014" : Math.round(v) + "\u00b0"; }
@@ -1068,13 +1064,7 @@ function bindTempChip(el) {
   c.onclick = tog;
   c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
 }
-(function buildTempUi() {
-  const el = document.getElementById("tempctl");
-  el.innerHTML = `<label><input type="checkbox" id="on-temp" ${temp.on ? "checked" : ""}>
-      <span style="flex:none;width:18px;text-align:center">\ud83c\udf21\ufe0f</span><span>Temperature high/low (BOM)</span></label>`;
-  el.querySelector("#on-temp").onchange = (e) => { temp.on = e.target.checked; saveTemp(); renderTemp(); };
-  renderTemp();
-})();
+renderTemp();
 async function loadTemp() {
   try {
     const d = await loadJson("temp.json");

@@ -198,7 +198,7 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
   today): BOM town forecast for Maroochydore (`IDQ11295.xml`, `QLD_PT002`, nearest forecast town, ~4 km) plus
   Sunshine Coast Airport observations (`IDQ60920.xml`, 040861). BOM drops today's forecast minimum after the
   morning (and the maximum late in the day); the chip then uses the observed overnight minimum (6pm–9am) / maximum
-  so far and labels it "(obs)". Show/hide and open state persist in `twinfo.temp.v1`.
+  so far and labels it "(obs)". The chip is always shown (no layer toggle); its expanded/collapsed state persists in `twinfo.temp.v1`.
 - `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json`, `wind.json` (and the radar
   frame list) every 5 minutes.
 - `.github/workflows/update.yml` – runs every 15 minutes (and manually), runs both scripts (the road
@@ -239,8 +239,8 @@ Bulletins (configured in `BULLETINS` in `update_data.py`):
 
 Wind: BOM Queensland 10-minute observations [IDQ60920](https://www.bom.gov.au/fwo/IDQ60920.xml).
 
-Rainfall totals (`rain.json`, `update_rain.py`; side-panel chip, toggle *Rainfall totals (BOM)*,
-state in localStorage `twinfo.rain.v1`): primary station **Sunshine Coast Airport** (BOM 040861,
+Rainfall totals (`rain.json`, `update_rain.py`; side-panel chip, always shown (no toggle),
+expanded state in localStorage `twinfo.rain.v1`): primary station **Sunshine Coast Airport** (BOM 040861,
 ~4 km from Twin Waters), secondary **Nambour** (BOM 040988, ~14 km).
 
 - BOM rain day = 9am to 9am; a daily total is filed against the date its 24 h ends.
