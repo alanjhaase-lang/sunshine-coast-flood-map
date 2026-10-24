@@ -153,6 +153,15 @@
   .tide button { font: inherit; font-size: 11.5px; padding: 1px 7px; border: 1px solid #aaa; border-radius: 4px; background: #fff; cursor: pointer; }
   .tide .surge { font-size: 11.5px; margin-top: 3px; color: #333; }
   .tide .bomdisc { font-size: 10.5px; color: #666; margin-top: 3px; }
+  /* Rainfall totals chip (same look as the tide chip) */
+  .tide.rain { border-color: #c5d3dc; border-left-color: #455a64; background: #f4f7f9; }
+  .tide.rain .chip .tchev, .tide.rain a { color: #37474f; }
+  .tide.rain .days { display: flex; gap: 3px; margin: 3px 0 1px; font-variant-numeric: tabular-nums; }
+  .tide.rain .days div { flex: 1; text-align: center; font-size: 10.5px; color: #444; min-width: 0; }
+  .tide.rain .days i { display: block; margin: 0 auto 1px; width: 70%; background: #4f83cc; border-radius: 2px 2px 0 0; min-height: 1px; }
+  .tide.rain .days .bars { height: 28px; display: flex; align-items: flex-end; }
+  .tide.rain .days .bars i { width: 70%; }
+  .tide.rain .days .part i { background: #90b4e6; }
   #body { max-height: calc(100vh - 150px); overflow-y: auto; }
   @media (max-width: 600px) { .panel { font-size: 12px; } .title b { font-size: 13px; }
                               .title { max-width: 230px; } .regions label, .roads label { padding: 5px 0; } .sec { margin-top: 5px; } }
@@ -254,10 +263,10 @@ info.onAdd = () => {
   d.innerHTML = '<div class="hdr" id="hdr"><b>Twin Waters Info</b>' +
     '<span class="chev" id="chev"></span></div>' +
     '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
-    '<div class="tide" id="tide">Tide\u2026</div>' +
-    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="radar" id="radar"></div>' +
+    '<div class="tide" id="tide">Tide\u2026</div><div class="tide rain" id="rain"></div>' +
+    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="roads" id="rainctl"></div><div class="radar" id="radar"></div>' +
     // standing credits / data notes: bottom of the panel (inside the collapsible body)
-    '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind &amp; tide gauge \u00a9 ' +
+    '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind, rainfall &amp; tide gauge \u00a9 ' +
     '<a href="https://www.bom.gov.au/" target="_blank" rel="noopener">Bureau of Meteorology</a>; ' +
     'tide predictions \u00a9 Commonwealth of Australia, Bureau of Meteorology (astronomical only, no wind/surge/flood effects; ' +
     'tide-table datum may differ from the gauge) &middot; <details id="tidedet"><summary>tide disclaimer</summary><span id="tidedisctext">Loading\u2026</span></details>; ' +
@@ -867,6 +876,85 @@ async function loadTides() {
   renderTide();
 }
 
+// ---- Rainfall totals: BOM since-9am + last 7 rain days (rain.json; update_rain.py) ----
+// BOM rain day = 9am to 9am; a daily total is filed against the date its 24 h ends.
+const LS_RAIN = "twinfo.rain.v1";
+const rainSaved = lsGet(LS_RAIN, {});
+const rain = { on: rainSaved.on !== false, open: rainSaved.open === true, data: null, err: "" };
+function saveRain() { lsSet(LS_RAIN, { on: rain.on, open: rain.open }); }
+const fmtDay = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short" });
+const fmtDate = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", weekday: "short", day: "numeric", month: "short" });
+const fmtTime = new Intl.DateTimeFormat("en-AU", { timeZone: "Australia/Brisbane", hour: "numeric", minute: "2-digit", hour12: true });
+function mm1(v) { return v == null ? "\u2014" : Number(v).toFixed(1); }
+function since9(s) {     // "since 9am" or "since 9am Sat" when the BOM rain day started yesterday (before 9am)
+  const st = new Date(s.today_start), today = fmtDate.format(new Date());
+  return isNaN(st) ? "since 9am" : fmtDate.format(st) === today ? "since 9am" : `since 9am ${fmtDay.format(st)}`;
+}
+function rainDays(s) {   // the 7 rain days that make up week_mm: 6 completed (24 h to 9am) + since 9am
+  const by = Object.fromEntries((s.daily || []).map(d => [d.date, d.mm]));
+  const end = new Date(s.today_start), out = [];
+  for (let i = 5; i >= 0; i--) {
+    const d = new Date(end.getTime() - i * 864e5), key = new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Brisbane" }).format(d);
+    out.push({ lbl: fmtDay.format(new Date(d.getTime() - 864e5)), mm: by[key], tip: `24 h to 9am ${fmtDate.format(d)}` });
+  }
+  out.push({ lbl: "now", mm: s.today_mm, part: true, tip: `Since 9am ${fmtDate.format(end)} (so far)` });
+  return out;
+}
+function renderRain() {
+  const el = document.getElementById("rain"); if (!el) return;
+  el.style.display = rain.on ? "" : "none";
+  if (!rain.on) { el.innerHTML = ""; return; }
+  const sts = (rain.data && rain.data.stations) || [], s = sts[0];
+  // "today" once the BOM rain day has started today (after 9am); before 9am it is still yesterday's rain day
+  const tl = s && since9(s) === "since 9am" ? "Rain today" : "Since 9am";
+  const sum = s ? `${tl} <b>${mm1(s.today_mm)}</b> \u00b7 7d <b>${mm1(s.week_mm)}</b> mm`
+              : rain.err ? "Rain \u2014 unavailable" : "Rain\u2026";
+  const stale = rain.data && rain.data.stale;
+  const head = `<div class="chip" id="rainchip" role="button" tabindex="0" aria-expanded="${rain.open}"
+      title="Rainfall at ${esc(s ? s.name : "BOM station")} (BOM). Today = since 9am; week = last 7 BOM rain days. Click for details.">\ud83c\udf27
+      <span class="sum">${sum}${stale ? " \u23f1" : ""}</span><span class="tchev">${rain.open ? "\u25b4" : "\u25be"}</span></div>`;
+  if (!rain.open || !s) { el.innerHTML = head; bindRainChip(el); return; }
+  const h = [];
+  h.push(`<div class="big">Today ${mm1(s.today_mm)} mm \u00b7 Week ${mm1(s.week_mm)} mm</div>`);
+  h.push(`<div class="muted"><b>${esc(s.name)}</b> (BOM ${esc(s.id)}, ${s.distance_km} km) \u00b7 obs ${s.obs_time ? bneText(s.obs_time) : "\u2014"}</div>`);
+  const days = rainDays(s), mx = Math.max(1, ...days.map(d => d.mm || 0));
+  h.push(`<div class="days">${days.map(d => `<div class="${d.part ? "part" : ""}" title="${esc(d.tip)}: ${d.mm == null ? "no data" : mm1(d.mm) + " mm"}">
+      <div class="bars"><i style="height:${d.mm ? Math.max(2, Math.round(26 * d.mm / mx)) : 1}px"></i></div>${d.mm == null ? "?" : mm1(d.mm)}<br>${esc(d.lbl)}</div>`).join("")}</div>`);
+  h.push(`<div class="muted">Today = ${since9(s)} (BOM rain day, 9am\u20139am). Week = 7 rain days from 9am ${esc(fmtDate.format(new Date(s.week_start)))}.
+    Bars: 24 h to 9am of the next day.</div>`);
+  if ((s.week_days_missing || []).length) h.push(`<div class="warn" style="font-size:11.5px">No BOM total yet for ${s.week_days_missing.map(esc).join(", ")}; week total may be low.</div>`);
+  for (const o of sts.slice(1)) h.push(`<div class="muted">${esc(o.name)} (${o.distance_km} km): today <b>${mm1(o.today_mm)}</b> \u00b7 week <b>${mm1(o.week_mm)}</b> mm${o.stale ? " (old)" : ""}</div>`);
+  if (stale) h.push(`<div class="warn" style="font-size:11.5px">BOM feed unavailable since ${bneText(rain.data.stale_since)}; showing last known totals.</div>`);
+  if (rain.err) h.push(`<div class="warn" style="font-size:11.5px">Could not refresh rainfall: ${esc(rain.err)}</div>`);
+  h.push(`<div style="margin-top:3px"><a href="${esc(s.obs_url)}" target="_blank" rel="noopener">BOM observations</a> &middot;
+    <a href="${esc(s.dwo_url)}" target="_blank" rel="noopener">Daily obs</a> &middot;
+    <a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings</a></div>`);
+  h.push(`<div class="bomdisc">${esc(rain.data.attribution || "Bureau of Meteorology")}. Rain gauge totals only, not a flood warning.</div>`);
+  el.innerHTML = head + `<div class="det">${h.join("")}</div>`;
+  bindRainChip(el);
+}
+function bindRainChip(el) {
+  const c = el.querySelector("#rainchip"); if (!c) return;
+  const tog = () => { rain.open = !rain.open; saveRain(); renderRain(); };
+  c.onclick = tog;
+  c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
+}
+(function buildRainUi() {
+  const el = document.getElementById("rainctl");
+  el.innerHTML = `<label><input type="checkbox" id="on-rain" ${rain.on ? "checked" : ""}>
+      <span style="flex:none;width:18px;text-align:center">\ud83c\udf27</span><span>Rainfall totals (BOM)</span></label>`;
+  el.querySelector("#on-rain").onchange = (e) => { rain.on = e.target.checked; saveRain(); renderRain(); };
+  renderRain();
+})();
+async function loadRain() {
+  try {
+    const d = await loadJson("rain.json");
+    if (!Array.isArray(d.stations)) throw new Error("bad format");
+    rain.data = d; rain.err = "";
+  } catch (e) { rain.err = e.message; }    // keep the last good copy on screen
+  renderRain();
+}
+
 // ---- Rain radar (RainViewer public Weather Maps API: past 2 h, 10-min frames, max zoom 7, Universal Blue) ----
 const RV_API = "https://api.rainviewer.com/public/weather-maps.json";
 const RV_ATTR = 'Radar &copy; <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>';
@@ -980,7 +1068,7 @@ buildRadarUi();
 if (radar.on) refreshRadar();
 
 async function load() {
-  loadRoads(); loadEvents(); loadTides(); loadWind();
+  loadRoads(); loadEvents(); loadTides(); loadWind(); loadRain();
   try {
     const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);

@@ -1,0 +1,202 @@
+{
+ "generated_at": "2026-10-25T07:57:05+10:00",
+ "stale": false,
+ "issued": "2026-10-25T07:51:02+10:00",
+ "source_url": "https://www.bom.gov.au/fwo/IDQ60920.xml",
+ "page_url": "https://www.bom.gov.au/qld/observations/seqld.shtml",
+ "attribution": "Rainfall observations © Commonwealth of Australia 2026, Bureau of Meteorology",
+ "method": "BOM rain day = 9am to 9am. today_mm = rain since 9am (IDQ60920). week_mm = today_mm + the 6 completed rain days before it (24 h to 9am; IDQ60920 rainfall_24hr + Daily Weather Observations), i.e. 7 rain days.",
+ "centre": {
+  "name": "Twin Waters, QLD",
+  "lat": -26.6336,
+  "lon": 153.0814
+ },
+ "radius_km": 20.0,
+ "warnings": [],
+ "stations": [
+  {
+   "id": "040861",
+   "wmo": "94569",
+   "name": "Sunshine Coast Airport",
+   "stn_name": "SUNSHINE COAST AIRPORT",
+   "lat": -26.599,
+   "lon": 153.0912,
+   "distance_km": 4.0,
+   "obs_time": "2026-10-25T07:50:00+10:00",
+   "today_mm": 79.4,
+   "today_start": "2026-10-24T09:00:00+10:00",
+   "today_end": "2026-10-25T07:53:00+10:00",
+   "last_day_mm": 12.0,
+   "last_day_end": "2026-10-24T09:00:00+10:00",
+   "week_mm": 340.6,
+   "week_start": "2026-10-18T09:00:00+10:00",
+   "week_days_missing": [],
+   "daily": [
+    {
+     "date": "2026-10-11",
+     "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-12",
+     "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-13",
+     "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-14",
+     "mm": 5.2,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-15",
+     "mm": 5.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-16",
+     "mm": 5.8,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-17",
+     "mm": 5.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-18",
+     "mm": 5.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-19",
+     "mm": 27.8,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-20",
+     "mm": 73.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-21",
+     "mm": 1.4,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-22",
+     "mm": 61.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-23",
+     "mm": 84.8,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-24",
+     "mm": 12.0,
+     "src": "obs"
+    }
+   ],
+   "obs_url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
+   "dwo_url": "https://www.bom.gov.au/climate/dwo/IDCJDW4081.latest.shtml"
+  },
+  {
+   "id": "040988",
+   "wmo": "95572",
+   "name": "Nambour",
+   "stn_name": "NAMBOUR DAFF - HILLSIDE",
+   "lat": -26.6442,
+   "lon": 152.9383,
+   "distance_km": 14.3,
+   "obs_time": "2026-10-25T07:50:00+10:00",
+   "today_mm": 60.0,
+   "today_start": "2026-10-24T09:00:00+10:00",
+   "today_end": "2026-10-25T07:53:00+10:00",
+   "last_day_mm": 13.0,
+   "last_day_end": "2026-10-24T09:00:00+10:00",
+   "week_mm": 388.8,
+   "week_start": "2026-10-18T09:00:00+10:00",
+   "week_days_missing": [],
+   "daily": [
+    {
+     "date": "2026-10-11",
+     "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-12",
+     "mm": 27.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-13",
+     "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-14",
+     "mm": 6.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-15",
+     "mm": 12.2,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-16",
+     "mm": 3.8,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-17",
+     "mm": 25.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-18",
+     "mm": 7.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-19",
+     "mm": 22.8,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-20",
+     "mm": 50.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-21",
+     "mm": 1.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-22",
+     "mm": 62.2,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-23",
+     "mm": 178.6,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-10-24",
+     "mm": 13.0,
+     "src": "obs"
+    }
+   ],
+   "obs_url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.95572.shtml",
+   "dwo_url": "https://www.bom.gov.au/climate/dwo/IDCJDW4091.latest.shtml"
+  }
+ ]
+}

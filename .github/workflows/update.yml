@@ -43,16 +43,22 @@ jobs:
         continue-on-error: true
         run: python update_wind.py
 
+      # BOM rainfall: since 9am + last 7 rain days (rain.json); a failure keeps the old file (marked stale).
+      - name: Fetch BOM rainfall totals (rain.json)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: python update_rain.py
+
       - name: Commit data files if they changed
         if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json wind.json
+          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json wind.json rain.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Update river gauge, road, tide and wind data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
+            git commit -m "Update river gauge, road, tide, wind and rain data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
             git pull --rebase || { git rebase --abort; exit 1; }
             git push
           fi

@@ -213,6 +213,22 @@ Bulletins (configured in `BULLETINS` in `update_data.py`):
 
 Wind: BOM Queensland 10-minute observations [IDQ60920](https://www.bom.gov.au/fwo/IDQ60920.xml).
 
+Rainfall totals (`rain.json`, `update_rain.py`; side-panel chip, toggle *Rainfall totals (BOM)*,
+state in localStorage `twinfo.rain.v1`): primary station **Sunshine Coast Airport** (BOM 040861,
+~4 km from Twin Waters), secondary **Nambour** (BOM 040988, ~14 km).
+
+- BOM rain day = 9am to 9am; a daily total is filed against the date its 24 h ends.
+- **Today** (`today_mm`) = rain since 9am from IDQ60920 (`rainfall`). Before 9am this is still
+  the previous day's rain day, and the chip says "Since 9am" instead of "Rain today".
+- **7 days** (`week_mm`) = since 9am + the 6 completed rain days before it: the latest from
+  IDQ60920 `rainfall_24hr`, earlier ones from BOM Daily Weather Observations CSVs
+  ([IDCJDW4081](https://www.bom.gov.au/climate/dwo/IDCJDW4081.latest.shtml) Sunshine Coast Airport,
+  [IDCJDW4091](https://www.bom.gov.au/climate/dwo/IDCJDW4091.latest.shtml) Nambour).
+  Days already in `rain.json` are kept (rolling 14-day `daily` history), so a DWO outage does not
+  lose them; days with no total are listed in `week_days_missing`.
+- If IDQ60920 fails, the previous `rain.json` is kept and marked `stale`.
+- Rain gauge totals only; the app does not derive flood warnings from rainfall.
+
 Other Qld bulletins have no gauges within the 20 km circle. If a bulletin fails to download, the
 previous readings for that bulletin are kept (marked `stale` in `bulletins`).
 
@@ -229,7 +245,7 @@ Coordinates, in priority order (`source` field in `stations.json`):
 - Hosted on GitHub Pages from `main`, folder `/` (root):
   https://alanjhaase-lang.github.io/sunshine-coast-flood-map/
 - `.github/workflows/update.yml` runs every 30 minutes (and on demand via *Run workflow*), runs
-  `update_data.py`, `update_roads.py`, `update_tides.py` and `update_wind.py`, and commits the data files when they change; Pages redeploys
+  `update_data.py`, `update_roads.py`, `update_tides.py`, `update_wind.py` and `update_rain.py`, and commits the data files when they change; Pages redeploys
   after each data commit. The map itself re-fetches the data every 5 minutes.
 
 Note: GitHub's cron is best-effort (runs can be delayed), and scheduled workflows are
@@ -243,6 +259,7 @@ python3 update_data.py           # writes data.json
 python3 update_roads.py          # writes closures/roadworks/hazards/crashes/cameras.json
 python3 update_tides.py          # writes tides.json
 python3 update_wind.py           # writes wind.json
+python3 update_rain.py           # writes rain.json
 python3 -m http.server 8000      # open http://localhost:8000/
 ```
 
