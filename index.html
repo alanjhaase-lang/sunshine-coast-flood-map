@@ -1194,7 +1194,7 @@ if (radar.on) refreshRadar();
 // it only serves BOM bulletins /fwo/IDQ6028x.html to alanjhaase-lang.github.io.
 // BOM_PROXY = the Worker base URL, e.g. "https://qld-flood-bom-proxy.<account>.workers.dev" (no trailing path).
 // Leave "" to try BOM directly (normally blocked -> snapshot only).
-const BOM_PROXY = "";  // TODO: set to the deployed workers.dev URL
+const BOM_PROXY = "https://qld-flood-bom-proxy.alanjhaase.workers.dev";  // shared BOM relay Worker (bom-proxy/)
 const BOM_LIVE_MS = 5 * 60 * 1000, BOM_LIVE_BACKOFF_MS = (BOM_PROXY ? 5 : 30) * 60 * 1000;
 const BOM_DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 let snapData = null;
