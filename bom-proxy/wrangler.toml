@@ -1,0 +1,11 @@
+# Cloudflare Workers config for the BOM river bulletin proxy used by both flood maps.
+# Free plan only: no routes/custom domain, no KV/D1/R2, no paid features. Deploys to
+#   https://qld-flood-bom-proxy.<your-account-subdomain>.workers.dev
+name = "qld-flood-bom-proxy"
+main = "worker.js"
+compatibility_date = "2026-05-01"
+workers_dev = true
+preview_urls = false
+
+[observability]
+enabled = false

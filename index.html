@@ -1187,14 +1187,15 @@ buildRadarUi();
 if (radar.on) refreshRadar();
 
 // ---- Live BOM gauge readings in the browser ----
-// On load and every BOM_LIVE_MS the page tries to read the same BOM river height bulletins update_data.py uses
-// (IDQ60287/IDQ60286) and overlays any newer readings on the committed data.json snapshot. BOM's web server
-// currently refuses cross-origin browser requests (no CORS headers; HTTP 403 when an Origin header is sent), so
-// normally this falls back to the snapshot (rebuilt by GitHub Actions every ~15 min and re-read here every
-// 5 min). BOM_PROXY can be set to a CORS proxy you control (URL prefix; the BOM URL is appended encoded) to
-// make live reads work.
-const BOM_PROXY = "";
-const BOM_LIVE_MS = 5 * 60 * 1000, BOM_LIVE_BACKOFF_MS = 30 * 60 * 1000;
+// On load and every BOM_LIVE_MS the page reads the same BOM river height bulletins update_data.py uses
+// (IDQ60287/IDQ60286) and overlays any newer readings on the committed data.json snapshot (rebuilt by GitHub
+// Actions every ~15 min and re-read here every 5 min as the backup). BOM's web server refuses cross-origin
+// browser requests, so live reads go through our own locked-down Cloudflare Worker (bom-proxy/ in this repo):
+// it only serves BOM bulletins /fwo/IDQ6028x.html to alanjhaase-lang.github.io.
+// BOM_PROXY = the Worker base URL, e.g. "https://qld-flood-bom-proxy.<account>.workers.dev" (no trailing path).
+// Leave "" to try BOM directly (normally blocked -> snapshot only).
+const BOM_PROXY = "";  // TODO: set to the deployed workers.dev URL
+const BOM_LIVE_MS = 5 * 60 * 1000, BOM_LIVE_BACKOFF_MS = (BOM_PROXY ? 5 : 30) * 60 * 1000;
 const BOM_DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 let snapData = null;
 const liveBom = { rows: {}, status: "idle", err: "", at: 0, nextTry: 0, busy: false };
@@ -1235,7 +1236,7 @@ async function fetchLiveBom(force) {
     const url = `https://www.bom.gov.au/fwo/${bid}.html`;
     const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 12000);
     try {
-      const r = await fetch(BOM_PROXY ? BOM_PROXY + encodeURIComponent(url) : url, { cache: "no-store", signal: ctl.signal });
+      const r = await fetch(BOM_PROXY ? BOM_PROXY.replace(/\/+$/, "") + `/fwo/${bid}.html` : url, { cache: "no-store", credentials: "omit", signal: ctl.signal });
       if (!r.ok) throw new Error("HTTP " + r.status);
       const got = parseBomBulletin(await r.text(), bid);
       if (!Object.keys(got).length) throw new Error("no rows");
@@ -1293,9 +1294,9 @@ function obsCell(s) {
 function obsLine(data) {
   const t = data.latest_obs_time;
   const src = liveBom.status === "ok"
-    ? `live from BOM in your browser${data.live_count ? ` (${data.live_count} newer than snapshot)` : ""}, checked ${esc(fmtTime.format(new Date(liveBom.at)))}`
+    ? `live from BOM${BOM_PROXY ? " (via map's BOM relay)" : " in your browser"}${data.live_count ? ` (${data.live_count} newer than snapshot)` : ""}, checked ${esc(fmtTime.format(new Date(liveBom.at)))}`
     : liveBom.status === "blocked"
-      ? `<span title="${esc(liveBom.err)}">BOM blocks direct browser reads, so readings come from the auto-updated snapshot (rebuilt ~every 15 min)</span>`
+      ? `<span title="${esc(liveBom.err)}">${BOM_PROXY ? "Live BOM relay unavailable right now" : "BOM blocks direct browser reads"}, so readings come from the auto-updated snapshot (rebuilt ~every 15 min)</span>`
       : "snapshot";
   return `Latest BOM gauge reading: <b>${t ? `${esc(fmtTime.format(new Date(t)))} AEST</b> (${agoText(t)})` : "\u2014</b>"}<br><span class="muted" style="font-size:11.5px">${src}</span>`;
 }
