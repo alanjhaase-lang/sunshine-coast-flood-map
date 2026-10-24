@@ -118,9 +118,11 @@ nowcast), one colour scheme (Universal Blue, scale shown in the panel), max tile
 - **Live BOM in the browser:** on load and every 5 minutes the page also tries to read the same BOM bulletins
   (`IDQ60287`, `IDQ60286`) directly and overlays any reading newer than the snapshot (flood class / next
   level recomputed in the browser, marked "live from BOM"). BOM's server currently rejects cross-origin
-  browser requests (no CORS headers, HTTP 403 when an `Origin` header is present), so in practice this falls
-  back to the snapshot and retries every 30 minutes. Setting `BOM_PROXY` in `index.html` to a CORS proxy you
-  control (URL prefix; the encoded BOM URL is appended) would make the live reads work.
+  browser requests (no CORS headers, HTTP 403 when an `Origin` header is present), so live reads go through
+  our own free, locked-down Cloudflare Worker in [`bom-proxy/`](bom-proxy/) (shared with the Westbrook map; only
+  serves `/fwo/IDQ60285|60286|60287|60293.html` to `alanjhaase-lang.github.io`). Set its workers.dev URL in
+  `BOM_PROXY` in `index.html`. With `BOM_PROXY` empty or the Worker unavailable, the page shows the snapshot
+  (retrying every 30 min direct / 5 min via the Worker).
 
 ### Road closures (flooding) and cameras (flood + traffic)
 
