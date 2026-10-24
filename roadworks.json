@@ -1,0 +1,257 @@
+{
+ "generated_at": "2026-10-25T07:14:40+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 07:14 AM AEST",
+ "stale": false,
+ "source": {
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-10-25T07:13:58+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
+ },
+ "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "filter": "event_type == 'Roadworks' and not flood-related (those are in closures.json); any vertex inside the Twin Waters circle (20 km). severity 'closed' = road closed / all lanes blocked, 'partial' = anything else (lanes affected, restricted, delays). start/end = QLDTraffic duration (end null = until further notice). Coordinates [lat, lon].",
+ "regions": [
+  {
+   "id": "twinwaters",
+   "name": "Twin Waters",
+   "count": 2,
+   "closed": 0,
+   "partial": 2
+  }
+ ],
+ "count": 2,
+ "excluded": [],
+ "roadworks": [
+  {
+   "id": 831820,
+   "road": "Ilkley Road",
+   "description": "Load restrictions to Ilkley Rd Overpass (Over Bruce Highway) at Tanawha",
+   "locality": "Tanawha",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Roadworks",
+   "event_subtype": "Planned roadworks",
+   "due_to": null,
+   "impact": "Subject to a 5 tonne GVM limit",
+   "impact_type": "Road restricted",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Observe signage",
+   "information": "All Trucks and Buses Prohibited. What to expect: Signage, changed traffic conditions, temporary infrastructure and CCTV on the approaches to the Ilkley Road overpass to support compliance with restrictions. The Ilkley Road overpass over the Bruce Highway at Tanawha is currently operating under restrictions. Please comply with these restrictions for safety.",
+   "status": "Published",
+   "start": "2026-10-02T16:07:00+10:00",
+   "end": "2027-12-31T16:20:00+10:00",
+   "priority": "Low",
+   "last_updated": "2026-10-23T12:05:04+10:00",
+   "last_updated_text": "Fri 23 Oct 2026 12:05 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/831820",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.70535,
+    153.01883
+   ],
+   "geometry": {
+    "points": [],
+    "lines": [
+     [
+      [
+       -26.70561,
+       153.01837
+      ],
+      [
+       -26.70555,
+       153.01847
+      ],
+      [
+       -26.70549,
+       153.01857
+      ],
+      [
+       -26.70546,
+       153.01864
+      ],
+      [
+       -26.70536,
+       153.01881
+      ],
+      [
+       -26.70535,
+       153.01883
+      ],
+      [
+       -26.70525,
+       153.01904
+      ],
+      [
+       -26.70518,
+       153.01918
+      ],
+      [
+       -26.70511,
+       153.01933
+      ],
+      [
+       -26.70501,
+       153.01952
+      ]
+     ]
+    ]
+   }
+  },
+  {
+   "id": 793568,
+   "road": "Nicklin Way / Sunshine Motorway",
+   "description": "Sections of the Sunshine Motorway, Nicklin Way and Kawana Way.",
+   "locality": "Minyama / Mooloolaba",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Roadworks",
+   "event_subtype": "Planned roadworks",
+   "due_to": null,
+   "impact": "Lane or lanes blocked",
+   "impact_type": "Lanes blocked",
+   "severity": "partial",
+   "direction": "Southbound",
+   "advice": "Observe signage",
+   "information": "• Early works have commenced for the Mooloolah River Interchange (MRI) Upgrade Stage 1, including site preparation, clearing, service relocations and geotechnical investigations to prepare for major earthworks in 2026, prior to main construction. • Daytime works will be between 7am and 6pm (Monday to Friday), with occasional weekend work. • Some nightworks will be undertaken between 6pm and 6am, including occasional weekends. This may include ramp and road closures which will be signed prior to closures. • Reduced speed limits, construction signage and traffic control will be present. • Potential delays due to temporary lane closures and redirections may occur. • Potential construction noise, light, vibration and dust may be experienced within the project footprint. • The active transport pathway on Seriata Way has now been permanently closed. • The public carpark on Brisbane Road (via Incana Court) has now been permanently closed",
+   "status": "Published",
+   "start": "2026-04-08T19:40:00+10:00",
+   "end": "2028-12-31T23:55:00+10:00",
+   "priority": "High",
+   "last_updated": "2026-10-20T13:28:34+10:00",
+   "last_updated_text": "Tue 20 Oct 2026 01:28 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://www.tmr.qld.gov.au/projects/mooloolah-river-interchange-upgrade-stage-1",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/793568",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.69325,
+    153.11119
+   ],
+   "geometry": {
+    "points": [],
+    "lines": [
+     [
+      [
+       -26.68549,
+       153.1051
+      ],
+      [
+       -26.68574,
+       153.10529
+      ],
+      [
+       -26.68698,
+       153.10627
+      ]
+     ],
+     [
+      [
+       -26.68698,
+       153.10627
+      ],
+      [
+       -26.68771,
+       153.10684
+      ],
+      [
+       -26.68772,
+       153.10684
+      ],
+      [
+       -26.68786,
+       153.10696
+      ],
+      [
+       -26.69002,
+       153.10863
+      ],
+      [
+       -26.6902,
+       153.10878
+      ],
+      [
+       -26.69325,
+       153.11119
+      ],
+      [
+       -26.69353,
+       153.11141
+      ],
+      [
+       -26.69384,
+       153.11166
+      ],
+      [
+       -26.69385,
+       153.11167
+      ],
+      [
+       -26.69393,
+       153.11174
+      ],
+      [
+       -26.69403,
+       153.11182
+      ],
+      [
+       -26.6944,
+       153.11216
+      ],
+      [
+       -26.69458,
+       153.11233
+      ],
+      [
+       -26.69497,
+       153.11277
+      ],
+      [
+       -26.69509,
+       153.11292
+      ],
+      [
+       -26.69537,
+       153.11328
+      ],
+      [
+       -26.69559,
+       153.1136
+      ],
+      [
+       -26.69562,
+       153.11364
+      ],
+      [
+       -26.6957,
+       153.11376
+      ],
+      [
+       -26.6961,
+       153.11434
+      ],
+      [
+       -26.69683,
+       153.1154
+      ]
+     ],
+     [
+      [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
+      ]
+     ]
+    ]
+   }
+  }
+ ]
+}

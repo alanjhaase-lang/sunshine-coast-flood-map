@@ -1,0 +1,154 @@
+{
+ "generated_at": "2026-10-25T07:10:59+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 07:10 AM AEST",
+ "stale": false,
+ "location": "Mooloolaba",
+ "aac": "QLD_TP019",
+ "lat": -26.6842,
+ "lon": 153.1331,
+ "gauge_name": "Mooloolaba Tide",
+ "method": "print",
+ "source_url": "https://www.bom.gov.au/australia/tides/print.php?aac=QLD_TP019&type=tide&date=25-10-2026&region=QLD&tz=Australia/Brisbane&tz_js=AEST&days=7",
+ "page_url": "https://www.bom.gov.au/australia/tides/",
+ "attribution": "Tide predictions © Commonwealth of Australia 2026, Bureau of Meteorology",
+ "disclaimer": "The Bureau of Meteorology gives no representation or warranty of any kind whether express, implied, statutory or otherwise in respect to the availability, accuracy, currency, completeness, quality, reliability or suitability of the information or that the information will be fit for any particular purpose or will not infringe any third party Intellectual Property rights. The Bureau's liability for any loss, damage, cost or expense resulting from use of, or reliance on, the information is entirely excluded.",
+ "conditions_url": "https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf",
+ "note": "Astronomical predictions only (no weather, storm-surge or flood effects). Times AEST. Heights in metres on the BOM tide-table datum, which may differ from the live gauge datum.",
+ "predictions": [
+  {
+   "time": "2026-10-25T00:53+10:00",
+   "type": "low",
+   "height_m": 0.14
+  },
+  {
+   "time": "2026-10-25T07:08+10:00",
+   "type": "high",
+   "height_m": 1.75
+  },
+  {
+   "time": "2026-10-25T13:16+10:00",
+   "type": "low",
+   "height_m": 0.31
+  },
+  {
+   "time": "2026-10-25T19:11+10:00",
+   "type": "high",
+   "height_m": 1.63
+  },
+  {
+   "time": "2026-10-26T01:26+10:00",
+   "type": "low",
+   "height_m": 0.08
+  },
+  {
+   "time": "2026-10-26T07:48+10:00",
+   "type": "high",
+   "height_m": 1.87
+  },
+  {
+   "time": "2026-10-26T14:01+10:00",
+   "type": "low",
+   "height_m": 0.29
+  },
+  {
+   "time": "2026-10-26T19:50+10:00",
+   "type": "high",
+   "height_m": 1.57
+  },
+  {
+   "time": "2026-10-27T02:00+10:00",
+   "type": "low",
+   "height_m": 0.05
+  },
+  {
+   "time": "2026-10-27T08:31+10:00",
+   "type": "high",
+   "height_m": 1.95
+  },
+  {
+   "time": "2026-10-27T14:49+10:00",
+   "type": "low",
+   "height_m": 0.31
+  },
+  {
+   "time": "2026-10-27T20:32+10:00",
+   "type": "high",
+   "height_m": 1.48
+  },
+  {
+   "time": "2026-10-28T02:39+10:00",
+   "type": "low",
+   "height_m": 0.07
+  },
+  {
+   "time": "2026-10-28T09:17+10:00",
+   "type": "high",
+   "height_m": 1.98
+  },
+  {
+   "time": "2026-10-28T15:41+10:00",
+   "type": "low",
+   "height_m": 0.35
+  },
+  {
+   "time": "2026-10-28T21:17+10:00",
+   "type": "high",
+   "height_m": 1.37
+  },
+  {
+   "time": "2026-10-29T03:19+10:00",
+   "type": "low",
+   "height_m": 0.13
+  },
+  {
+   "time": "2026-10-29T10:07+10:00",
+   "type": "high",
+   "height_m": 1.95
+  },
+  {
+   "time": "2026-10-29T16:38+10:00",
+   "type": "low",
+   "height_m": 0.42
+  },
+  {
+   "time": "2026-10-29T22:08+10:00",
+   "type": "high",
+   "height_m": 1.25
+  },
+  {
+   "time": "2026-10-30T04:05+10:00",
+   "type": "low",
+   "height_m": 0.22
+  },
+  {
+   "time": "2026-10-30T11:02+10:00",
+   "type": "high",
+   "height_m": 1.89
+  },
+  {
+   "time": "2026-10-30T17:46+10:00",
+   "type": "low",
+   "height_m": 0.49
+  },
+  {
+   "time": "2026-10-30T23:06+10:00",
+   "type": "high",
+   "height_m": 1.15
+  },
+  {
+   "time": "2026-10-31T05:00+10:00",
+   "type": "low",
+   "height_m": 0.34
+  },
+  {
+   "time": "2026-10-31T12:05+10:00",
+   "type": "high",
+   "height_m": 1.81
+  },
+  {
+   "time": "2026-10-31T19:07+10:00",
+   "type": "low",
+   "height_m": 0.53
+  }
+ ]
+}

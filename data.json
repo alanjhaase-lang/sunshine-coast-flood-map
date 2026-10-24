@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-25T07:04:39+10:00",
- "generated_at_text": "Sun 25 Oct 2026 07:04 AM AEST",
+ "generated_at": "2026-10-25T07:14:37+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 07:14 AM AEST",
  "home": {
   "name": "Twin Waters, QLD",
   "lat": -26.6336,
@@ -82,9 +82,9 @@
   {
    "name": "Petrie Creek and Bli Bli",
    "station_type": "Automatic",
-   "time": "06.35AM Sun",
-   "height_m": 0.95,
-   "height_raw": "0.95",
+   "time": "06.58AM Sun",
+   "height_m": 1.0,
+   "height_raw": "1.00",
    "datum": "LGH",
    "tendency": "rising",
    "crossing": "",
@@ -114,7 +114,7 @@
    "computed_class": "Below Flood Level",
    "next_class": "Minor",
    "next_level_m": 2.7,
-   "delta_m": 1.75,
+   "delta_m": 1.7,
    "above_major_m": null,
    "class_check": "agrees",
    "flood_levels_note": null
@@ -122,9 +122,9 @@
   {
    "name": "Maroochy River at Stoney Wharf Road",
    "station_type": "Automatic",
-   "time": "06.36AM Sun",
-   "height_m": 0.72,
-   "height_raw": "0.72",
+   "time": "06.52AM Sun",
+   "height_m": 0.77,
+   "height_raw": "0.77",
    "datum": "LGH",
    "tendency": "rising",
    "crossing": "",
@@ -154,7 +154,7 @@
    "computed_class": "Below Flood Level",
    "next_class": "Minor",
    "next_level_m": 1.6,
-   "delta_m": 0.88,
+   "delta_m": 0.83,
    "above_major_m": null,
    "class_check": "agrees",
    "flood_levels_note": null
@@ -282,9 +282,9 @@
   {
    "name": "Paynter Creek at Diddillibah",
    "station_type": "Automatic",
-   "time": "06.02AM Sun",
-   "height_m": 2.91,
-   "height_raw": "2.91",
+   "time": "06.55AM Sun",
+   "height_m": 2.96,
+   "height_raw": "2.96",
    "datum": "LGH",
    "tendency": "steady",
    "crossing": "",
@@ -314,7 +314,7 @@
    "computed_class": "Below Flood Level",
    "next_class": "Minor",
    "next_level_m": 4.05,
-   "delta_m": 1.14,
+   "delta_m": 1.09,
    "above_major_m": null,
    "class_check": "agrees",
    "flood_levels_note": null
@@ -362,9 +362,9 @@
   {
    "name": "Maroochy River at Dunethin Rock",
    "station_type": "Automatic",
-   "time": "06.34AM Sun",
-   "height_m": 0.81,
-   "height_raw": "0.81",
+   "time": "06.52AM Sun",
+   "height_m": 0.86,
+   "height_raw": "0.86",
    "datum": "LGH",
    "tendency": "rising",
    "crossing": "",
@@ -394,7 +394,7 @@
    "computed_class": "Below Flood Level",
    "next_class": "Minor",
    "next_level_m": 2.85,
-   "delta_m": 2.04,
+   "delta_m": 1.99,
    "above_major_m": null,
    "class_check": "agrees",
    "flood_levels_note": null
@@ -482,7 +482,7 @@
   {
    "name": "Petrie Creek at Warana Bridge",
    "station_type": "Automatic",
-   "time": "06.14AM Sun",
+   "time": "06.53AM Sun",
    "height_m": 2.59,
    "height_raw": "2.59",
    "datum": "LGH",
@@ -954,7 +954,7 @@
   {
    "name": "Poona Dam HW",
    "station_type": "Automatic",
-   "time": "04.20AM Sun",
+   "time": "05.20AM Sun",
    "height_m": 152.74,
    "height_raw": "152.74",
    "datum": "AHD",
@@ -986,7 +986,7 @@
   {
    "name": "Mooloolah River at Ewen Maddock Dam HW",
    "station_type": "Automatic",
-   "time": "04.00AM Sun",
+   "time": "05.00AM Sun",
    "height_m": 25.8,
    "height_raw": "25.80",
    "datum": "AHD",

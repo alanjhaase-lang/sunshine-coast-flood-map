@@ -27,16 +27,22 @@ jobs:
         run: python update_data.py
 
       # Independent of the gauge step: runs (and commits) even if BOM failed.
-      - name: Fetch QLDTraffic flood closures and cameras (closures.json, cameras.json)
+      - name: Fetch QLDTraffic events and cameras (closures, roadworks, hazards, crashes, cameras)
         if: ${{ !cancelled() }}
         run: python update_roads.py
+
+      # Mooloolaba tide predictions (tides.json); a failure keeps the old file.
+      - name: Fetch BOM tide predictions (tides.json)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: python update_tides.py
 
       - name: Commit data files if they changed
         if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json stations.json flood_levels.json closures.json cameras.json
+          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json
           if git diff --cached --quiet; then
             echo "No changes."
           else

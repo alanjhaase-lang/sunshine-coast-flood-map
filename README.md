@@ -3,7 +3,8 @@
 **Live map: https://alanjhaase-lang.github.io/sunshine-coast-flood-map/**
 
 A self-updating static web map (Leaflet + OpenStreetMap) of Bureau of Meteorology
-river-height gauges, QLDTraffic flood road closures and flood cameras, and rain radar for the
+river-height gauges, a Mooloolaba coastal tide card, QLDTraffic flood road closures, roadworks, hazards,
+crashes and flood cameras, and rain radar for the
 Twin Waters on the Sunshine Coast, Queensland. A Twin Waters–centred spin-off of the
 [Westbrook flood map](https://github.com/alanjhaase-lang/westbrook-flood-map).
 
@@ -28,9 +29,43 @@ Gauges, closures and cameras are all filtered with the same circle. Each gauge i
 `region`, `region_name`, `distance_km` (to the centre) and `distance_from`.
 
 The map has a collapsible panel (top right; collapsed by default on phones) showing the area with
-its gauge count, in-flood count and a *Zoom* button, then the layers: **River gauges** (with an
-*In flood only* filter), **Road closures (flooding)**, **Flood cameras** and **Rain radar**.
+its gauge count, in-flood count and a *Zoom* button, a **Coastal tide** card, then the layers:
+**River gauges** (with an *In flood only* filter), **Road closures (flooding)**, **Flood cameras**,
+**Roadworks**, **Hazards**, **Crashes** and **Rain radar**.
 Settings persist in `localStorage` under `twinfo.*` keys (separate from the Westbrook map).
+
+### Gauges approaching the next flood class (flashing markers)
+
+A gauge with a current reading and official flood levels that is within **0.2 m** of its next class
+(`0 < delta_m <= 0.2` in `data.json`) pulses between its current colour and the next class colour:
+green↔yellow (below flood level, approaching Minor), yellow↔orange (Minor, approaching Moderate) and
+orange↔red (Moderate, approaching Major). The popup and the tide card say *Approaching …*. Gauges with
+no levels, no reading, or more than 0.2 m to go do not flash. With `prefers-reduced-motion` the marker
+shows a static half/half colour instead. `NEAR_NEXT_M` in `index.html` sets the threshold.
+
+### Coastal tide card
+
+The panel's **Coastal tide** card shows:
+
+- the live BOM **Mooloolaba Tide** gauge from `data.json` (height, tendency arrow, reading time, datum,
+  distance to Minor, and a warning when it is in flood or within 0.2 m of the next class);
+- the **next high and next low** (time AEST and predicted height) for Mooloolaba from `tides.json`.
+  `update_tides.py` (stdlib) fetches 7 days of BOM tide predictions (location `QLD_TP019`) from the BOM
+  tide-predictions print page, which carries machine-readable `data-time-local` attributes; if that
+  fails it falls back to BOM's `getNextTides.php` JSON (next high/low only). The browser picks the next
+  high/low from the list, so the file only changes once a day and still works if a run is missed;
+- a *Show gauge* button (zooms to the gauge and opens its popup, which also lists next high/low), links
+  to the BOM tide table, the [Sunshine Coast waters forecast](https://www.bom.gov.au/qld/forecasts/sunshine-coast-waters.shtml)
+  and the gauge plot;
+- a one-line storm tide / coastal inundation note pointing to [BOM warnings](https://www.bom.gov.au/qld/warnings/)
+  and the [Sunshine Coast Disaster Hub](https://disaster.sunshinecoast.qld.gov.au/). No storm-surge heights
+  are shown or estimated.
+
+Predictions are astronomical only (no wind, surge or flood effects) and use the BOM tide-table datum,
+which may differ from the gauge datum (LGH). Per BOM's
+[Tidal Information Conditions of Use](https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf),
+the card shows "Tide predictions © Commonwealth of Australia, Bureau of Meteorology" and a *disclaimer*
+link that expands BOM's required disclaimer text (also stored in `tides.json`).
 
 ### Rain radar overlay
 
@@ -80,9 +115,20 @@ kept. They are **not** hidden by *In flood only*, which applies to gauges only.
   `image_time` / `image_stale` (shown in the popup, grey icon). Recording a fresh time would change the
   file, and so commit, every run. Many TMR cameras only update 6am–6pm.
 
+- **Roadworks / Hazards / Crashes** – `roadworks.json`, `hazards.json`, `crashes.json`, built by
+  `update_roads.py` from the same events fetch and the same rules as closures (circle, Queensland bbox,
+  plausible road name, Published, not ended, duplicate ids dropped), keeping `event_type` `Roadworks`,
+  `Hazard` or `Crash`. Flood-related events stay in `closures.json` only. Each file has `generated_at`,
+  `attribution` (CC BY 4.0), `count`, `regions`, `excluded` and a list under the layer name with the
+  closures fields plus `end` and `priority`. Icons: orange cone (roadworks), amber warning diamond
+  (hazard), red ✕ (crash); lines in the same colour, solid when closed, dashed otherwise. Events that
+  have not started yet are faded and counted as *upcoming*. All three default **on**
+  (`twinfo.roadworks.v1`, `twinfo.hazards.v1`, `twinfo.crashes.v1`).
+
 On a fetch failure the previous file is kept with `stale: true`, `stale_since` and `stale_reason`
 (the panel shows a warning). Like `data.json`, the files are only rewritten when something other than
-`generated_at*` changes. The map re-fetches both every 5 minutes with `data.json`.
+`generated_at*` or the `source` block (feed timestamp, API vs fallback) changes. The map re-fetches them
+every 5 minutes with `data.json`.
 
 BOM radar is not used: BOM radar images are restricted content that needs a data licence to
 republish, and BOM's radar WMS (GIS2Web) is registered-user only.
@@ -99,9 +145,10 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
   `build_flood_levels.py` rebuilds it.
 - `build_stations.py` – one-off rebuild of `stations.json` across candidate
   bulletins, including a flagged Nominatim geocode fallback.
-- `update_roads.py` – stdlib-only; writes `closures.json` and `cameras.json` from QLDTraffic
-  (see *Road closures* above). Imports `REGIONS` from `update_data.py`.
-- `index.html` – the map. Re-fetches `data.json`, `closures.json`, `cameras.json` (and the radar
+- `update_roads.py` – stdlib-only; writes `closures.json`, `roadworks.json`, `hazards.json`,
+  `crashes.json` and `cameras.json` from QLDTraffic (see above). Imports `REGIONS` from `update_data.py`.
+- `update_tides.py` – stdlib-only; writes `tides.json` (Mooloolaba tide predictions, see *Coastal tide card*).
+- `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json` (and the radar
   frame list) every 5 minutes.
 - `.github/workflows/update.yml` – runs every 30 minutes (and manually), runs both scripts (the road
   step runs even if the BOM step fails) and commits the data files when they change.
@@ -155,7 +202,7 @@ Coordinates, in priority order (`source` field in `stations.json`):
 - Hosted on GitHub Pages from `main`, folder `/` (root):
   https://alanjhaase-lang.github.io/sunshine-coast-flood-map/
 - `.github/workflows/update.yml` runs every 30 minutes (and on demand via *Run workflow*), runs
-  `update_data.py` then `update_roads.py`, and commits the data files when they change; Pages redeploys
+  `update_data.py`, `update_roads.py` and `update_tides.py`, and commits the data files when they change; Pages redeploys
   after each data commit. The map itself re-fetches the data every 5 minutes.
 
 Note: GitHub's cron is best-effort (runs can be delayed), and scheduled workflows are
@@ -166,7 +213,8 @@ activity, but if it stops, re-enable it in the Actions tab.
 
 ```sh
 python3 update_data.py           # writes data.json
-python3 update_roads.py          # writes closures.json, cameras.json
+python3 update_roads.py          # writes closures/roadworks/hazards/crashes/cameras.json
+python3 update_tides.py          # writes tides.json
 python3 -m http.server 8000      # open http://localhost:8000/
 ```
 

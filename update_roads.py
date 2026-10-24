@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Twin Waters Info: fetch QLDTraffic flood road events and flood
-cameras, keep those inside the Twin Waters circle (REGIONS / RADIUS_KM,
-shared with update_data.py, so the same centre and radius as the gauges) and
-write closures.json and cameras.json.
+"""Twin Waters Info: fetch QLDTraffic road events and flood cameras, keep
+those inside the Twin Waters circle (REGIONS / RADIUS_KM, shared with
+update_data.py, so the same centre and radius as the gauges) and write
+closures.json (flooding), roadworks.json, hazards.json, crashes.json and
+cameras.json.
 
 Standard library only. A failed fetch keeps the previous file (marked stale).
 Files are only rewritten when something other than generated_at* changes, so
@@ -26,6 +27,13 @@ from update_data import REGIONS, UA, haversine_km
 HERE = os.path.dirname(os.path.abspath(__file__))
 CLOSURES_FILE = os.path.join(HERE, "closures.json")
 CAMERAS_FILE = os.path.join(HERE, "cameras.json")
+# Non-flood event layers: (file, json key, QLDTraffic event_type, label).
+# Flood-related events always go to closures.json only (never duplicated here).
+EVENT_LAYERS = [
+    (os.path.join(HERE, "roadworks.json"), "roadworks", "Roadworks", "roadworks"),
+    (os.path.join(HERE, "hazards.json"), "hazards", "Hazard", "hazards"),
+    (os.path.join(HERE, "crashes.json"), "crashes", "Crash", "crashes"),
+]
 BNE = ZoneInfo("Australia/Brisbane")
 
 # Public key from the QLDTraffic API specification v1.10, section 2.1.2
@@ -197,12 +205,23 @@ def fetch_events():
 
 
 def build_closures(feats):
+    return build_events(feats, is_flood)
+
+
+def build_events(feats, want):
+    """Events matching want(properties) with a vertex inside the circle.
+    Returns (items, excluded). Duplicate ids (the feed occasionally repeats
+    an event) are kept once."""
     now = now_bne()
-    out, excluded = [], []
+    out, excluded, seen = [], [], set()
     for f in feats:
         p = (f or {}).get("properties") or {}
-        if not is_flood(p):
+        if not want(p):
             continue
+        if p.get("id") is not None:
+            if p.get("id") in seen:
+                continue
+            seen.add(p.get("id"))
         pts, lines = parts(f.get("geometry"))
         verts = pts + [v for line in lines for v in line]
         if not verts:
@@ -232,6 +251,7 @@ def build_closures(feats):
         src = p.get("source") or {}
         upd = parse_time(p.get("last_updated"))
         start = parse_time((p.get("duration") or {}).get("start"))
+        end = parse_time((p.get("duration") or {}).get("end"))
         link = p.get("web_link") if str(p.get("web_link") or "").startswith("https://") else QLDTRAFFIC
         out.append({
             "id": p.get("id"),
@@ -250,6 +270,8 @@ def build_closures(feats):
             "information": tidy(p.get("information")),
             "status": p.get("status"),
             "start": iso(start),
+            "end": iso(end),
+            "priority": tidy(p.get("event_priority")),
             "last_updated": iso(upd),
             "last_updated_text": text(upd),
             "provided_by": tidy(src.get("provided_by")),
@@ -353,7 +375,10 @@ def load(path):
 
 
 def strip(d):
-    return {k: v for k, v in (d or {}).items() if not k.startswith("generated_at")}
+    """Comparison copy without volatile fields (generated_at*, and the source
+    block: feed timestamp, API-vs-fallback, HTTP 429 notes), so a file is only
+    rewritten (and committed) when the events themselves change."""
+    return {k: v for k, v in (d or {}).items() if not k.startswith("generated_at") and k != "source"}
 
 
 def write_if_changed(path, data, old):
@@ -389,10 +414,11 @@ def stamp():
     return {"generated_at": iso(t), "generated_at_text": text(t)}
 
 
-def update_closures():
+def update_closures(feats, source, fetch_err):
     old = load(CLOSURES_FILE)
     try:
-        feats, source = fetch_events()
+        if fetch_err:
+            raise RuntimeError(fetch_err)
         items, excluded = build_closures(feats)
     except Exception as e:  # noqa: BLE001
         print(f"WARN: closures failed: {e}", file=sys.stderr)
@@ -416,6 +442,38 @@ def update_closures():
     write_if_changed(CLOSURES_FILE, data, old)
     print("closures: " + ", ".join(f'{r["id"]}={r["closed"]} closed/{r["partial"]} partial'
                                    for r in data["regions"]) + f"; excluded {len(excluded)}")
+    return True
+
+
+def update_event_layer(path, key, event_type, label, feats, source, fetch_err):
+    old = load(path)
+    if fetch_err:
+        mark_stale(path, old, fetch_err)
+        return False
+    try:
+        items, excluded = build_events(feats, lambda p: p.get("event_type") == event_type and not is_flood(p))
+    except Exception as e:  # noqa: BLE001
+        print(f"WARN: {label} failed: {e}", file=sys.stderr)
+        mark_stale(path, old, str(e))
+        return False
+    data = dict(stamp(), **{
+        "stale": False,
+        "source": source,
+        "attribution": ATTRIBUTION,
+        "licence": LICENCE_URL,
+        "filter": f"event_type == '{event_type}' and not flood-related (those are in closures.json); any vertex "
+                  "inside the Twin Waters circle (20 km). severity 'closed' = road closed / all lanes blocked, "
+                  "'partial' = anything else (lanes affected, restricted, delays). start/end = QLDTraffic "
+                  "duration (end null = until further notice). Coordinates [lat, lon].",
+        "regions": region_counts(items, lambda m: {
+            "closed": sum(1 for x in m if x["severity"] == "closed"),
+            "partial": sum(1 for x in m if x["severity"] == "partial")}),
+        "count": len(items),
+        "excluded": excluded,
+        key: items,
+    })
+    write_if_changed(path, data, old)
+    print(f"{label}: {len(items)} in circle; excluded {len(excluded)}")
     return True
 
 
@@ -448,7 +506,15 @@ def update_cameras():
 
 
 def main():
-    ok1 = update_closures()
+    feats, source, err = None, None, None
+    try:
+        feats, source = fetch_events()
+    except Exception as e:  # noqa: BLE001
+        err = str(e)
+        print(f"WARN: events fetch failed: {err}", file=sys.stderr)
+    ok1 = update_closures(feats, source, err)
+    for path, key, event_type, label in EVENT_LAYERS:
+        update_event_layer(path, key, event_type, label, feats, source, err)
     ok2 = update_cameras()
     if not (ok1 or ok2):
         raise SystemExit("both QLDTraffic fetches failed; previous files kept")

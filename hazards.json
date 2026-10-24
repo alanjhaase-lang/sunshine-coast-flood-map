@@ -1,0 +1,28 @@
+{
+ "generated_at": "2026-10-25T07:10:20+10:00",
+ "generated_at_text": "Sun 25 Oct 2026 07:10 AM AEST",
+ "stale": false,
+ "source": {
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-10-25T07:08:15+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
+ },
+ "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
+ "licence": "https://creativecommons.org/licenses/by/4.0/",
+ "filter": "event_type == 'Hazard' and not flood-related (those are in closures.json); any vertex inside the Twin Waters circle (20 km). severity 'closed' = road closed / all lanes blocked, 'partial' = anything else (lanes affected, restricted, delays). start/end = QLDTraffic duration (end null = until further notice). Coordinates [lat, lon].",
+ "regions": [
+  {
+   "id": "twinwaters",
+   "name": "Twin Waters",
+   "count": 0,
+   "closed": 0,
+   "partial": 0
+  }
+ ],
+ "count": 0,
+ "excluded": [],
+ "hazards": []
+}
