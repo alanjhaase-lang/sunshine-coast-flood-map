@@ -1,4 +1,4 @@
-name: Update Sunshine Coast flood data
+name: Update Twin Waters Info flood data
 
 on:
   schedule:

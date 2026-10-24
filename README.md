@@ -1,10 +1,10 @@
-# Sunshine Coast flood map
+# Twin Waters Info
 
 **Live map: https://alanjhaase-lang.github.io/sunshine-coast-flood-map/**
 
 A self-updating static web map (Leaflet + OpenStreetMap) of Bureau of Meteorology
 river-height gauges, QLDTraffic flood road closures and flood cameras, and rain radar for the
-Sunshine Coast, Queensland. A Sunshine Coast-only spin-off of the
+Twin Waters on the Sunshine Coast, Queensland. A Twin Waters–centred spin-off of the
 [Westbrook flood map](https://github.com/alanjhaase-lang/westbrook-flood-map).
 
 > **Disclaimer:** Unofficial community map. Data from the Bureau of Meteorology may be delayed or
@@ -14,7 +14,7 @@ Sunshine Coast, Queensland. A Sunshine Coast-only spin-off of the
 > and call SES 132 500 or 000 in an emergency.
 >
 > The map shows this as a short line in the header panel and as a notice on first visit
-> (dismissal remembered in `localStorage` key `scfloodmap.disclaimer.v1`; the *more* link reopens it).
+> (dismissal remembered in `localStorage` key `twinfo.disclaimer.v1`; the *more* link reopens it).
 
 ## Area
 
@@ -22,7 +22,7 @@ One great-circle circle (`HOME`, `RADIUS_KM` and `REGIONS` in `update_data.py`):
 
 | Area | Centre | Radius | Covers |
 |---|---|---|---|
-| Sunshine Coast (`sunshine`) | -26.62, 153.03 (between Maroochydore and Nambour) | 40 km | Caloundra to Noosa plus the Blackall Range / upper Mary hinterland |
+| Twin Waters (`twinwaters`) | -26.6336, 153.0814 | 20 km | Mudjimba / Maroochydore / Pacific Paradise / Coolum approaches |
 
 Gauges, closures and cameras are all filtered with the same circle. Each gauge in `data.json` has
 `region`, `region_name`, `distance_km` (to the centre) and `distance_from`.
@@ -30,7 +30,7 @@ Gauges, closures and cameras are all filtered with the same circle. Each gauge i
 The map has a collapsible panel (top right; collapsed by default on phones) showing the area with
 its gauge count, in-flood count and a *Zoom* button, then the layers: **River gauges** (with an
 *In flood only* filter), **Road closures (flooding)**, **Flood cameras** and **Rain radar**.
-Settings persist in `localStorage` under `scfloodmap.*` keys (separate from the Westbrook map).
+Settings persist in `localStorage` under `twinfo.*` keys (separate from the Westbrook map).
 
 ### Rain radar overlay
 
@@ -53,8 +53,8 @@ nowcast), one colour scheme (Universal Blue, scale shown in the panel), max tile
 
 Two more panel checkboxes, both from [QLDTraffic](https://qldtraffic.qld.gov.au/)
 (Road data © State of Queensland (QLDTraffic), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/),
-shown in the map attribution). On/off persists in `localStorage` (`scfloodmap.closures.v1`, default on;
-`scfloodmap.cameras.v1`, default off). Only items with a vertex inside the Sunshine Coast circle are
+shown in the map attribution). On/off persists in `localStorage` (`twinfo.closures.v1`, default on;
+`twinfo.cameras.v1`, default off). Only items with a vertex inside the Twin Waters circle are
 kept. They are **not** hidden by *In flood only*, which applies to gauges only.
 
 - **Road closures** – `closures.json`, built by `update_roads.py` from QLDTraffic events. Source order:
@@ -64,7 +64,7 @@ kept. They are **not** hidden by *In flood only*, which applies to gauges only.
   `https://data.qldtraffic.qld.gov.au/events_v2.geojson` (same structure, updated every minute).
   `source.used` records `api` or `fallback`. Kept: `event_type == "Flooding"` or `event_due_to`
   containing "flood" (this includes *Road damage – earlier flooding* hazards), with any vertex inside the
-  Sunshine Coast circle. Dropped (listed in `excluded` with a reason): any vertex outside a Queensland bounding
+  Twin Waters circle. Dropped (listed in `excluded` with a reason): any vertex outside a Queensland bounding
   box, implausible road names (non-ASCII/garbage, e.g. a bad reverse geocode), status other than
   Published, or an end time in the past. `severity` is `closed` (road closed to all/through traffic,
   all lanes blocked) or `partial` (lanes affected, 4WD-only, partial closures). Drawn as a red
@@ -73,7 +73,7 @@ kept. They are **not** hidden by *In flood only*, which applies to gauges only.
   link to qldtraffic.qld.gov.au. Coordinates in `closures.json` are `[lat, lon]`
   (`marker`, `geometry.points`, `geometry.lines`).
 - **Flood cameras** – `cameras.json`, from `https://data.qldtraffic.qld.gov.au/floodcameras.geojson`
-  filtered to the Sunshine Coast circle. The popup loads the **live** image straight from `cameras.qldtraffic.qld.gov.au`
+  filtered to the Twin Waters circle. The popup loads the **live** image straight from `cameras.qldtraffic.qld.gov.au`
   (https, S3/CloudFront, no hotlink protection) with a `?t=<now>` cache-buster each time it opens; if the
   image fails it shows a link instead. The image server sends no CORS headers, so the browser cannot read
   the image time; instead the update job HEADs each image and, only when it is older than 3 h, records
@@ -89,7 +89,7 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
 
 - `update_data.py` – stdlib-only Python 3.9+ script. Fetches the BOM river height
   bulletins, parses every row, joins coordinates from `stations.json`, keeps
-  gauges inside the Sunshine Coast circle and writes `data.json` (timestamp in Australia/Brisbane).
+  gauges inside the Twin Waters circle and writes `data.json` (timestamp in Australia/Brisbane).
   If only the timestamp would change, `data.json` is left untouched so the
   workflow doesn't make empty commits.
 - `stations.json` – cached station-number → lat/lon lookup. New station numbers
@@ -139,7 +139,7 @@ Bulletins (configured in `BULLETINS` in `update_data.py`):
 | [IDQ60287](https://www.bom.gov.au/fwo/IDQ60287.html) (primary) | Mooloolah, Maroochy, Noosa, Mary | Sunshine Coast and hinterland (upper Mary) |
 | [IDQ60286](https://www.bom.gov.au/fwo/IDQ60286.html) | Stanley, Brisbane, Bremer, Lockyer, Pine/Caboolture | upper Stanley River gauges on the southern edge of the circle |
 
-Other Qld bulletins have no gauges within the 40 km circle. If a bulletin fails to download, the
+Other Qld bulletins have no gauges within the 20 km circle. If a bulletin fails to download, the
 previous readings for that bulletin are kept (marked `stale` in `bulletins`).
 
 The update scripts send a browser-like `User-Agent` header (BOM returns HTTP 403 to default clients).

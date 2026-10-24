@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Sunshine Coast flood map: fetch BOM Queensland river height bulletins,
-join station coordinates, keep gauges within RADIUS_KM of the Sunshine Coast
-centre and write data.json.
+"""Twin Waters Info: fetch BOM Queensland river height bulletins,
+join station coordinates, keep gauges within RADIUS_KM of Twin Waters
+and write data.json.
 
 Standard library only.
 """
@@ -21,20 +21,20 @@ UA = ("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
       "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 BOM = "https://www.bom.gov.au"
 
-# Sunshine Coast, QLD: centre between Maroochydore and Nambour.
-HOME = {"name": "Sunshine Coast, QLD", "lat": -26.6200, "lon": 153.0300}
-RADIUS_KM = 40.0
+# Twin Waters, Sunshine Coast QLD (official place coords ~ -26.6336, 153.0814).
+HOME = {"name": "Twin Waters, QLD", "lat": -26.6336, "lon": 153.0814}
+RADIUS_KM = 20.0
 
 # A single region: a great-circle circle of RADIUS_KM around HOME. Kept as a
 # list so the region-aware code (and data.json "regions") stays unchanged.
 REGIONS = [
-    {"id": "sunshine", "name": "Sunshine Coast", "short": "Sunshine Coast",
+    {"id": "twinwaters", "name": "Twin Waters", "short": "Twin Waters",
      "lat": HOME["lat"], "lon": HOME["lon"], "radius_km": RADIUS_KM,
-     "centre_name": "Sunshine Coast (between Maroochydore and Nambour)", "color": "#c2185b"},
+     "centre_name": "Twin Waters", "color": "#0277bd"},
 ]
 
 # Bulletins listed on https://www.bom.gov.au/qld/flood/rain_river.shtml that
-# contain gauges inside the Sunshine Coast circle (see README).
+# contain gauges inside the Twin Waters circle (see README).
 BULLETINS = [
     ("IDQ60287", "Mooloolah, Maroochy, Noosa, Mary"),
     ("IDQ60286", "Stanley, Brisbane, Bremer, Lockyer, Ipswich/Brisbane Creeks, Pine/Caboolture"),

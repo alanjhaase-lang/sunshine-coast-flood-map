@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="data:,">
-<title>Sunshine Coast flood map: river gauges, road closures &amp; flood cameras</title>
+<title>Twin Waters Info: river gauges, road closures &amp; flood cameras</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -132,7 +132,7 @@ function effectiveClass(s) {
 }
 function esc(s) { return String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
 
-const map = L.map("map", { zoomControl: true }).setView([-26.62, 153.03], 10);
+const map = L.map("map", { zoomControl: true }).setView([-26.6336, 153.0814], 11);
 L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
   maxZoom: 18,
   attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors | Data: <a href="https://www.bom.gov.au/qld/flood/rain_river.shtml">Bureau of Meteorology</a>'
@@ -140,9 +140,9 @@ L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
 map.attributionControl.addAttribution('Road data &copy; State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>), ' +
   '<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>');
 
-const LS_FLOOD = "scfloodmap.floodOnly.v1", LS_OPEN = "scfloodmap.panelOpen.v1",
-      LS_RADAR = "scfloodmap.radar.v1", LS_CLOSURES = "scfloodmap.closures.v1", LS_CAMERAS = "scfloodmap.cameras.v1",
-      LS_GAUGES = "scfloodmap.gauges.v1";
+const LS_FLOOD = "twinfo.floodOnly.v1", LS_OPEN = "twinfo.panelOpen.v1",
+      LS_RADAR = "twinfo.radar.v1", LS_CLOSURES = "twinfo.closures.v1", LS_CAMERAS = "twinfo.cameras.v1",
+      LS_GAUGES = "twinfo.gauges.v1";
 let gaugesOn = lsGet(LS_GAUGES, true) !== false;
 function lsGet(k, dflt) { try { const v = localStorage.getItem(k); return v == null ? dflt : JSON.parse(v); } catch (e) { return dflt; } }
 function lsSet(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch (e) {} }
@@ -154,7 +154,7 @@ let lastData = null, fitted = false, uiBuilt = false;
 function isOn(id) { return true; }              // single area: always shown
 function inFlood(s) { return ["minor", "moderate", "major"].includes(classKey(effectiveClass(s))); }
 
-const LS_NOTICE = "scfloodmap.disclaimer.v1";
+const LS_NOTICE = "twinfo.disclaimer.v1";
 const DISCLAIMER = 'Unofficial community map. Data from the Bureau of Meteorology may be delayed or contain ' +
   'faulty readings. Do not rely on it for safety decisions. Check ' +
   '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings (bom.gov.au)</a>, ' +
@@ -174,7 +174,7 @@ if (!lsGet(LS_NOTICE, false)) showNotice();
 const info = L.control({ position: "topright" });
 info.onAdd = () => {
   const d = L.DomUtil.create("div", "panel title");
-  d.innerHTML = '<div class="hdr" id="hdr"><b>Sunshine Coast flood map</b>' +
+  d.innerHTML = '<div class="hdr" id="hdr"><b>Twin Waters Info</b>' +
     '<span class="chev" id="chev"></span></div>' +
     '<div class="disc">Unofficial community map \u2014 not for safety decisions. ' +
     '<a href="https://www.bom.gov.au/qld/warnings/" target="_blank" rel="noopener">BOM warnings</a> &middot; ' +
@@ -200,7 +200,7 @@ legend.onAdd = () => {
     LABELS.map(([k, t]) => `<i style="background:${COLORS[k]}"></i>${t}`).join("<br>") +
     "<br><b>Tendency</b><br>\u2191 rising &nbsp; \u2193 falling &nbsp; \u2013 steady &nbsp; ? unknown" +
     "<br><span style='opacity:.7'>Dashed = no current reading</span>" +
-    "<br>Dashed circle = Sunshine Coast area (40 km)" +
+    "<br>Dashed circle = Twin Waters area (20 km)" +
     "<br><b>Roads (QLDTraffic, flooding)</b>" +
     "<br><span class='sym'><span class='ne'></span></span>Road closed <span class='ln'></span>" +
     "<br><span class='sym'><span class='ne part'></span></span>Lanes affected / restricted <span class='ln part'></span>" +
@@ -299,7 +299,7 @@ function popupHtml(s) {
     ["Tendency", esc(s.tendency) || "\u2014"],
     ["Flood class", esc(s.flood_class) || (s.computed_class ? esc(s.computed_class) + ' <span style="color:#777">(from levels)</span>' : "\u2014")],
     ...floodRows(s),
-    ["Distance", `${s.distance_km} km from ${esc(s.distance_from || "Sunshine Coast centre")}`],
+    ["Distance", `${s.distance_km} km from ${esc(s.distance_from || "Twin Waters")}`],
     ["Location", `${s.lat.toFixed(4)}, ${s.lon.toFixed(4)} (${geo})`],
     ["Bulletin", `<a href="https://www.bom.gov.au/fwo/${esc(s.bulletin)}.html" target="_blank" rel="noopener">${esc(s.bulletin)}</a>`]
   ];
@@ -310,8 +310,8 @@ function popupHtml(s) {
 
 function legacyRegions(data) {  // fallback if data.json has no regions list
   const h = data.home;
-  return [{ id: "sunshine", name: "Sunshine Coast", lat: h.lat, lon: h.lon, radius_km: data.radius_km,
-            centre_name: h.name, color: "#c2185b", count: data.count }];
+  return [{ id: "twinwaters", name: "Twin Waters", lat: h.lat, lon: h.lon, radius_km: data.radius_km,
+            centre_name: h.name, color: "#0277bd", count: data.count }];
 }
 
 function syncGauges() {
@@ -335,14 +335,14 @@ function buildGaugesUi() {
 function updateGaugeCount() {
   const c = document.getElementById("ct-gauges"); if (!c || !lastData) return;
   let n = 0, f = 0;
-  for (const s of lastData.stations) { const rid = s.region || "sunshine"; if (groups[rid] && isOn(rid)) { n++; if (inFlood(s)) f++; } }
+  for (const s of lastData.stations) { const rid = s.region || "twinwaters"; if (groups[rid] && isOn(rid)) { n++; if (inFlood(s)) f++; } }
   c.innerHTML = `(${n})` + (f ? ` <span class="fl" title="in flood">\u26A0 ${f} in flood</span>` : "");
 }
 function drawMarkers(data) {
   const counts = {}, floods = {};
   for (const id in groups) { groups[id].markers.clearLayers(); counts[id] = 0; floods[id] = 0; }
   for (const s of data.stations) {
-    const rid = s.region || "sunshine", g = groups[rid];
+    const rid = s.region || "twinwaters", g = groups[rid];
     if (!g) continue;
     counts[rid]++; if (inFlood(s)) floods[rid]++;
     if (floodOnly && !inFlood(s)) continue;
@@ -493,7 +493,7 @@ function buildRoadsUi() {
       <span class="cam" style="width:16px;height:16px;flex:none">${CAM_SVG}</span>
       <span>Flood cameras <span class="ct" id="ct-cameras"></span></span></label>
     <div class="stale" id="roadstale"></div>
-    <div class="note">QLDTraffic, within the Sunshine Coast area. Check <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">qldtraffic.qld.gov.au</a> before travelling.</div>`;
+    <div class="note">QLDTraffic, within the Twin Waters area. Check <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">qldtraffic.qld.gov.au</a> before travelling.</div>`;
   el.querySelector("#rdon").onchange = (e) => { roads.closuresOn = e.target.checked; lsSet(LS_CLOSURES, roads.closuresOn); syncRoadLayers(); };
   el.querySelector("#camon").onchange = (e) => { roads.camerasOn = e.target.checked; lsSet(LS_CAMERAS, roads.camerasOn); syncRoadLayers(); };
 }

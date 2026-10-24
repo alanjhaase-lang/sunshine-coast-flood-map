@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Sunshine Coast flood map: fetch QLDTraffic flood road events and flood
-cameras, keep those inside the Sunshine Coast circle (REGIONS / RADIUS_KM,
+"""Twin Waters Info: fetch QLDTraffic flood road events and flood
+cameras, keep those inside the Twin Waters circle (REGIONS / RADIUS_KM,
 shared with update_data.py, so the same centre and radius as the gauges) and
 write closures.json and cameras.json.
 
@@ -404,7 +404,7 @@ def update_closures():
         "attribution": ATTRIBUTION,
         "licence": LICENCE_URL,
         "filter": "event_type == 'Flooding' or 'flood' in event_due_to (case-insensitive); any vertex inside "
-                  "the Sunshine Coast circle (40 km). severity 'closed' = road closed / all lanes "
+                  "the Twin Waters circle (20 km). severity 'closed' = road closed / all lanes "
                   "blocked, 'partial' = lanes affected, restricted or partial closure. Coordinates [lat, lon].",
         "regions": region_counts(items, lambda m: {
             "closed": sum(1 for x in m if x["severity"] == "closed"),
