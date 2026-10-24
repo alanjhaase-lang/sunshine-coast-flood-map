@@ -27,7 +27,7 @@ jobs:
         run: python update_data.py
 
       # Independent of the gauge step: runs (and commits) even if BOM failed.
-      - name: Fetch QLDTraffic events and cameras (closures, roadworks, hazards, crashes, cameras)
+      - name: Fetch QLDTraffic events and cameras (closures, roadworks, hazards, crashes, flood + traffic cameras)
         if: ${{ !cancelled() }}
         run: python update_roads.py
 
@@ -49,16 +49,22 @@ jobs:
         continue-on-error: true
         run: python update_rain.py
 
+      # BOM daily high/low: Maroochydore town forecast + Sunshine Coast Airport obs (temp.json); a failure keeps the old file.
+      - name: Fetch BOM temperature forecast/observations (temp.json)
+        if: ${{ !cancelled() }}
+        continue-on-error: true
+        run: python update_temp.py
+
       - name: Commit data files if they changed
         if: ${{ !cancelled() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json wind.json rain.json
+          git add data.json stations.json flood_levels.json closures.json cameras.json roadworks.json hazards.json crashes.json tides.json wind.json rain.json temp.json
           if git diff --cached --quiet; then
             echo "No changes."
           else
-            git commit -m "Update river gauge, road, tide, wind and rain data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
+            git commit -m "Update river gauge, road, tide, wind, rain and temperature data $(TZ=Australia/Brisbane date '+%Y-%m-%d %H:%M AEST')"
             git pull --rebase || { git rebase --abort; exit 1; }
             git push
           fi

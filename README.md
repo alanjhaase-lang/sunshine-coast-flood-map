@@ -4,7 +4,7 @@
 
 A self-updating static web map (Leaflet + OpenStreetMap) of Bureau of Meteorology
 river-height gauges, a Mooloolaba coastal tide card, QLDTraffic flood road closures, roadworks, hazards,
-crashes and flood cameras, and rain radar for the
+crashes, flood + traffic cameras, daily high/low temperature and rain radar for the
 Twin Waters on the Sunshine Coast, Queensland. A Twin Waters–centred spin-off of the
 [Westbrook flood map](https://github.com/alanjhaase-lang/westbrook-flood-map).
 
@@ -30,7 +30,7 @@ Gauges, closures and cameras are all filtered with the same circle. Each gauge i
 
 The map has a collapsible panel (top right; collapsed by default on phones) showing the area with
 its gauge count, in-flood count and a *Zoom* button, a **Coastal tide** card, then the layers:
-**River gauges** (with an *In flood only* filter), **Road closures (flooding)**, **Flood cameras**,
+**River gauges** (with an *In flood only* filter), **Road closures (flooding)**, **Cameras** (flood + traffic, one overlay),
 **Roadworks**, **Hazards**, **Crashes** and **Rain radar**.
 Settings persist in `localStorage` under `twinfo.*` keys (separate from the Westbrook map).
 
@@ -108,12 +108,13 @@ nowcast), one colour scheme (Universal Blue, scale shown in the panel), max tile
 (the map upscales z7 tiles when zoomed in, so radar looks blocky at street level) and
 100 requests/IP/minute. Availability is not guaranteed.
 
-### Road closures (flooding) and flood cameras
+### Road closures (flooding) and cameras (flood + traffic)
 
 Two more panel checkboxes, both from [QLDTraffic](https://qldtraffic.qld.gov.au/)
 (Road data © State of Queensland (QLDTraffic), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/),
 shown in the map attribution). On/off persists in `localStorage` (`twinfo.closures.v1`, default on;
-`twinfo.cameras.v1`, default off). Only items with a vertex inside the Twin Waters circle are
+`twinfo.cameras.v1` = `{on, flood, traffic}`, default all on; the old boolean value from the
+flood-only layer is ignored). Only items with a vertex inside the Twin Waters circle are
 kept. They are **not** hidden by *In flood only*, which applies to gauges only.
 
 - **Road closures** – `closures.json`, built by `update_roads.py` from QLDTraffic events. Source order:
@@ -131,8 +132,14 @@ kept. They are **not** hidden by *In flood only*, which applies to gauges only.
   popups show road, locality/LGA, impact, cause, advice, start and last-updated time (AEST) and a
   link to qldtraffic.qld.gov.au. Coordinates in `closures.json` are `[lat, lon]`
   (`marker`, `geometry.points`, `geometry.lines`).
-- **Flood cameras** – `cameras.json`, from `https://data.qldtraffic.qld.gov.au/floodcameras.geojson`
-  filtered to the Twin Waters circle. The popup loads the **live** image straight from `cameras.qldtraffic.qld.gov.au`
+- **Cameras** – one map overlay with a master **Cameras** checkbox (hides/shows every camera) and
+  *Flood* / *Traffic* sub-filters. `cameras.json` merges QLDTraffic flood cameras
+  (`https://data.qldtraffic.qld.gov.au/floodcameras.geojson`, `type: "flood"`, blue circle icon) and traffic
+  web cameras (`https://data.qldtraffic.qld.gov.au/webcameras.geojson`, `type: "traffic"`, dark square icon),
+  filtered to the Twin Waters circle (currently 6 flood + 15 traffic). Each feed fails independently: on an
+  error (e.g. HTTP 429) the previous cameras of that type are kept and `feeds.<type>.stale` is set (shown in
+  the panel and popup). Only QLDTraffic (CC BY 4.0) images are embedded; surf cams (Swellnet, Coastalwatch,
+  Surfline), the MSQ Mooloolaba harbour cam and private/airport cams are deliberately not embedded. The popup loads the **live** image straight from `cameras.qldtraffic.qld.gov.au`
   (https, S3/CloudFront, no hotlink protection) with a `?t=<now>` cache-buster each time it opens; if the
   image fails it shows a link instead. The image server sends no CORS headers, so the browser cannot read
   the image time; instead the update job HEADs each image and, only when it is older than 3 h, records
@@ -173,6 +180,11 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
   `crashes.json` and `cameras.json` from QLDTraffic (see above). Imports `REGIONS` from `update_data.py`.
 - `update_tides.py` – stdlib-only; writes `tides.json` (Mooloolaba tide predictions, see *Coastal tide card*).
 - `update_wind.py` – stdlib-only; writes `wind.json` (BOM wind observations, see *Wind arrows*).
+- `update_temp.py` – stdlib-only; writes `temp.json` for the **temperature chip** (e.g. `20° / 25°`, low / high
+  today): BOM town forecast for Maroochydore (`IDQ11295.xml`, `QLD_PT002`, nearest forecast town, ~4 km) plus
+  Sunshine Coast Airport observations (`IDQ60920.xml`, 040861). BOM drops today's forecast minimum after the
+  morning (and the maximum late in the day); the chip then uses the observed overnight minimum (6pm–9am) / maximum
+  so far and labels it "(obs)". Show/hide and open state persist in `twinfo.temp.v1`.
 - `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json`, `wind.json` (and the radar
   frame list) every 5 minutes.
 - `.github/workflows/update.yml` – runs every 30 minutes (and manually), runs both scripts (the road
@@ -260,6 +272,7 @@ python3 update_roads.py          # writes closures/roadworks/hazards/crashes/cam
 python3 update_tides.py          # writes tides.json
 python3 update_wind.py           # writes wind.json
 python3 update_rain.py           # writes rain.json
+python3 update_temp.py           # writes temp.json
 python3 -m http.server 8000      # open http://localhost:8000/
 ```
 

@@ -1,0 +1,76 @@
+{
+ "generated_at": "2026-10-25T08:48:07+10:00",
+ "stale": false,
+ "forecast_issued": "2026-10-25T03:10:00+10:00",
+ "forecast_stale": false,
+ "forecast": {
+  "aac": "QLD_PT002",
+  "name": "Maroochydore",
+  "days": [
+   {
+    "date": "2026-10-25",
+    "min": null,
+    "max": 25,
+    "precis": "Rain easing. Possible storm.",
+    "icon": 16.0,
+    "pop": "95%"
+   },
+   {
+    "date": "2026-10-26",
+    "min": 20,
+    "max": 31,
+    "precis": "Shower or two. Possible storm.",
+    "icon": 16.0,
+    "pop": "70%"
+   },
+   {
+    "date": "2026-10-27",
+    "min": 19,
+    "max": 27,
+    "precis": "Shower or two.",
+    "icon": 11.0,
+    "pop": "50%"
+   },
+   {
+    "date": "2026-10-28",
+    "min": 19,
+    "max": 27,
+    "precis": "Shower or two.",
+    "icon": 11.0,
+    "pop": "60%"
+   }
+  ]
+ },
+ "forecast_url": "https://www.bom.gov.au/places/qld/maroochydore/forecast/",
+ "obs_stale": false,
+ "obs": {
+  "id": "040861",
+  "wmo": "94569",
+  "name": "Sunshine Coast Airport",
+  "obs_time": "2026-10-25T08:40:00+10:00",
+  "lat": -26.599,
+  "lon": 153.0912,
+  "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
+  "distance_km": 4.0,
+  "temp": 21.5,
+  "max": {
+   "value": 21.7,
+   "time": "2026-10-25T08:26:00+10:00",
+   "start": "2026-10-25T06:00:00+10:00",
+   "end": "2026-10-25T21:00:00+10:00"
+  },
+  "min": {
+   "value": 19.6,
+   "time": "2026-10-24T20:10:00+10:00",
+   "start": "2026-10-24T18:00:00+10:00",
+   "end": "2026-10-25T09:00:00+10:00"
+  }
+ },
+ "source_urls": [
+  "https://www.bom.gov.au/fwo/IDQ11295.xml",
+  "https://www.bom.gov.au/fwo/IDQ60920.xml"
+ ],
+ "attribution": "Forecast and observations © Commonwealth of Australia 2026, Bureau of Meteorology",
+ "method": "Daily min/max = BOM town forecast for Maroochydore (IDQ11295). BOM removes today's minimum after the morning (and today's maximum late in the day); the frontend then uses the Sunshine Coast Airport running observed min (6pm-9am) / max (6am-9pm) from IDQ60920, labelled.",
+ "warnings": []
+}

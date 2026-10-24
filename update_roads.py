@@ -43,6 +43,11 @@ API_KEY = "3e83add325cbb69ac4d8e5bf433d770b"
 EVENTS_API = "https://api.qldtraffic.qld.gov.au/v2/events?apikey=" + API_KEY
 EVENTS_STATIC = "https://data.qldtraffic.qld.gov.au/events_v2.geojson"
 CAMERAS_URL = "https://data.qldtraffic.qld.gov.au/floodcameras.geojson"
+TRAFFIC_CAMERAS_URL = "https://data.qldtraffic.qld.gov.au/webcameras.geojson"
+# Both camera feeds go into one cameras.json (field "type": flood | traffic) so the
+# map can show them as one overlay. Each feed fails independently: a failed feed
+# keeps its previous cameras (that type flagged stale in "feeds").
+CAMERA_FEEDS = [("flood", CAMERAS_URL), ("traffic", TRAFFIC_CAMERAS_URL)]
 QLDTRAFFIC = "https://qldtraffic.qld.gov.au/"
 ATTRIBUTION = "Road data \u00a9 State of Queensland (QLDTraffic), CC BY 4.0"
 LICENCE_URL = "https://creativecommons.org/licenses/by/4.0/"
@@ -313,7 +318,7 @@ def image_info(url):
         return False, None, f"{type(e).__name__}: {e}"
 
 
-def build_cameras(feats):
+def build_cameras(feats, kind="flood"):
     now = now_bne()
     cams = []
     for f in feats:
@@ -332,6 +337,7 @@ def build_cameras(feats):
         reg = hit[0]
         cams.append({
             "id": p.get("id"),
+            "type": kind,
             "name": tidy(p.get("description")),
             "direction": tidy(p.get("direction")),
             "locality": tidy(p.get("locality")),
@@ -479,29 +485,50 @@ def update_event_layer(path, key, event_type, label, feats, source, fetch_err):
 
 def update_cameras():
     old = load(CAMERAS_FILE)
-    try:
-        d = fetch_json(CAMERAS_URL)
-        feats = d.get("features") if isinstance(d, dict) else None
-        if not isinstance(feats, list) or not feats:
-            raise ValueError("no features in response")
-        cams = build_cameras(feats)
-    except Exception as e:  # noqa: BLE001
-        print(f"WARN: cameras failed: {e}", file=sys.stderr)
-        mark_stale(CAMERAS_FILE, old, str(e))
+    old_cams = (old or {}).get("cameras") or []
+    old_feeds = (old or {}).get("feeds") or {}
+    cams, feeds, ok_any = [], {}, False
+    for kind, url in CAMERA_FEEDS:
+        try:
+            d = fetch_json(url)
+            feats = d.get("features") if isinstance(d, dict) else None
+            if not isinstance(feats, list) or not feats:
+                raise ValueError("no features in response")
+            mine = build_cameras(feats, kind)
+            feeds[kind] = {"url": url, "stale": False, "count": len(mine)}
+            ok_any = True
+        except Exception as e:  # noqa: BLE001  (HTTP 429 etc.: keep the last good cameras of this type)
+            print(f"WARN: {kind} cameras failed: {e}", file=sys.stderr)
+            mine = [c for c in old_cams if c.get("type", "flood") == kind]
+            prev = old_feeds.get(kind) or {}
+            feeds[kind] = {"url": url, "stale": True, "count": len(mine),
+                           "stale_since": prev.get("stale_since") if prev.get("stale") else iso(now_bne()),
+                           "stale_reason": str(e)[:200]}
+            for c in mine:
+                c.setdefault("type", kind)
+        cams.extend(mine)
+    if not ok_any:
+        mark_stale(CAMERAS_FILE, old, "; ".join(f["stale_reason"] for f in feeds.values()))
         return False
+    order = {r["id"]: i for i, r in enumerate(REGIONS)}
+    cams.sort(key=lambda c: (order.get(c["region"], 99), c["distance_km"]))
     data = dict(stamp(), **{
         "stale": False,
-        "source": {"url": CAMERAS_URL},
+        "source": {"urls": [u for _, u in CAMERA_FEEDS]},
+        "feeds": feeds,
         "attribution": ATTRIBUTION,
         "licence": LICENCE_URL,
-        "note": "Images load live from image_url. image_time is only recorded when the image is older than "
-                f"{CAM_STALE_HOURS} h at the last check (image_stale=true); image_ok = image URL answered HTTP 200.",
+        "note": "QLDTraffic flood cameras (type=flood) and traffic web cameras (type=traffic) inside the 20 km circle. "
+                "Images load live from image_url. image_time is only recorded when the image is older than "
+                f"{CAM_STALE_HOURS} h at the last check (image_stale=true); image_ok = image URL answered HTTP 200. "
+                "feeds.<type>.stale = that feed failed (e.g. HTTP 429) and its previous cameras are kept.",
         "regions": region_counts(cams),
+        "counts": {k: sum(1 for c in cams if c.get("type") == k) for k, _ in CAMERA_FEEDS},
         "count": len(cams),
         "cameras": cams,
     })
     write_if_changed(CAMERAS_FILE, data, old)
-    print("cameras: " + ", ".join(f'{r["id"]}={r["count"]}' for r in data["regions"]))
+    print("cameras: " + ", ".join(f"{k}={v['count']}{' (stale)' if v['stale'] else ''}" for k, v in feeds.items()))
     return True
 
 

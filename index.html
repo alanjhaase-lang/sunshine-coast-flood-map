@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link rel="icon" href="data:,">
-<title>Twin Waters Info: river gauges, tides, road closures, roadworks &amp; flood cameras</title>
+<title>Twin Waters Info: river gauges, tides, road closures, roadworks &amp; cameras</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
@@ -93,7 +93,14 @@
   .ne.part::after { width: 3px; height: 8px; background: #222; transform: rotate(-45deg); }
   .cam { width: 22px; height: 22px; border-radius: 50%; background: #263238; border: 2px solid #fff; box-sizing: border-box;
          box-shadow: 0 1px 3px rgba(0,0,0,.6); display: flex; align-items: center; justify-content: center; }
+  .cam.flood { background: #0277bd; }                     /* flood camera: blue circle */
+  .cam.traffic { background: #37474f; border-radius: 4px; } /* traffic camera: dark rounded square */
   .cam.old { background: #78909c; }
+  .cambadge { display: inline-block; font-size: 10.5px; font-weight: 600; color: #fff; border-radius: 3px; padding: 0 4px; margin-right: 4px; vertical-align: 1px; }
+  .cambadge.flood { background: #0277bd; } .cambadge.traffic { background: #37474f; }
+  .roads .camsub { display: flex; gap: 12px; padding-left: 22px; }
+  .roads .camsub label { padding: 1px 0; }
+  .roads .camsub.off { opacity: .5; }
   .cam svg { width: 13px; height: 13px; fill: #fff; }
   .legend .sym { display: inline-flex; width: 20px; justify-content: center; margin-right: 4px; vertical-align: -4px; }
   .legend .ln { display: inline-block; width: 18px; height: 0; border-top: 3px solid #d50000; margin: 0 5px 0 1px; vertical-align: 3px; }
@@ -162,6 +169,11 @@
   .tide.rain .days .bars { height: 28px; display: flex; align-items: flex-end; }
   .tide.rain .days .bars i { width: 70%; }
   .tide.rain .days .part i { background: #90b4e6; }
+  /* Temperature chip (same look as the tide / rain chips) */
+  .tide.temp { border-color: #f0d6b8; border-left-color: #ef6c00; background: #fdf7f1; }
+  .tide.temp .chip .tchev, .tide.temp a { color: #8a4b00; }
+  .tide.temp .fc { display: flex; gap: 4px; margin: 3px 0 1px; font-variant-numeric: tabular-nums; }
+  .tide.temp .fc div { flex: 1; text-align: center; font-size: 10.5px; color: #444; min-width: 0; }
   #body { max-height: calc(100vh - 150px); overflow-y: auto; }
   @media (max-width: 600px) { .panel { font-size: 12px; } .title b { font-size: 13px; }
                               .title { max-width: 230px; } .regions label, .roads label { padding: 5px 0; } .sec { margin-top: 5px; } }
@@ -263,14 +275,15 @@ info.onAdd = () => {
   d.innerHTML = '<div class="hdr" id="hdr"><b>Twin Waters Info</b>' +
     '<span class="chev" id="chev"></span></div>' +
     '<div id="body"><div id="upd">Loading\u2026</div><div id="err"></div><div class="sec">Area</div><div class="regions" id="regions"></div>' +
-    '<div class="tide" id="tide">Tide\u2026</div><div class="tide rain" id="rain"></div>' +
-    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="roads" id="rainctl"></div><div class="radar" id="radar"></div>' +
+    '<div class="tide" id="tide">Tide\u2026</div><div class="tide rain" id="rain"></div><div class="tide temp" id="temp"></div>' +
+    '<div class="sec">Layers</div><div class="roads gg" id="gauges"></div><div class="roads" id="roads"></div><div class="roads" id="events"></div><div class="roads" id="wind"></div><div class="roads" id="rainctl"></div><div class="roads" id="tempctl"></div><div class="radar" id="radar"></div>' +
     // standing credits / data notes: bottom of the panel (inside the collapsible body)
-    '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind, rainfall &amp; tide gauge \u00a9 ' +
+    '<div class="credits"><b>Data &amp; credits:</b> river gauges, wind, rainfall, temperature forecasts/observations &amp; tide gauge \u00a9 ' +
     '<a href="https://www.bom.gov.au/" target="_blank" rel="noopener">Bureau of Meteorology</a>; ' +
     'tide predictions \u00a9 Commonwealth of Australia, Bureau of Meteorology (astronomical only, no wind/surge/flood effects; ' +
     'tide-table datum may differ from the gauge) &middot; <details id="tidedet"><summary>tide disclaimer</summary><span id="tidedisctext">Loading\u2026</span></details>; ' +
-    'roads &amp; cameras \u00a9 State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>, CC BY 4.0) \u2014 check QLDTraffic before travelling; ' +
+    'roads, flood cameras &amp; traffic cameras \u00a9 State of Queensland (<a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic</a>, CC BY 4.0) \u2014 check QLDTraffic before travelling; ' +
+    'marina/harbour &amp; surf cams are not embedded (see <a href="https://www.msq.qld.gov.au/" target="_blank" rel="noopener">MSQ</a>, Swellnet, Coastalwatch for their own cams); ' +
     'radar <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>; map \u00a9 OpenStreetMap contributors. ' +
     'More wind maps: <a href="https://www.live-wind.com.au/" target="_blank" rel="noopener">live-wind.com.au</a> (external, not a data source).</div>' +
     '</div>' +
@@ -304,7 +317,8 @@ legend.onAdd = () => {
     "<br><b>Roads (QLDTraffic, flooding)</b>" +
     "<br><span class='sym'><span class='ne'></span></span>Road closed <span class='ln'></span>" +
     "<br><span class='sym'><span class='ne part'></span></span>Lanes affected / restricted <span class='ln part'></span>" +
-    "<br><span class='sym'><span class='cam'>" + CAM_SVG + "</span></span>Flood camera" +
+    "<br><span class='sym'><span class='cam flood'>" + CAM_SVG + "</span></span>Flood camera (QLDTraffic)" +
+    "<br><span class='sym'><span class='cam traffic'>" + CAM_SVG + "</span></span>Traffic camera (QLDTraffic)" +
     "<br><b>Roads (QLDTraffic, other)</b>" +
     "<br><span class='sym'><span class='ev rw'></span></span>Roadworks" +
     "<br><span class='sym'><span class='ev hz'></span></span>Hazard" +
@@ -491,9 +505,15 @@ function render(data) {
 }
 let roadsDrawn = false;
 
-// ---- QLDTraffic layers: road closures (flooding) and flood cameras; built by update_roads.py ----
+// ---- QLDTraffic layers: road closures (flooding) and cameras (flood + traffic, one overlay); built by update_roads.py ----
+// twinfo.cameras.v1 = {on, flood, traffic}. The old boolean (flood cams only, default off) is ignored so the
+// new combined overlay starts ON for everyone.
+const camSaved = (() => { const v = lsGet(LS_CAMERAS, null); return v && typeof v === "object" ? v : {}; })();
+const CAM_TYPES = { flood: "Flood camera", traffic: "Traffic camera" };
+function camType(k) { return k.type === "traffic" ? "traffic" : "flood"; }
 const roads = {
-  closuresOn: lsGet(LS_CLOSURES, true) !== false, camerasOn: lsGet(LS_CAMERAS, false) === true,
+  closuresOn: lsGet(LS_CLOSURES, true) !== false, camerasOn: camSaved.on !== false,
+  camShow: { flood: camSaved.flood !== false, traffic: camSaved.traffic !== false },
   closures: null, cameras: null, cErr: "", kErr: "",
   cGroups: {}, kGroups: {}               // region id -> L.layerGroup
 };
@@ -557,29 +577,37 @@ function cameraPopup(k) {
   const when = k.image_stale && k.image_time
     ? `<span class="warn">Image from ${bneText(k.image_time)} (older than 3 h at last check; camera may be offline or only update 6am\u20136pm)</span>`
     : `Live image, loaded ${fmtBneFull.format(new Date())} AEST`;
-  return `<div class="popup campop"><b>${esc(k.name)}</b>
+  const t = camType(k), feed = ((roads.cameras || {}).feeds || {})[t];
+  const refresh = k.info || (t === "traffic" ? "Traffic camera: image refreshes every few minutes (reopen to reload)."
+                                             : "Flood camera: new images usually every 30 minutes, 6am\u20136pm.");
+  const fstale = feed && feed.stale ? `<div class="warn" style="font-size:11.5px">${CAM_TYPES[t]} list could not be refreshed since ${bneText(feed.stale_since)} (QLDTraffic busy); showing the last known cameras.</div>` : "";
+  return `<div class="popup campop"><span class="cambadge ${t}">${t === "traffic" ? "Traffic" : "Flood"}</span><b>${esc(k.name)}</b>
     <a href="${esc(src)}" target="_blank" rel="noopener" title="Open full image">
-      <img src="${esc(src)}" alt="Flood camera: ${esc(k.name)}" loading="eager"
+      <img src="${esc(src)}" alt="${CAM_TYPES[t]}: ${esc(k.name)}" loading="eager"
            onerror="this.outerHTML='<p class=&quot;warn&quot;>Image could not be loaded \u2014 tap to open it.</p>'"></a>
     <div style="font-size:12px">${when}</div>
-    ${k.info ? `<div style="font-size:11.5px;color:#555;margin-top:2px">${esc(k.info)}</div>` : ""}
-    <div style="font-size:11.5px;color:#555;margin-top:2px">${esc([k.direction && `Facing ${k.direction}`, k.image_sourced_from].filter(Boolean).join(" \u00b7 "))}</div>
+    <div style="font-size:11.5px;color:#555;margin-top:2px">${esc(refresh)}</div>${fstale}
+    <div style="font-size:11.5px;color:#555;margin-top:2px">${esc([k.direction && `Facing ${k.direction}`, k.locality, k.distance_km != null && `${k.distance_km} km`, k.image_sourced_from].filter(Boolean).join(" \u00b7 "))}</div>
     <p style="margin:5px 0 0"><a href="${esc(src)}" target="_blank" rel="noopener">Open image</a> &middot;
-      <a href="https://qldtraffic.qld.gov.au/" target="_blank" rel="noopener">QLDTraffic \u2192</a></p></div>`;
+      <a href="${t === "traffic" ? "https://qldtraffic.qld.gov.au/cameras.html" : "https://qldtraffic.qld.gov.au/"}" target="_blank" rel="noopener">QLDTraffic cameras \u2192</a></p>
+    <div style="font-size:10.5px;color:#777;margin-top:3px">Image \u00a9 State of Queensland (QLDTraffic), <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a></div></div>`;
 }
 function drawCameras() {
   for (const rid in roads.kGroups) roads.kGroups[rid].clearLayers();
   const d = roads.cameras; if (!d) return;
   for (const k of d.cameras || []) {
     if (k.lat == null || !groups[k.region] || !/^https:\/\//.test(k.image_url || "")) continue;
+    const t = camType(k);
+    if (!roads.camShow[t]) continue;                 // sub-filter inside the one Cameras overlay
     const icon = L.divIcon({ className: "", iconSize: [22, 22], iconAnchor: [11, 11], popupAnchor: [0, -10],
-                             html: `<div class="cam${k.image_stale ? " old" : ""}">${CAM_SVG}</div>` });
+                             html: `<div class="cam ${t}${k.image_stale ? " old" : ""}">${CAM_SVG}</div>` });
     // popup content is a function so the cache-busting URL is rebuilt every time it opens
-    L.marker([k.lat, k.lon], { icon, title: "Flood camera: " + k.name, zIndexOffset: 700 })
+    L.marker([k.lat, k.lon], { icon, title: CAM_TYPES[t] + ": " + k.name, zIndexOffset: t === "flood" ? 720 : 700 })
       .bindPopup(() => cameraPopup(k), popOpts({ maxWidth: 300, minWidth: 200 }))
       .addTo(roadGroup(roads.kGroups, k.region));
   }
 }
+const msgs_pending = [];
 function updateRoadCounts() {
   const cc = document.getElementById("ct-closures"), kc = document.getElementById("ct-cameras"), st = document.getElementById("roadstale");
   if (!cc) return;
@@ -588,9 +616,13 @@ function updateRoadCounts() {
     const closed = list.filter(c => c.severity === "closed").length;
     cc.innerHTML = `(${closed} closed, ${list.length - closed} partial)`;
   } else cc.textContent = roads.cErr ? "(unavailable)" : "";
-  if (roads.cameras) kc.textContent = `(${(roads.cameras.cameras || []).filter(k => isOn(k.region)).length})`;
+  const kl = roads.cameras ? (roads.cameras.cameras || []).filter(k => isOn(k.region)) : [];
+  if (roads.cameras) kc.textContent = `(${kl.length})`;
   else kc.textContent = roads.kErr ? "(unavailable)" : "";
-  const msgs = [];
+  for (const t in CAM_TYPES) { const e = document.getElementById("ct-cam-" + t); if (e) e.textContent = roads.cameras ? `(${kl.filter(k => camType(k) === t).length})` : ""; }
+  for (const [t, f] of Object.entries((roads.cameras && roads.cameras.feeds) || {}))
+    if (f.stale) msgs_pending.push(`${CAM_TYPES[t] || t} list not refreshed since ${bneText(f.stale_since)}; showing last known cameras.`);
+  const msgs = msgs_pending.splice(0);
   const age = (d) => d && d.generated_at ? (Date.now() - new Date(d.generated_at)) / 3600e3 : 0;
   if (roads.closures && roads.closures.stale) msgs.push(`Closure feed unavailable since ${bneText(roads.closures.stale_since)}; showing last known closures.`);
   else if (roads.closures && age(roads.closures) > 3) msgs.push(`Closure data last changed ${bneText(roads.closures.generated_at)}.`);
@@ -603,12 +635,27 @@ function buildRoadsUi() {
   el.innerHTML = `<label><input type="checkbox" id="rdon" ${roads.closuresOn ? "checked" : ""}>
       <span class="ne" style="width:14px;height:14px;flex:none"></span>
       <span>Road closures (flooding) <span class="ct" id="ct-closures"></span></span></label>
-    <label><input type="checkbox" id="camon" ${roads.camerasOn ? "checked" : ""}>
-      <span class="cam" style="width:16px;height:16px;flex:none">${CAM_SVG}</span>
-      <span>Flood cameras <span class="ct" id="ct-cameras"></span></span></label>
+    <label title="All QLDTraffic cameras (flood + traffic) in the 20 km circle"><input type="checkbox" id="camon" ${roads.camerasOn ? "checked" : ""}>
+      <span class="cam flood" style="width:16px;height:16px;flex:none">${CAM_SVG}</span>
+      <span>Cameras <span class="ct" id="ct-cameras"></span></span></label>
+    <div class="camsub${roads.camerasOn ? "" : " off"}" id="camsub">
+      <label><input type="checkbox" id="cam-flood" ${roads.camShow.flood ? "checked" : ""} ${roads.camerasOn ? "" : "disabled"}>
+        <span class="cam flood" style="width:13px;height:13px;flex:none;border-width:1px"></span><span>Flood <span class="ct" id="ct-cam-flood"></span></span></label>
+      <label><input type="checkbox" id="cam-traffic" ${roads.camShow.traffic ? "checked" : ""} ${roads.camerasOn ? "" : "disabled"}>
+        <span class="cam traffic" style="width:13px;height:13px;flex:none;border-width:1px"></span><span>Traffic <span class="ct" id="ct-cam-traffic"></span></span></label></div>
     <div class="stale" id="roadstale"></div>`;
   el.querySelector("#rdon").onchange = (e) => { roads.closuresOn = e.target.checked; lsSet(LS_CLOSURES, roads.closuresOn); syncRoadLayers(); };
-  el.querySelector("#camon").onchange = (e) => { roads.camerasOn = e.target.checked; lsSet(LS_CAMERAS, roads.camerasOn); syncRoadLayers(); };
+  const saveCams = () => lsSet(LS_CAMERAS, { on: roads.camerasOn, flood: roads.camShow.flood, traffic: roads.camShow.traffic });
+  el.querySelector("#camon").onchange = (e) => {     // master toggle: hides/shows the whole Cameras overlay
+    roads.camerasOn = e.target.checked; saveCams(); syncRoadLayers();
+    el.querySelector("#camsub").classList.toggle("off", !roads.camerasOn);
+    for (const t in CAM_TYPES) el.querySelector("#cam-" + t).disabled = !roads.camerasOn;
+  };
+  for (const t in CAM_TYPES) el.querySelector("#cam-" + t).onchange = (e) => {
+    roads.camShow[t] = e.target.checked; saveCams();
+    try { drawCameras(); } catch (err) { roads.kErr = "draw failed: " + err.message; }
+    syncRoadLayers();
+  };
 }
 buildRoadsUi();
 async function loadJson(name) {
@@ -955,6 +1002,86 @@ async function loadRain() {
   renderRain();
 }
 
+// ---- Daily high/low temperature: BOM town forecast (Maroochydore) + Sunshine Coast Airport obs (temp.json; update_temp.py) ----
+// BOM removes today's forecast minimum after the morning (and the maximum late in the day); a missing forecast
+// value is filled from the airport's running observed min (6pm-9am) / max (6am-9pm) and labelled "obs".
+const LS_TEMP = "twinfo.temp.v1";
+const tempSaved = lsGet(LS_TEMP, {});
+const temp = { on: tempSaved.on !== false, open: tempSaved.open === true, data: null, err: "" };
+function saveTemp() { lsSet(LS_TEMP, { on: temp.on, open: temp.open }); }
+const BOM_ICON = { 1: "\u2600\ufe0f", 2: "\ud83c\udf19", 3: "\u26c5", 4: "\u2601\ufe0f", 6: "\ud83c\udf2b\ufe0f", 8: "\ud83c\udf26\ufe0f", 9: "\ud83d\udca8",
+  10: "\ud83c\udf2b\ufe0f", 11: "\ud83c\udf26\ufe0f", 12: "\ud83c\udf27\ufe0f", 13: "\ud83d\udca8", 14: "\u2744\ufe0f", 15: "\u2744\ufe0f", 16: "\u26c8\ufe0f", 17: "\ud83c\udf26\ufe0f", 18: "\ud83c\udf27\ufe0f", 19: "\ud83c\udf00" };
+function deg(v) { return v == null ? "\u2014" : Math.round(v) + "\u00b0"; }
+function tempToday() {   // -> {day, lo, hi, loObs, hiObs, label} for today's Brisbane date (or the first forecast day)
+  const d = temp.data; if (!d) return null;
+  const days = (d.forecast && d.forecast.days) || [], o = d.obs || {};
+  const today = new Intl.DateTimeFormat("en-CA", { timeZone: "Australia/Brisbane" }).format(new Date());
+  let day = days.find(x => x.date === today), label = "Today";
+  if (!day) { day = days.find(x => x.date > today); if (day) label = fmtDay.format(new Date(day.date + "T12:00:00+10:00")); }
+  const obsToday = (e) => e && e.value != null && e.end && e.end.slice(0, 10) === today;   // running period ends today
+  let lo = day ? day.min : null, hi = day ? day.max : null, loObs = false, hiObs = false;
+  if (label === "Today" && lo == null && obsToday(o.min)) { lo = o.min.value; loObs = true; }
+  if (label === "Today" && hi == null && obsToday(o.max)) { hi = o.max.value; hiObs = true; }
+  return { day, lo, hi, loObs, hiObs, label, obs: o };
+}
+function renderTemp() {
+  const el = document.getElementById("temp"); if (!el) return;
+  el.style.display = temp.on ? "" : "none";
+  if (!temp.on) { el.innerHTML = ""; return; }
+  const t = tempToday(), d = temp.data;
+  const ico = t && t.day && BOM_ICON[t.day.icon] || "\ud83c\udf21\ufe0f";
+  const sum = t && (t.lo != null || t.hi != null)
+    ? `${t.label === "Today" ? "" : esc(t.label) + " "}<b>${deg(t.lo)}</b> / <b>${deg(t.hi)}</b>${t.obs.temp != null ? ` <span style="color:#666">\u00b7 now ${deg(t.obs.temp)}</span>` : ""}`
+    : temp.err ? "Temp \u2014 unavailable" : "Temp\u2026";
+  const stale = d && (d.stale || d.forecast_stale);
+  const head = `<div class="chip" id="tempchip" role="button" tabindex="0" aria-expanded="${temp.open}"
+      title="Today's low / high: BOM forecast for ${esc(d && d.forecast ? d.forecast.name : "Maroochydore")}${t && (t.loObs || t.hiObs) ? " (part observed at Sunshine Coast Airport)" : ""}. Click for details.">${ico}
+      <span class="sum">${sum}${stale ? " \u23f1" : ""}</span><span class="tchev">${temp.open ? "\u25b4" : "\u25be"}</span></div>`;
+  if (!temp.open || !t) { el.innerHTML = head; bindTempChip(el); return; }
+  const h = [], o = t.obs, fc = d.forecast || {};
+  h.push(`<div class="big">${esc(t.label)}: low ${deg(t.lo)}${t.loObs ? " (obs)" : ""} \u00b7 high ${deg(t.hi)}${t.hiObs ? " (obs so far)" : ""}</div>`);
+  if (t.day) h.push(`<div class="muted">${esc(t.day.precis || "")}${t.day.pop ? ` Chance of rain ${esc(t.day.pop)}.` : ""}</div>`);
+  h.push(`<div class="muted"><b>Forecast:</b> BOM ${esc(fc.name || "Maroochydore")} (nearest forecast town) \u00b7 issued ${d.forecast_issued ? bneText(d.forecast_issued) : "\u2014"}</div>`);
+  if (t.loObs) h.push(`<div class="muted">BOM no longer lists today's forecast minimum after the morning; low shown = observed overnight minimum (${esc(fmtTime.format(new Date(o.min.time)))}, 6pm\u20139am).</div>`);
+  if (t.hiObs) h.push(`<div class="muted">Today's forecast maximum no longer listed; high shown = observed maximum so far (6am\u20139pm).</div>`);
+  if (o && o.name) {
+    const mx = o.max && o.max.value != null ? `max so far ${o.max.value.toFixed(1)}\u00b0 (${esc(fmtTime.format(new Date(o.max.time)))})` : "";
+    const mn = o.min && o.min.value != null ? `overnight min ${o.min.value.toFixed(1)}\u00b0 (${esc(fmtTime.format(new Date(o.min.time)))})` : "";
+    h.push(`<div class="muted"><b>Observed:</b> ${esc(o.name)} (BOM ${esc(o.id)}${o.distance_km != null ? `, ${o.distance_km} km` : ""}) \u00b7 now ${o.temp != null ? o.temp.toFixed(1) + "\u00b0" : "\u2014"} at ${o.obs_time ? esc(fmtTime.format(new Date(o.obs_time))) : "\u2014"}${mn || mx ? " \u00b7 " + [mn, mx].filter(Boolean).join(" \u00b7 ") : ""}${d.obs_stale ? " (old)" : ""}</div>`);
+  }
+  const next = ((fc.days) || []).filter(x => !t.day || x.date > t.day.date).slice(0, 3);
+  if (next.length) h.push(`<div class="fc">${next.map(x => `<div title="${esc(x.precis || "")}">${esc(fmtDay.format(new Date(x.date + "T12:00:00+10:00")))}<br>${BOM_ICON[x.icon] || ""} ${deg(x.min)}/${deg(x.max)}</div>`).join("")}</div>`);
+  if (d.stale) h.push(`<div class="warn" style="font-size:11.5px">BOM feeds unavailable since ${bneText(d.stale_since)}; showing last known values.</div>`);
+  else if (d.forecast_stale) h.push(`<div class="warn" style="font-size:11.5px">BOM forecast could not be refreshed; showing the last known forecast.</div>`);
+  if (temp.err) h.push(`<div class="warn" style="font-size:11.5px">Could not refresh temperature: ${esc(temp.err)}</div>`);
+  h.push(`<div style="margin-top:3px"><a href="${esc(d.forecast_url || "https://www.bom.gov.au/qld/forecasts/")}" target="_blank" rel="noopener">BOM forecast</a> &middot;
+    <a href="${esc((o && o.url) || "https://www.bom.gov.au/qld/observations/")}" target="_blank" rel="noopener">BOM observations</a></div>`);
+  h.push(`<div class="bomdisc">${esc(d.attribution || "Bureau of Meteorology")}.</div>`);
+  el.innerHTML = head + `<div class="det">${h.join("")}</div>`;
+  bindTempChip(el);
+}
+function bindTempChip(el) {
+  const c = el.querySelector("#tempchip"); if (!c) return;
+  const tog = () => { temp.open = !temp.open; saveTemp(); renderTemp(); };
+  c.onclick = tog;
+  c.onkeydown = (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); tog(); } };
+}
+(function buildTempUi() {
+  const el = document.getElementById("tempctl");
+  el.innerHTML = `<label><input type="checkbox" id="on-temp" ${temp.on ? "checked" : ""}>
+      <span style="flex:none;width:18px;text-align:center">\ud83c\udf21\ufe0f</span><span>Temperature high/low (BOM)</span></label>`;
+  el.querySelector("#on-temp").onchange = (e) => { temp.on = e.target.checked; saveTemp(); renderTemp(); };
+  renderTemp();
+})();
+async function loadTemp() {
+  try {
+    const d = await loadJson("temp.json");
+    if (!d.forecast && !d.obs) throw new Error("bad format");
+    temp.data = d; temp.err = "";
+  } catch (e) { temp.err = e.message; }    // keep the last good copy on screen
+  renderTemp();
+}
+
 // ---- Rain radar (RainViewer public Weather Maps API: past 2 h, 10-min frames, max zoom 7, Universal Blue) ----
 const RV_API = "https://api.rainviewer.com/public/weather-maps.json";
 const RV_ATTR = 'Radar &copy; <a href="https://www.rainviewer.com/" target="_blank" rel="noopener">RainViewer</a>';
@@ -1068,7 +1195,7 @@ buildRadarUi();
 if (radar.on) refreshRadar();
 
 async function load() {
-  loadRoads(); loadEvents(); loadTides(); loadWind(); loadRain();
+  loadRoads(); loadEvents(); loadTides(); loadWind(); loadRain(); loadTemp();
   try {
     const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
     if (!r.ok) throw new Error("HTTP " + r.status);
