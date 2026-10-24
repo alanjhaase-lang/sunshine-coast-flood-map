@@ -416,7 +416,7 @@ function popupHtml(s) {
   const rows = [
     ["Station", esc(s.name)],
     ["Height", s.height_m == null ? "\u2014" : `${s.height_m.toFixed(2)} m ${esc(s.datum)}`],
-    ["Time", esc(s.time) || "\u2014"],
+    ["Observed", obsCell(s)],
     ["Tendency", esc(s.tendency) || "\u2014"],
     ["Flood class", esc(s.flood_class) || (s.computed_class ? esc(s.computed_class) + ' <span style="color:#777">(from levels)</span>' : "\u2014")],
     ...floodRows(s),
@@ -490,6 +490,8 @@ function drawMarkers(data) {
 }
 
 function render(data) {
+  snapData = data;
+  data = applyLiveBom(data);
   lastData = data;
   const regions = data.regions && data.regions.length ? data.regions : legacyRegions(data);
   ensureGroups(regions);
@@ -498,7 +500,7 @@ function render(data) {
   renderTide();
   const bl = (data.bulletins || []).map(b => b.id + (b.stale ? " (stale)" : "")).join(", ");
   document.getElementById("upd").innerHTML =
-    `Last updated: ${esc(data.generated_at_text || data.generated_at)}<br>${data.count} gauges &middot; bulletins ${esc(bl)}`;
+    `${obsLine(data)}<br>Snapshot built: ${esc(data.generated_at_text || data.generated_at)}<br>${data.count} gauges &middot; bulletins ${esc(bl)}`;
   document.getElementById("err").textContent = "";
   if (!fitted) { fitEnabled(); fitted = true; }
   if (!roadsDrawn) { roadsDrawn = true; drawRoads(); }
@@ -1194,7 +1196,123 @@ document.addEventListener("visibilitychange", () => { if (document.hidden && rad
 buildRadarUi();
 if (radar.on) refreshRadar();
 
+// ---- Live BOM gauge readings in the browser ----
+// On load and every BOM_LIVE_MS the page tries to read the same BOM river height bulletins update_data.py uses
+// (IDQ60287/IDQ60286) and overlays any newer readings on the committed data.json snapshot. BOM's web server
+// currently refuses cross-origin browser requests (no CORS headers; HTTP 403 when an Origin header is sent), so
+// normally this falls back to the snapshot (rebuilt by GitHub Actions every ~15 min and re-read here every
+// 5 min). BOM_PROXY can be set to a CORS proxy you control (URL prefix; the BOM URL is appended encoded) to
+// make live reads work.
+const BOM_PROXY = "";
+const BOM_LIVE_MS = 5 * 60 * 1000, BOM_LIVE_BACKOFF_MS = 30 * 60 * 1000;
+const BOM_DAYS = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+let snapData = null;
+const liveBom = { rows: {}, status: "idle", err: "", at: 0, nextTry: 0, busy: false };
+function bomObsDate(text) {  // '07.27AM Sun' (AEST) -> Date of the latest matching weekday, not in the future
+  const m = /^\s*(\d{1,2})[.:](\d{2})\s*([AP]M)\s+([A-Za-z]{3})/i.exec(text || "");
+  if (!m) return null;
+  const dow = BOM_DAYS.indexOf(m[4].toLowerCase()); if (dow < 0) return null;
+  const h = (+m[1] % 12) + (m[3].toUpperCase() === "PM" ? 12 : 0);
+  const bneNow = new Date(Date.now() + 10 * 3600e3);  // AEST wall clock in UTC fields (no DST in QLD)
+  for (let back = 0; back < 8; back++) {
+    const d = new Date(bneNow.getTime() - back * 86400e3);
+    if (d.getUTCDay() !== dow) continue;
+    const t = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate(), h, +m[2]) - 10 * 3600e3;
+    if (t <= Date.now() + 15 * 60e3) return new Date(t);
+  }
+  return null;
+}
+function parseBomBulletin(htmlText, bid) {
+  const doc = new DOMParser().parseFromString(htmlText, "text/html");
+  const out = {}; const txt = (el) => (el ? el.textContent : "").replace(/\s+/g, " ").trim();
+  for (const tr of doc.querySelectorAll("tr")) {
+    const tds = tr.querySelectorAll("td"); if (tds.length < 9) continue;
+    const a = [...tr.querySelectorAll("a")].find(x => /\.\d{6}\.plt\.shtml/.test(x.getAttribute("href") || ""));
+    if (!a) continue;
+    const no = /\.(\d{6})\.plt\.shtml/.exec(a.getAttribute("href"))[1];
+    const raw = txt(tds[3]), h = parseFloat(raw), t = txt(tds[2]), d = bomObsDate(t);
+    out[no] = { time: t, obs_time: d ? d.toISOString() : null, height_m: isNaN(h) ? null : h, height_raw: raw,
+      datum: txt(tds[4]), tendency: txt(tds[5]).toLowerCase(), crossing: txt(tds[6]), flood_class: txt(tds[7]), bulletin: bid };
+  }
+  return out;
+}
+async function fetchLiveBom(force) {
+  if (liveBom.busy || (!force && Date.now() < liveBom.nextTry)) return;
+  liveBom.busy = true;
+  const ids = snapData && snapData.bulletins && snapData.bulletins.length ? snapData.bulletins.map(b => b.id) : ["IDQ60287", "IDQ60286"];
+  const rows = {}; let ok = 0, err = "";
+  await Promise.all(ids.map(async (bid) => {
+    const url = `https://www.bom.gov.au/fwo/${bid}.html`;
+    const ctl = new AbortController(); const tm = setTimeout(() => ctl.abort(), 12000);
+    try {
+      const r = await fetch(BOM_PROXY ? BOM_PROXY + encodeURIComponent(url) : url, { cache: "no-store", signal: ctl.signal });
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      const got = parseBomBulletin(await r.text(), bid);
+      if (!Object.keys(got).length) throw new Error("no rows");
+      for (const [k, v] of Object.entries(got)) if (!rows[k]) rows[k] = v;
+      ok++;
+    } catch (e) { err = e.name === "AbortError" ? "timeout" : (e.message || String(e)); }
+    finally { clearTimeout(tm); }
+  }));
+  liveBom.busy = false;
+  if (ok) { Object.assign(liveBom.rows, rows); liveBom.status = "ok"; liveBom.err = ok < ids.length ? err : ""; liveBom.at = Date.now(); liveBom.nextTry = Date.now() + BOM_LIVE_MS - 5000; }
+  else { liveBom.status = "blocked"; liveBom.err = err; liveBom.nextTry = Date.now() + BOM_LIVE_BACKOFF_MS; }
+  if (snapData) render(snapData);
+}
+function liveFloodStatus(s) {  // JS port of update_data.flood_status() for a live reading
+  const lv = s.flood_levels, h = s.height_m;
+  Object.assign(s, { computed_class: null, next_class: null, next_level_m: null, delta_m: null, above_major_m: null, class_check: null });
+  if (!lv || h == null) return;
+  if (lv.datum !== s.datum) { s.flood_levels = null; s.flood_levels_note = `datum mismatch: levels ${lv.datum}, reading ${s.datum}; not compared`; return; }
+  const known = ["minor", "moderate", "major"].filter(c => lv[c] != null).map(c => [c, lv[c]]);
+  const cap = (c) => c[0].toUpperCase() + c.slice(1);
+  let cur = "Below Flood Level";
+  for (const [c, l] of known) if (Math.round((h - l) * 1000) >= 0) cur = cap(c);
+  s.computed_class = cur;
+  const nxt = known.find(([, l]) => Math.round((h - l) * 1000) < 0);
+  if (nxt) { s.next_class = cap(nxt[0]); s.next_level_m = nxt[1]; s.delta_m = Math.round((nxt[1] - h) * 100) / 100; }
+  else if (lv.major != null) s.above_major_m = Math.round((h - lv.major) * 100) / 100;
+  const fc = (s.flood_class || "").toLowerCase();
+  const k = ["minor", "moderate", "major"].find(c => fc.startsWith(c));
+  const bc = fc.startsWith("below") ? "Below Flood Level" : (k ? cap(k) : null);
+  s.class_check = bc == null ? "no bulletin class" : (bc === cur ? "agrees" : `differs (bulletin: ${bc})`);
+}
+function applyLiveBom(data) {
+  if (!data || !Object.keys(liveBom.rows).length) return data;
+  let n = 0, latest = data.latest_obs_time;
+  const stations = data.stations.map(s0 => {
+    const lr = liveBom.rows[s0.station_no];
+    if (!lr || !lr.obs_time || (s0.obs_time && new Date(lr.obs_time) <= new Date(s0.obs_time))) return s0;
+    const s = Object.assign({}, s0, lr, { bulletin: s0.bulletin, live: true });
+    liveFloodStatus(s); n++;
+    if (!latest || new Date(lr.obs_time) > new Date(latest)) latest = lr.obs_time;
+    return s;
+  });
+  return Object.assign({}, data, { stations, latest_obs_time: latest, live_count: n });
+}
+function agoText(iso) {
+  const m = Math.round((Date.now() - new Date(iso)) / 60000);
+  return m < 1 ? "just now" : m < 90 ? `${m} min ago` : `${Math.round(m / 60)} h ago`;
+}
+function obsCell(s) {
+  if (!s.obs_time) return esc(s.time) || "\u2014";
+  const old = (Date.now() - new Date(s.obs_time)) / 3600e3 > 3;
+  return `${esc(fmtTime.format(new Date(s.obs_time)))} AEST <span class="${old ? "warn" : "muted"}">(${agoText(s.obs_time)})</span>` +
+    (s.live ? ' <span class="muted">\u00b7 live from BOM</span>' : "");
+}
+function obsLine(data) {
+  const t = data.latest_obs_time;
+  const src = liveBom.status === "ok"
+    ? `live from BOM in your browser${data.live_count ? ` (${data.live_count} newer than snapshot)` : ""}, checked ${esc(fmtTime.format(new Date(liveBom.at)))}`
+    : liveBom.status === "blocked"
+      ? `<span title="${esc(liveBom.err)}">BOM blocks direct browser reads, so readings come from the auto-updated snapshot (rebuilt ~every 15 min)</span>`
+      : "snapshot";
+  return `Latest BOM gauge reading: <b>${t ? `${esc(fmtTime.format(new Date(t)))} AEST</b> (${agoText(t)})` : "\u2014</b>"}<br><span class="muted" style="font-size:11.5px">${src}</span>`;
+}
+
+let lastLoadAt = 0;
 async function load() {
+  lastLoadAt = Date.now();
   loadRoads(); loadEvents(); loadTides(); loadWind(); loadRain(); loadTemp();
   try {
     const r = await fetch("data.json?t=" + Date.now(), { cache: "no-store" });
@@ -1203,9 +1321,13 @@ async function load() {
   } catch (e) {
     document.getElementById("err").textContent = "Could not load data.json: " + e.message;
   }
+  fetchLiveBom();  // overlays newer live BOM readings when the browser is allowed to read BOM (see BOM_PROXY)
 }
 load();
 setInterval(() => { load(); refreshRadar(); }, 5 * 60 * 1000);
+document.addEventListener("visibilitychange", () => {  // phone/tab woken up: refresh if the last load is > 2 min old
+  if (!document.hidden && Date.now() - lastLoadAt > 2 * 60 * 1000) load();
+});
 </script>
 </body>
 </html>

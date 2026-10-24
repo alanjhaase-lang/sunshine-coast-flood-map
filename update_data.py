@@ -363,6 +363,26 @@ def flood_status(row, lv):
     return out
 
 
+DAYS = ("mon", "tue", "wed", "thu", "fri", "sat", "sun")
+
+
+def bom_obs_iso(text, now):
+    """Bulletin time like '07.27AM Sun' -> ISO datetime (Brisbane) on the most
+    recent matching weekday not after now (+15 min slack), or None."""
+    m = re.match(r"\s*(\d{1,2})[.:](\d{2})\s*([AP]M)\s+([A-Za-z]{3})", text or "", re.I)
+    if not m or m.group(4).lower() not in DAYS:
+        return None
+    h = int(m.group(1)) % 12 + (12 if m.group(3).upper() == "PM" else 0)
+    for back in range(8):
+        d = (now - dt.timedelta(days=back)).date()
+        if DAYS[d.weekday()] != m.group(4).lower():
+            continue
+        t = dt.datetime(d.year, d.month, d.day, h, int(m.group(2)), tzinfo=now.tzinfo)
+        if t <= now + dt.timedelta(minutes=15):
+            return t.isoformat(timespec="minutes")
+    return None
+
+
 def haversine_km(lat1, lon1, lat2, lon2):
     r = 6371.0088
     p1, p2 = math.radians(lat1), math.radians(lat2)
@@ -446,6 +466,9 @@ def main():
     except Exception as e:  # never let this stop the gauge update
         print(f"WARN: flood level update failed: {e}", file=sys.stderr)
 
+    bne_now = dt.datetime.now(ZoneInfo("Australia/Brisbane"))
+    for r in rows:
+        r["obs_time"] = bom_obs_iso(r.get("time"), bne_now)
     seen, out, nocoord = set(), [], []
     for r in rows:
         if r["station_no"] in seen:  # same gauge listed in two bulletins
@@ -488,6 +511,7 @@ def main():
         "stations_without_coordinates": nocoord,
         "flood_levels_source": "BOM station plot pages ('Flood Classification Levels'), cached in "
                                "flood_levels.json; delta_m = next_level_m - height_m (metres to go)",
+        "latest_obs_time": max((x["obs_time"] for x in out if x.get("obs_time")), default=None),
         "count": len(out),
         "stations": out,
     }

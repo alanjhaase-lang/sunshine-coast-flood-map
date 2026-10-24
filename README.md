@@ -89,7 +89,7 @@ knots, gust, max gust today, direction, observation time).
 - Attribution: "Wind observations © Commonwealth of Australia, Bureau of Meteorology", with a
   link to the station's BOM observations page. Live Wind (live-wind.com.au) is linked only as an
   optional "more wind maps" link; none of its data is used or copied.
-- Data are as fresh as the last workflow run (≈30 min) plus BOM's 10-minute obs cycle.
+- Data are as fresh as the last workflow run (≈15 min) plus BOM's 10-minute obs cycle.
 
 ### Rain radar overlay
 
@@ -107,6 +107,20 @@ link to rainviewer.com required (shown in the map attribution), past frames only
 nowcast), one colour scheme (Universal Blue, scale shown in the panel), max tile zoom 7
 (the map upscales z7 tiles when zoomed in, so radar looks blocky at street level) and
 100 requests/IP/minute. Availability is not guaranteed.
+
+### How fresh the gauge readings are
+
+- GitHub Actions rebuilds all data every **15 minutes** (`cron: "*/15 * * * *"`, free; GitHub may start
+  scheduled runs a few minutes late). `data.json` now carries each gauge's BOM observation time as `obs_time`
+  (ISO, AEST) plus `latest_obs_time`; the panel shows "Latest BOM gauge reading: <time> (N min ago)" and each
+  gauge popup shows its own observation time.
+- The page re-reads `data.json` every 5 minutes and whenever a hidden tab/phone screen comes back.
+- **Live BOM in the browser:** on load and every 5 minutes the page also tries to read the same BOM bulletins
+  (`IDQ60287`, `IDQ60286`) directly and overlays any reading newer than the snapshot (flood class / next
+  level recomputed in the browser, marked "live from BOM"). BOM's server currently rejects cross-origin
+  browser requests (no CORS headers, HTTP 403 when an `Origin` header is present), so in practice this falls
+  back to the snapshot and retries every 30 minutes. Setting `BOM_PROXY` in `index.html` to a CORS proxy you
+  control (URL prefix; the encoded BOM URL is appended) would make the live reads work.
 
 ### Road closures (flooding) and cameras (flood + traffic)
 
@@ -187,7 +201,7 @@ republish, and BOM's radar WMS (GIS2Web) is registered-user only.
   so far and labels it "(obs)". Show/hide and open state persist in `twinfo.temp.v1`.
 - `index.html` – the map. Re-fetches `data.json`, the QLDTraffic files, `tides.json`, `wind.json` (and the radar
   frame list) every 5 minutes.
-- `.github/workflows/update.yml` – runs every 30 minutes (and manually), runs both scripts (the road
+- `.github/workflows/update.yml` – runs every 15 minutes (and manually), runs both scripts (the road
   step runs even if the BOM step fails) and commits the data files when they change.
 
 ### Flood levels and "metres to next class"
@@ -256,7 +270,7 @@ Coordinates, in priority order (`source` field in `stations.json`):
 
 - Hosted on GitHub Pages from `main`, folder `/` (root):
   https://alanjhaase-lang.github.io/sunshine-coast-flood-map/
-- `.github/workflows/update.yml` runs every 30 minutes (and on demand via *Run workflow*), runs
+- `.github/workflows/update.yml` runs every 15 minutes (and on demand via *Run workflow*), runs
   `update_data.py`, `update_roads.py`, `update_tides.py`, `update_wind.py` and `update_rain.py`, and commits the data files when they change; Pages redeploys
   after each data commit. The map itself re-fetches the data every 5 minutes.
 
