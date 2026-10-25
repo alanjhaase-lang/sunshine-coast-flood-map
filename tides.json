@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-10-25T07:10:59+10:00",
- "generated_at_text": "Sun 25 Oct 2026 07:10 AM AEST",
+ "generated_at": "2026-10-26T01:04:12+10:00",
+ "generated_at_text": "Mon 26 Oct 2026 01:04 AM AEST",
  "stale": false,
  "location": "Mooloolaba",
  "aac": "QLD_TP019",
@@ -8,33 +8,13 @@
  "lon": 153.1331,
  "gauge_name": "Mooloolaba Tide",
  "method": "print",
- "source_url": "https://www.bom.gov.au/australia/tides/print.php?aac=QLD_TP019&type=tide&date=25-10-2026&region=QLD&tz=Australia/Brisbane&tz_js=AEST&days=7",
+ "source_url": "https://www.bom.gov.au/australia/tides/print.php?aac=QLD_TP019&type=tide&date=26-10-2026&region=QLD&tz=Australia/Brisbane&tz_js=AEST&days=7",
  "page_url": "https://www.bom.gov.au/australia/tides/",
  "attribution": "Tide predictions © Commonwealth of Australia 2026, Bureau of Meteorology",
  "disclaimer": "The Bureau of Meteorology gives no representation or warranty of any kind whether express, implied, statutory or otherwise in respect to the availability, accuracy, currency, completeness, quality, reliability or suitability of the information or that the information will be fit for any particular purpose or will not infringe any third party Intellectual Property rights. The Bureau's liability for any loss, damage, cost or expense resulting from use of, or reliance on, the information is entirely excluded.",
  "conditions_url": "https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf",
  "note": "Astronomical predictions only (no weather, storm-surge or flood effects). Times AEST. Heights in metres on the BOM tide-table datum, which may differ from the live gauge datum.",
  "predictions": [
-  {
-   "time": "2026-10-25T00:53+10:00",
-   "type": "low",
-   "height_m": 0.14
-  },
-  {
-   "time": "2026-10-25T07:08+10:00",
-   "type": "high",
-   "height_m": 1.75
-  },
-  {
-   "time": "2026-10-25T13:16+10:00",
-   "type": "low",
-   "height_m": 0.31
-  },
-  {
-   "time": "2026-10-25T19:11+10:00",
-   "type": "high",
-   "height_m": 1.63
-  },
   {
    "time": "2026-10-26T01:26+10:00",
    "type": "low",
@@ -147,6 +127,26 @@
   },
   {
    "time": "2026-10-31T19:07+10:00",
+   "type": "low",
+   "height_m": 0.53
+  },
+  {
+   "time": "2026-11-01T00:22+10:00",
+   "type": "high",
+   "height_m": 1.08
+  },
+  {
+   "time": "2026-11-01T06:11+10:00",
+   "type": "low",
+   "height_m": 0.44
+  },
+  {
+   "time": "2026-11-01T13:18+10:00",
+   "type": "high",
+   "height_m": 1.73
+  },
+  {
+   "time": "2026-11-01T20:23+10:00",
    "type": "low",
    "height_m": 0.53
   }
