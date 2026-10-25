@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-25T21:43:36+10:00",
- "generated_at_text": "Sun 25 Oct 2026 09:43 PM AEST",
+ "generated_at": "2026-10-26T07:09:51+10:00",
+ "generated_at_text": "Mon 26 Oct 2026 07:09 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-10-25T21:40:16+10:00",
+  "feed_published": "2026-10-26T07:08:05+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,12 +17,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "crashes": []
+ "crashes": [
+  {
+   "id": 837115,
+   "road": "Bli Bli Road",
+   "description": "Near Atkinson Road",
+   "locality": "Bli Bli",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Crash",
+   "event_subtype": "Multi-vehicle",
+   "due_to": null,
+   "impact": "Lane or lanes reduced",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Westbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-26T06:58:00+10:00",
+   "end": null,
+   "priority": "Medium",
+   "last_updated": "2026-10-26T07:00:50+10:00",
+   "last_updated_text": "Mon 26 Oct 2026 07:00 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/837115",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.61376,
+    153.00863
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.61376,
+      153.00863
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
