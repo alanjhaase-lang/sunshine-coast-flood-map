@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-10-27T06:05:30+10:00",
- "generated_at_text": "Tue 27 Oct 2026 06:05 AM AEST",
+ "generated_at": "2026-10-27T14:48:42+10:00",
+ "generated_at_text": "Tue 27 Oct 2026 02:48 PM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-10-27T06:05:16+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-10-27T14:47:16+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 3,
    "closed": 0,
-   "partial": 2
+   "partial": 3
   }
  ],
- "count": 2,
+ "count": 3,
  "excluded": [],
  "roadworks": [
   {
@@ -138,30 +136,6 @@
     "lines": [
      [
       [
-       -26.68549,
-       153.1051
-      ],
-      [
-       -26.68574,
-       153.10529
-      ],
-      [
-       -26.68698,
-       153.10627
-      ]
-     ],
-     [
-      [
-       -26.69683,
-       153.1154
-      ],
-      [
-       -26.69753,
-       153.11645
-      ]
-     ],
-     [
-      [
        -26.68698,
        153.10627
       ],
@@ -249,8 +223,72 @@
        -26.69683,
        153.1154
       ]
+     ],
+     [
+      [
+       -26.68549,
+       153.1051
+      ],
+      [
+       -26.68574,
+       153.10529
+      ],
+      [
+       -26.68698,
+       153.10627
+      ]
+     ],
+     [
+      [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
+      ]
      ]
     ]
+   }
+  },
+  {
+   "id": 837590,
+   "road": "Noosa Road",
+   "description": "Mudjimba Esplanade intersection",
+   "locality": "Marcoola",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Roadworks",
+   "event_subtype": "Planned roadworks",
+   "due_to": null,
+   "impact": "Lane or lanes reduced",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "All directions",
+   "advice": "Changed traffic conditions",
+   "information": "The Department of Transport and Main Roads’ (TMR) contractor will be undertaking a safety improvements project at the Maroochydore-Noosa Road (David Low Way) and Mudjimba Esplanade intersection, Marcoola. • Construction will be done as a combination of day and night works with day works between 6am and 6pm and night works between 6pm and 6am. Note, some weekend work may also be required. • Changed traffic conditions including reduced speed limits, lane closures, roadworks signage and traffic controllers will be in place to ensure motorist and roadworker safety. • A significant pedestrian detour will be required to accommodate the works. The detour route will be in place for up to eight weeks. The route will be signed and traffic controllers will be on site to assist during working hours. • TMR will engage with nearby residents, accommodation and hospitality venues ahead of and during active construction.",
+   "status": "Published",
+   "start": "2026-10-27T18:00:00+10:00",
+   "end": "2026-12-21T06:00:00+10:00",
+   "priority": "Medium",
+   "last_updated": "2026-10-27T11:27:48+10:00",
+   "last_updated_text": "Tue 27 Oct 2026 11:27 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/837590",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.60671,
+    153.0967
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.60671,
+      153.0967
+     ]
+    ],
+    "lines": []
    }
   }
  ]
