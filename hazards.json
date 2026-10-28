@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-25T08:53:01+10:00",
- "generated_at_text": "Sun 25 Oct 2026 08:53 AM AEST",
+ "generated_at": "2026-10-28T22:37:17+10:00",
+ "generated_at_text": "Wed 28 Oct 2026 10:37 PM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-10-25T08:52:38+10:00",
+  "feed_published": "2026-10-28T22:34:17+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,12 +17,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 837982,
+   "road": "Sunshine Motorway",
+   "description": "After Bundilla Boulevard",
+   "locality": "Mountain Creek",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Westbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-28T18:21:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-10-28T20:18:34+10:00",
+   "last_updated_text": "Wed 28 Oct 2026 08:18 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/837982",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.7076,
+    153.09854
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.7076,
+      153.09854
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
