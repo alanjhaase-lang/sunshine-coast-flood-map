@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-28T10:03:50+10:00",
- "generated_at_text": "Wed 28 Oct 2026 10:03 AM AEST",
+ "generated_at": "2026-10-28T15:48:40+10:00",
+ "generated_at_text": "Wed 28 Oct 2026 03:48 PM AEST",
  "stale": false,
  "source": {
   "used": "api",
   "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-10-28T10:00:07+10:00",
+  "feed_published": "2026-10-28T15:44:21+10:00",
   "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -15,53 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "crashes": [
-  {
-   "id": 837844,
-   "road": "Sunshine Motorway",
-   "description": "Vehicle in left shoulder just before Karawatha Drive Exit",
-   "locality": "Mountain Creek",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Crash",
-   "event_subtype": "Multi-vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Eastbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-10-28T09:45:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-10-28T09:50:34+10:00",
-   "last_updated_text": "Wed 28 Oct 2026 09:50 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/837844",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.70811,
-    153.09811
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.70811,
-      153.09811
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "crashes": []
 }
