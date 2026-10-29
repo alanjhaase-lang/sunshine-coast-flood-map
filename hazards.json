@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-10-29T12:16:38+10:00",
- "generated_at_text": "Thu 29 Oct 2026 12:16 PM AEST",
+ "generated_at": "2026-10-29T18:50:14+10:00",
+ "generated_at_text": "Thu 29 Oct 2026 06:50 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-10-29T12:14:11+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-10-29T18:48:07+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -24,10 +26,10 @@
  "excluded": [],
  "hazards": [
   {
-   "id": 837982,
-   "road": "Sunshine Motorway",
-   "description": "After Bundilla Boulevard",
-   "locality": "Mountain Creek",
+   "id": 838239,
+   "road": "Bruce Highway",
+   "description": "south of Caloundra",
+   "locality": "Corbould Park",
    "lga": "Sunshine Coast Regional",
    "event_type": "Hazard",
    "event_subtype": "Stationary vehicle",
@@ -35,29 +37,29 @@
    "impact": "No blockage",
    "impact_type": "No blockage",
    "severity": "partial",
-   "direction": "Westbound",
+   "direction": "Southbound",
    "advice": "Proceed with caution",
    "information": null,
    "status": "Published",
-   "start": "2026-10-28T18:21:00+10:00",
+   "start": "2026-10-29T18:15:00+10:00",
    "end": null,
-   "priority": "Low",
-   "last_updated": "2026-10-29T11:47:50+10:00",
-   "last_updated_text": "Thu 29 Oct 2026 11:47 AM AEST",
+   "priority": "High",
+   "last_updated": "2026-10-29T18:16:31+10:00",
+   "last_updated_text": "Thu 29 Oct 2026 06:16 PM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/837982",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838239",
    "region": "twinwaters",
    "region_name": "Twin Waters",
    "marker": [
-    -26.7076,
-    153.09854
+    -26.79576,
+    153.0441
    ],
    "geometry": {
     "points": [
      [
-      -26.7076,
-      153.09854
+      -26.79576,
+      153.0441
      ]
     ],
     "lines": []
