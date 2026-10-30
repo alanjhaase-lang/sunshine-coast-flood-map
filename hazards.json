@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-10-30T01:59:36+10:00",
- "generated_at_text": "Fri 30 Oct 2026 01:59 AM AEST",
+ "generated_at": "2026-10-31T00:18:51+10:00",
+ "generated_at_text": "Sat 31 Oct 2026 12:18 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-10-30T01:55:19+10:00",
+  "feed_published": "2026-10-31T00:14:16+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,12 +17,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 838500,
+   "road": "Palmwoods Mooloolah Road",
+   "description": "Between Eudlo township and Old Gympie road intersection",
+   "locality": "Eudlo",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Signal fault",
+   "due_to": "Lights flashing yellow",
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-10-30T18:20:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-10-30T22:56:32+10:00",
+   "last_updated_text": "Fri 30 Oct 2026 10:56 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838500",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.73756,
+    152.96293
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.73756,
+      152.96293
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
