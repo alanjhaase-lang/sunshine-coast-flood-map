@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-01T01:15:24+10:00",
- "generated_at_text": "Sun 01 Nov 2026 01:15 AM AEST",
+ "generated_at": "2026-11-01T05:29:29+10:00",
+ "generated_at_text": "Sun 01 Nov 2026 05:29 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-01T01:02:46+10:00",
+  "feed_published": "2026-11-01T05:23:43+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -138,16 +138,6 @@
     "lines": [
      [
       [
-       -26.69683,
-       153.1154
-      ],
-      [
-       -26.69753,
-       153.11645
-      ]
-     ],
-     [
-      [
        -26.68549,
        153.1051
       ],
@@ -248,6 +238,16 @@
       [
        -26.69683,
        153.1154
+      ]
+     ],
+     [
+      [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
       ]
      ]
     ]
