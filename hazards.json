@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-01T19:20:08+10:00",
- "generated_at_text": "Sun 01 Nov 2026 07:20 PM AEST",
+ "generated_at": "2026-11-02T02:15:43+10:00",
+ "generated_at_text": "Mon 02 Nov 2026 02:15 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-01T19:11:55+10:00",
+  "feed_published": "2026-11-02T02:12:25+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,54 +17,14 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 1,
    "closed": 0,
-   "partial": 2
+   "partial": 1
   }
  ],
- "count": 2,
+ "count": 1,
  "excluded": [],
  "hazards": [
-  {
-   "id": 838784,
-   "road": "Bruce Highway",
-   "description": "1 kilometre before exit 194 Mooloolaba",
-   "locality": "Tanawha",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-01T18:36:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-01T18:38:00+10:00",
-   "last_updated_text": "Sun 01 Nov 2026 06:38 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838784",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.71213,
-    153.02377
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.71213,
-      153.02377
-     ]
-    ],
-    "lines": []
-   }
-  },
   {
    "id": 838500,
    "road": "Palmwoods Mooloolah Road",
@@ -84,8 +44,8 @@
    "start": "2026-10-30T18:20:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-01T18:57:46+10:00",
-   "last_updated_text": "Sun 01 Nov 2026 06:57 PM AEST",
+   "last_updated": "2026-11-02T02:07:10+10:00",
+   "last_updated_text": "Mon 02 Nov 2026 02:07 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838500",
