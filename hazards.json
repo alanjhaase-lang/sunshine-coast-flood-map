@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-01T12:03:37+10:00",
- "generated_at_text": "Sun 01 Nov 2026 12:03 PM AEST",
+ "generated_at": "2026-11-01T19:20:08+10:00",
+ "generated_at_text": "Sun 01 Nov 2026 07:20 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-01T11:51:57+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-01T19:11:55+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,14 +17,54 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 2,
    "closed": 0,
-   "partial": 1
+   "partial": 2
   }
  ],
- "count": 1,
+ "count": 2,
  "excluded": [],
  "hazards": [
+  {
+   "id": 838784,
+   "road": "Bruce Highway",
+   "description": "1 kilometre before exit 194 Mooloolaba",
+   "locality": "Tanawha",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Southbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-01T18:36:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-01T18:38:00+10:00",
+   "last_updated_text": "Sun 01 Nov 2026 06:38 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838784",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.71213,
+    153.02377
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.71213,
+      153.02377
+     ]
+    ],
+    "lines": []
+   }
+  },
   {
    "id": 838500,
    "road": "Palmwoods Mooloolah Road",
@@ -42,8 +84,8 @@
    "start": "2026-10-30T18:20:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-01T10:37:07+10:00",
-   "last_updated_text": "Sun 01 Nov 2026 10:37 AM AEST",
+   "last_updated": "2026-11-01T18:57:46+10:00",
+   "last_updated_text": "Sun 01 Nov 2026 06:57 PM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/838500",
