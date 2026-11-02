@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-03T01:30:18+10:00",
- "generated_at_text": "Tue 03 Nov 2026 01:30 AM AEST",
+ "generated_at": "2026-11-03T09:13:21+10:00",
+ "generated_at_text": "Tue 03 Nov 2026 09:13 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-03T01:29:26+10:00",
+  "feed_published": "2026-11-03T09:12:03+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,14 +17,54 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 2,
    "closed": 0,
-   "partial": 1
+   "partial": 2
   }
  ],
- "count": 1,
+ "count": 2,
  "excluded": [],
  "hazards": [
+  {
+   "id": 839069,
+   "road": "First Avenue",
+   "description": "Signals flashing yellow Duporth Ave",
+   "locality": "Maroochydore",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Signal fault",
+   "due_to": "Lights flashing yellow",
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "All directions",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-03T06:14:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-03T06:16:13+10:00",
+   "last_updated_text": "Tue 03 Nov 2026 06:16 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/839069",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.65408,
+    153.09321
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.65408,
+      153.09321
+     ]
+    ],
+    "lines": []
+   }
+  },
   {
    "id": 839007,
    "road": "Sunshine Motorway",
