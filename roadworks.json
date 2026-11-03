@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-03T09:13:21+10:00",
- "generated_at_text": "Tue 03 Nov 2026 09:13 AM AEST",
+ "generated_at": "2026-11-03T13:57:15+10:00",
+ "generated_at_text": "Tue 03 Nov 2026 01:57 PM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-03T09:12:03+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-03T13:56:51+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -138,6 +136,20 @@
     "lines": [
      [
       [
+       -26.68549,
+       153.1051
+      ],
+      [
+       -26.68574,
+       153.10529
+      ],
+      [
+       -26.68698,
+       153.10627
+      ]
+     ],
+     [
+      [
        -26.68698,
        153.10627
       ],
@@ -234,20 +246,6 @@
       [
        -26.69753,
        153.11645
-      ]
-     ],
-     [
-      [
-       -26.68549,
-       153.1051
-      ],
-      [
-       -26.68574,
-       153.10529
-      ],
-      [
-       -26.68698,
-       153.10627
       ]
      ]
     ]
