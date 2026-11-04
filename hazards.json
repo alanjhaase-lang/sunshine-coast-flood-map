@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-03T21:50:21+10:00",
- "generated_at_text": "Tue 03 Nov 2026 09:50 PM AEST",
+ "generated_at": "2026-11-04T10:10:03+10:00",
+ "generated_at_text": "Wed 04 Nov 2026 10:10 AM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-03T21:41:24+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-04T10:08:09+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 839380,
+   "road": "Maroochydore Mooloolaba Road",
+   "description": "At First Avenue intersection",
+   "locality": "Maroochydore",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Signal fault",
+   "due_to": "Lights flashing yellow",
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "All directions",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-04T08:01:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-04T08:03:34+10:00",
+   "last_updated_text": "Wed 04 Nov 2026 08:03 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/839380",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.65693,
+    153.09328
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.65693,
+      153.09328
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
