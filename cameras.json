@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-05T07:13:31+10:00",
- "generated_at_text": "Thu 05 Nov 2026 07:13 AM AEST",
+ "generated_at": "2026-11-05T18:28:37+10:00",
+ "generated_at_text": "Thu 05 Nov 2026 06:28 PM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -70,7 +70,9 @@
    "lat": -26.65014,
    "lon": 153.0894,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-05T12:37:00+10:00",
+   "image_time_text": "Thu 05 Nov 2026 12:37 PM AEST",
+   "image_stale": true
   },
   {
    "id": 66,
