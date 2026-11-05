@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-04T16:32:32+10:00",
- "generated_at_text": "Wed 04 Nov 2026 04:32 PM AEST",
+ "generated_at": "2026-11-05T11:30:08+10:00",
+ "generated_at_text": "Thu 05 Nov 2026 11:30 AM AEST",
  "stale": false,
  "source": {
   "used": "api",
   "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-04T16:32:06+10:00",
+  "feed_published": "2026-11-05T11:29:02+10:00",
   "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -15,12 +15,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 839683,
+   "road": "Bruce Highway",
+   "description": "On ramp from Mons Road",
+   "locality": "Forest Glen",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Southbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-05T11:09:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-05T11:10:56+10:00",
+   "last_updated_text": "Thu 05 Nov 2026 11:10 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/839683",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.69265,
+    153.00716
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.69265,
+      153.00716
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
