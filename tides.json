@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-06T02:45:43+10:00",
- "generated_at_text": "Fri 06 Nov 2026 02:45 AM AEST",
+ "generated_at": "2026-11-07T03:42:42+10:00",
+ "generated_at_text": "Sat 07 Nov 2026 03:42 AM AEST",
  "stale": false,
  "location": "Mooloolaba",
  "aac": "QLD_TP019",
@@ -8,28 +8,13 @@
  "lon": 153.1331,
  "gauge_name": "Mooloolaba Tide",
  "method": "print",
- "source_url": "https://www.bom.gov.au/australia/tides/print.php?aac=QLD_TP019&type=tide&date=06-11-2026&region=QLD&tz=Australia/Brisbane&tz_js=AEST&days=7",
+ "source_url": "https://www.bom.gov.au/australia/tides/print.php?aac=QLD_TP019&type=tide&date=07-11-2026&region=QLD&tz=Australia/Brisbane&tz_js=AEST&days=7",
  "page_url": "https://www.bom.gov.au/australia/tides/",
  "attribution": "Tide predictions © Commonwealth of Australia 2026, Bureau of Meteorology",
  "disclaimer": "The Bureau of Meteorology gives no representation or warranty of any kind whether express, implied, statutory or otherwise in respect to the availability, accuracy, currency, completeness, quality, reliability or suitability of the information or that the information will be fit for any particular purpose or will not infringe any third party Intellectual Property rights. The Bureau's liability for any loss, damage, cost or expense resulting from use of, or reliance on, the information is entirely excluded.",
  "conditions_url": "https://www.bom.gov.au/oceanography/projects/ntc/Tidal_Information_Conditions_of_Use.pdf",
  "note": "Astronomical predictions only (no weather, storm-surge or flood effects). Times AEST. Heights in metres on the BOM tide-table datum, which may differ from the live gauge datum.",
  "predictions": [
-  {
-   "time": "2026-11-06T06:01+10:00",
-   "type": "high",
-   "height_m": 1.6
-  },
-  {
-   "time": "2026-11-06T12:02+10:00",
-   "type": "low",
-   "height_m": 0.44
-  },
-  {
-   "time": "2026-11-06T17:57+10:00",
-   "type": "high",
-   "height_m": 1.57
-  },
   {
    "time": "2026-11-07T00:16+10:00",
    "type": "low",
@@ -149,6 +134,26 @@
    "time": "2026-11-12T21:36+10:00",
    "type": "high",
    "height_m": 1.19
+  },
+  {
+   "time": "2026-11-13T03:20+10:00",
+   "type": "low",
+   "height_m": 0.34
+  },
+  {
+   "time": "2026-11-13T10:21+10:00",
+   "type": "high",
+   "height_m": 1.72
+  },
+  {
+   "time": "2026-11-13T16:58+10:00",
+   "type": "low",
+   "height_m": 0.58
+  },
+  {
+   "time": "2026-11-13T22:15+10:00",
+   "type": "high",
+   "height_m": 1.14
   }
  ]
 }
