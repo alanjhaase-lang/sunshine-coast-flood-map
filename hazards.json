@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-07T19:09:25+10:00",
- "generated_at_text": "Sat 07 Nov 2026 07:09 PM AEST",
+ "generated_at": "2026-11-08T01:41:57+10:00",
+ "generated_at_text": "Sun 08 Nov 2026 01:41 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-07T19:07:53+10:00",
+  "feed_published": "2026-11-08T01:38:37+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,53 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 840220,
-   "road": "Maroochydore Mooloolaba Road (Horton Parade)",
-   "description": "Signals flashing yellow at the intersection with Cornmeal Parade",
-   "locality": "Maroochydore",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Signal fault",
-   "due_to": "Lights flashing yellow",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "All directions",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-07T19:05:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-07T19:07:51+10:00",
-   "last_updated_text": "Sat 07 Nov 2026 07:07 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/840220",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.65417,
-    153.09072
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.65417,
-      153.09072
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }

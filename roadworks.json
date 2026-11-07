@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-07T19:09:25+10:00",
- "generated_at_text": "Sat 07 Nov 2026 07:09 PM AEST",
+ "generated_at": "2026-11-08T01:41:57+10:00",
+ "generated_at_text": "Sun 08 Nov 2026 01:41 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-07T19:07:53+10:00",
+  "feed_published": "2026-11-08T01:38:37+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -44,8 +44,8 @@
    "start": "2026-10-02T16:07:00+10:00",
    "end": "2027-12-31T16:20:00+10:00",
    "priority": "Low",
-   "last_updated": "2026-11-03T00:14:09+10:00",
-   "last_updated_text": "Tue 03 Nov 2026 12:14 AM AEST",
+   "last_updated": "2026-11-08T01:11:27+10:00",
+   "last_updated_text": "Sun 08 Nov 2026 01:11 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/831820",
@@ -152,6 +152,16 @@
      ],
      [
       [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
+      ]
+     ],
+     [
+      [
        -26.68698,
        153.10627
       ],
@@ -238,16 +248,6 @@
       [
        -26.69683,
        153.1154
-      ]
-     ],
-     [
-      [
-       -26.69683,
-       153.1154
-      ],
-      [
-       -26.69753,
-       153.11645
       ]
      ]
     ]
