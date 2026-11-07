@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-08T05:40:16+10:00",
- "generated_at_text": "Sun 08 Nov 2026 05:40 AM AEST",
+ "generated_at": "2026-11-08T09:06:00+10:00",
+ "generated_at_text": "Sun 08 Nov 2026 09:06 AM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -70,8 +70,8 @@
    "lat": -26.65014,
    "lon": 153.0894,
    "image_ok": true,
-   "image_time": "2026-11-05T20:51:00+10:00",
-   "image_time_text": "Thu 05 Nov 2026 08:51 PM AEST",
+   "image_time": "2026-11-06T13:40:00+10:00",
+   "image_time_text": "Fri 06 Nov 2026 01:40 PM AEST",
    "image_stale": true
   },
   {
@@ -126,9 +126,7 @@
    "lat": -26.62248,
    "lon": 153.04827,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 54,
@@ -182,9 +180,7 @@
    "lat": -26.70746,
    "lon": 153.04675,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 167,
@@ -274,9 +270,7 @@
    "lat": -26.57477,
    "lon": 152.97492,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 269,
@@ -294,9 +288,7 @@
    "lat": -26.68479,
    "lon": 152.9595,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 70,
@@ -386,9 +378,7 @@
    "lat": -26.76021,
    "lon": 152.96231,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 257,
@@ -406,9 +396,7 @@
    "lat": -26.79894,
    "lon": 153.11487,
    "image_ok": true,
-   "image_time": "2026-11-07T17:45:00+10:00",
-   "image_time_text": "Sat 07 Nov 2026 05:45 PM AEST",
-   "image_stale": true
+   "image_stale": false
   },
   {
    "id": 60,
