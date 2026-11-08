@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-08T09:06:03+10:00",
+ "generated_at": "2026-11-08T12:31:26+10:00",
  "stale": false,
- "forecast_issued": "2026-11-08T03:10:00+10:00",
+ "forecast_issued": "2026-11-08T09:19:07+10:00",
  "forecast_stale": false,
  "forecast": {
   "aac": "QLD_PT002",
@@ -17,7 +17,7 @@
    },
    {
     "date": "2026-11-09",
-    "min": 16,
+    "min": 17,
     "max": 24,
     "precis": "Partly cloudy.",
     "icon": 3.0,
@@ -26,15 +26,15 @@
    {
     "date": "2026-11-10",
     "min": 17,
-    "max": 27,
+    "max": 26,
     "precis": "Shower or two.",
     "icon": 11.0,
-    "pop": "50%"
+    "pop": "60%"
    },
    {
     "date": "2026-11-11",
     "min": 20,
-    "max": 30,
+    "max": 29,
     "precis": "Showers. Possible late storm.",
     "icon": 16.0,
     "pop": "70%"
@@ -47,15 +47,15 @@
   "id": "040861",
   "wmo": "94569",
   "name": "Sunshine Coast Airport",
-  "obs_time": "2026-11-08T09:00:00+10:00",
+  "obs_time": "2026-11-08T12:20:00+10:00",
   "lat": -26.599,
   "lon": 153.0912,
   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
   "distance_km": 4.0,
-  "temp": 25.1,
+  "temp": 25.3,
   "max": {
    "value": 26.3,
-   "time": "2026-11-08T08:31:00+10:00",
+   "time": "2026-11-08T09:25:00+10:00",
    "start": "2026-11-08T06:00:00+10:00",
    "end": "2026-11-08T21:00:00+10:00"
   },
