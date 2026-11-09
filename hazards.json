@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-09T10:08:25+10:00",
- "generated_at_text": "Mon 09 Nov 2026 10:08 AM AEST",
+ "generated_at": "2026-11-09T16:43:00+10:00",
+ "generated_at_text": "Mon 09 Nov 2026 04:43 PM AEST",
  "stale": false,
  "source": {
   "used": "api",
   "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-09T10:08:02+10:00",
+  "feed_published": "2026-11-09T16:42:54+10:00",
   "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -15,93 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 0,
    "closed": 0,
-   "partial": 2
+   "partial": 0
   }
  ],
- "count": 2,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 840437,
-   "road": "Bruce Highway",
-   "description": "1 kilometre south of Caloundra road interchange",
-   "locality": "Glenview",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-09T08:11:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-09T08:12:56+10:00",
-   "last_updated_text": "Mon 09 Nov 2026 08:12 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/840437",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.78958,
-    153.0455
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.78958,
-      153.0455
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 840459,
-   "road": "Sunshine Motorway",
-   "description": "Just before Kawana Way interchange",
-   "locality": "Sippy Downs",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Eastbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-09T09:26:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-09T09:27:23+10:00",
-   "last_updated_text": "Mon 09 Nov 2026 09:27 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/840459",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.71299,
-    153.08362
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.71299,
-      153.08362
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }

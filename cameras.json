@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-09T10:08:29+10:00",
- "generated_at_text": "Mon 09 Nov 2026 10:08 AM AEST",
+ "generated_at": "2026-11-09T16:43:01+10:00",
+ "generated_at_text": "Mon 09 Nov 2026 04:43 PM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -17,7 +17,7 @@
   "traffic": {
    "url": "https://data.qldtraffic.qld.gov.au/webcameras.geojson",
    "stale": false,
-   "count": 15
+   "count": 14
   }
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -27,14 +27,14 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 21
+   "count": 20
   }
  ],
  "counts": {
   "flood": 6,
-  "traffic": 15
+  "traffic": 14
  },
- "count": 21,
+ "count": 20,
  "cameras": [
   {
    "id": 64,
@@ -53,26 +53,6 @@
    "lon": 153.0712,
    "image_ok": true,
    "image_stale": false
-  },
-  {
-   "id": 111,
-   "type": "traffic",
-   "name": "Maroochydore - Duporth Avenue & Beach Road - North",
-   "direction": "North",
-   "locality": "Maroochydore",
-   "district": "North Coast",
-   "image_url": "https://cameras.qldtraffic.qld.gov.au/Sunshine_Coast/MRNCHD-439.jpg",
-   "image_sourced_from": null,
-   "info": null,
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "distance_km": 2.0,
-   "lat": -26.65014,
-   "lon": 153.0894,
-   "image_ok": true,
-   "image_time": "2026-11-05T20:51:00+10:00",
-   "image_time_text": "Thu 05 Nov 2026 08:51 PM AEST",
-   "image_stale": true
   },
   {
    "id": 66,
@@ -414,8 +394,8 @@
    "lat": -26.80397,
    "lon": 153.1214,
    "image_ok": true,
-   "image_time": "2026-11-04T22:49:00+10:00",
-   "image_time_text": "Wed 04 Nov 2026 10:49 PM AEST",
+   "image_time": "2026-11-06T13:40:00+10:00",
+   "image_time_text": "Fri 06 Nov 2026 01:40 PM AEST",
    "image_stale": true
   }
  ]
