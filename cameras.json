@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-09T16:43:01+10:00",
- "generated_at_text": "Mon 09 Nov 2026 04:43 PM AEST",
+ "generated_at": "2026-11-10T02:55:39+10:00",
+ "generated_at_text": "Tue 10 Nov 2026 02:55 AM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -106,7 +106,9 @@
    "lat": -26.62248,
    "lon": 153.04827,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 54,
@@ -160,7 +162,9 @@
    "lat": -26.70746,
    "lon": 153.04675,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 167,
@@ -250,7 +254,9 @@
    "lat": -26.57477,
    "lon": 152.97492,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 269,
@@ -268,7 +274,9 @@
    "lat": -26.68479,
    "lon": 152.9595,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 70,
@@ -358,7 +366,9 @@
    "lat": -26.76021,
    "lon": 152.96231,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 257,
@@ -376,7 +386,9 @@
    "lat": -26.79894,
    "lon": 153.11487,
    "image_ok": true,
-   "image_stale": false
+   "image_time": "2026-11-09T17:45:00+10:00",
+   "image_time_text": "Mon 09 Nov 2026 05:45 PM AEST",
+   "image_stale": true
   },
   {
    "id": 60,

@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-09T16:43:00+10:00",
- "generated_at_text": "Mon 09 Nov 2026 04:43 PM AEST",
+ "generated_at": "2026-11-10T02:55:36+10:00",
+ "generated_at_text": "Tue 10 Nov 2026 02:55 AM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-09T16:42:54+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-10T02:47:12+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -120,8 +122,8 @@
    "start": "2026-04-08T19:40:00+10:00",
    "end": "2028-12-31T23:55:00+10:00",
    "priority": "High",
-   "last_updated": "2026-11-04T23:30:24+10:00",
-   "last_updated_text": "Wed 04 Nov 2026 11:30 PM AEST",
+   "last_updated": "2026-11-10T00:18:04+10:00",
+   "last_updated_text": "Tue 10 Nov 2026 12:18 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://www.tmr.qld.gov.au/projects/mooloolah-river-interchange-upgrade-stage-1",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/793568",
@@ -134,20 +136,6 @@
    "geometry": {
     "points": [],
     "lines": [
-     [
-      [
-       -26.68549,
-       153.1051
-      ],
-      [
-       -26.68574,
-       153.10529
-      ],
-      [
-       -26.68698,
-       153.10627
-      ]
-     ],
      [
       [
        -26.68698,
@@ -246,6 +234,20 @@
       [
        -26.69753,
        153.11645
+      ]
+     ],
+     [
+      [
+       -26.68549,
+       153.1051
+      ],
+      [
+       -26.68574,
+       153.10529
+      ],
+      [
+       -26.68698,
+       153.10627
       ]
      ]
     ]
