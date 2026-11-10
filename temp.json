@@ -1,27 +1,19 @@
 {
- "generated_at": "2026-11-10T02:55:40+10:00",
+ "generated_at": "2026-11-10T10:38:44+10:00",
  "stale": false,
- "forecast_issued": "2026-11-09T20:59:36+10:00",
+ "forecast_issued": "2026-11-10T10:05:48+10:00",
  "forecast_stale": false,
  "forecast": {
   "aac": "QLD_PT002",
   "name": "Maroochydore",
   "days": [
    {
-    "date": "2026-11-09",
-    "min": null,
-    "max": null,
-    "precis": "Mostly clear.",
-    "icon": 3.0,
-    "pop": "5%"
-   },
-   {
     "date": "2026-11-10",
-    "min": 18,
+    "min": null,
     "max": 26,
     "precis": "Shower or two clearing.",
     "icon": 11.0,
-    "pop": "70%"
+    "pop": "50%"
    },
    {
     "date": "2026-11-11",
@@ -38,6 +30,14 @@
     "precis": "Showers. Storm developing.",
     "icon": 16.0,
     "pop": "80%"
+   },
+   {
+    "date": "2026-11-13",
+    "min": 20,
+    "max": 28,
+    "precis": "Shower or two.",
+    "icon": 11.0,
+    "pop": "50%"
    }
   ]
  },
@@ -47,21 +47,21 @@
   "id": "040861",
   "wmo": "94569",
   "name": "Sunshine Coast Airport",
-  "obs_time": "2026-11-10T02:50:00+10:00",
+  "obs_time": "2026-11-10T10:30:00+10:00",
   "lat": -26.599,
   "lon": 153.0912,
   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
   "distance_km": 4.0,
-  "temp": 19.2,
+  "temp": 26.3,
   "max": {
-   "value": 24.1,
-   "time": "2026-11-09T15:04:00+10:00",
-   "start": "2026-11-09T06:00:00+10:00",
-   "end": "2026-11-09T21:00:00+10:00"
+   "value": 26.6,
+   "time": "2026-11-10T10:23:00+10:00",
+   "start": "2026-11-10T06:00:00+10:00",
+   "end": "2026-11-10T21:00:00+10:00"
   },
   "min": {
-   "value": 19.1,
-   "time": "2026-11-10T02:48:00+10:00",
+   "value": 17.2,
+   "time": "2026-11-10T05:17:00+10:00",
    "start": "2026-11-09T18:00:00+10:00",
    "end": "2026-11-10T09:00:00+10:00"
   }
