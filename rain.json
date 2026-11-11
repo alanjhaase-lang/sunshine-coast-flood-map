@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-12T03:15:13+10:00",
+ "generated_at": "2026-11-12T09:31:45+10:00",
  "stale": false,
- "issued": "2026-11-12T03:11:02+10:00",
+ "issued": "2026-11-12T09:21:01+10:00",
  "source_url": "https://www.bom.gov.au/fwo/IDQ60920.xml",
  "page_url": "https://www.bom.gov.au/qld/observations/seqld.shtml",
  "attribution": "Rainfall observations © Commonwealth of Australia 2026, Bureau of Meteorology",
@@ -22,21 +22,16 @@
    "lat": -26.599,
    "lon": 153.0912,
    "distance_km": 4.0,
-   "obs_time": "2026-11-12T03:10:00+10:00",
-   "today_mm": 6.8,
-   "today_start": "2026-11-11T09:00:00+10:00",
-   "today_end": "2026-11-12T03:13:00+10:00",
-   "last_day_mm": 0.0,
-   "last_day_end": "2026-11-11T09:00:00+10:00",
-   "week_mm": 9.8,
-   "week_start": "2026-11-05T09:00:00+10:00",
+   "obs_time": "2026-11-12T09:20:00+10:00",
+   "today_mm": 0.0,
+   "today_start": "2026-11-12T09:00:00+10:00",
+   "today_end": "2026-11-12T09:23:00+10:00",
+   "last_day_mm": 7.0,
+   "last_day_end": "2026-11-12T09:00:00+10:00",
+   "week_mm": 10.0,
+   "week_start": "2026-11-06T09:00:00+10:00",
    "week_days_missing": [],
    "daily": [
-    {
-     "date": "2026-10-29",
-     "mm": 0.2,
-     "src": "dwo"
-    },
     {
      "date": "2026-10-30",
      "mm": 0.0,
@@ -100,6 +95,11 @@
     {
      "date": "2026-11-11",
      "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-11-12",
+     "mm": 7.0,
      "src": "obs"
     }
    ],
@@ -114,21 +114,16 @@
    "lat": -26.6442,
    "lon": 152.9383,
    "distance_km": 14.3,
-   "obs_time": "2026-11-12T03:10:00+10:00",
-   "today_mm": 11.4,
-   "today_start": "2026-11-11T09:00:00+10:00",
-   "today_end": "2026-11-12T03:13:00+10:00",
-   "last_day_mm": 0.0,
-   "last_day_end": "2026-11-11T09:00:00+10:00",
+   "obs_time": "2026-11-12T09:20:00+10:00",
+   "today_mm": 0.0,
+   "today_start": "2026-11-12T09:00:00+10:00",
+   "today_end": "2026-11-12T09:22:00+10:00",
+   "last_day_mm": 11.4,
+   "last_day_end": "2026-11-12T09:00:00+10:00",
    "week_mm": 23.2,
-   "week_start": "2026-11-05T09:00:00+10:00",
+   "week_start": "2026-11-06T09:00:00+10:00",
    "week_days_missing": [],
    "daily": [
-    {
-     "date": "2026-10-29",
-     "mm": 0.0,
-     "src": "dwo"
-    },
     {
      "date": "2026-10-30",
      "mm": 0.0,
@@ -192,6 +187,11 @@
     {
      "date": "2026-11-11",
      "mm": 0.0,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-11-12",
+     "mm": 11.4,
      "src": "obs"
     }
    ],
