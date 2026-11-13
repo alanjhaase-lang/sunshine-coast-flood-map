@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-13T06:51:30+10:00",
- "generated_at_text": "Fri 13 Nov 2026 06:51 AM AEST",
+ "generated_at": "2026-11-13T11:45:29+10:00",
+ "generated_at_text": "Fri 13 Nov 2026 11:45 AM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-13T06:46:14+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-13T11:41:10+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,124 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 841422,
-   "road": "David Low Way",
-   "description": "Power outage affecting Coolum Beach, Marcoola, Mount Coolum, Mudjimba",
-   "locality": "Mount Coolum",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Signal fault",
-   "due_to": "Power outage",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "All directions",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-13T06:41:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-13T06:46:11+10:00",
-   "last_updated_text": "Fri 13 Nov 2026 06:46 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841422",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.56644,
-    153.09245
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.56644,
-      153.09245
-     ]
-    ],
-    "lines": [
-     [
-      [
-       -26.57354,
-       153.09907
-      ],
-      [
-       -26.58091,
-       153.09912
-      ],
-      [
-       -26.6022,
-       153.09829
-      ],
-      [
-       -26.60157,
-       153.09331
-      ],
-      [
-       -26.59926,
-       153.0879
-      ],
-      [
-       -26.59266,
-       153.08429
-      ],
-      [
-       -26.58555,
-       153.08207
-      ],
-      [
-       -26.5788,
-       153.0802
-      ],
-      [
-       -26.56889,
-       153.07823
-      ],
-      [
-       -26.56474,
-       153.07849
-      ],
-      [
-       -26.53411,
-       153.0776
-      ],
-      [
-       -26.53413,
-       153.08034
-      ],
-      [
-       -26.54869,
-       153.08786
-      ],
-      [
-       -26.56203,
-       153.09436
-      ],
-      [
-       -26.56467,
-       153.09622
-      ],
-      [
-       -26.56831,
-       153.09908
-      ],
-      [
-       -26.57354,
-       153.09907
-      ]
-     ]
-    ]
-   }
-  }
- ]
+ "hazards": []
 }
