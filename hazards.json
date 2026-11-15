@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-13T11:45:29+10:00",
- "generated_at_text": "Fri 13 Nov 2026 11:45 AM AEST",
+ "generated_at": "2026-11-15T10:58:31+10:00",
+ "generated_at_text": "Sun 15 Nov 2026 10:58 AM AEST",
  "stale": false,
  "source": {
   "used": "api",
   "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-13T11:41:10+10:00",
+  "feed_published": "2026-11-15T10:52:03+10:00",
   "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -15,12 +15,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 841838,
+   "road": "Sunshine Motorway",
+   "description": "Just prior to Finland Road Overpass",
+   "locality": "Coolum Beach",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Northbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-15T08:10:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-15T08:11:27+10:00",
+   "last_updated_text": "Sun 15 Nov 2026 08:11 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841838",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.59995,
+    153.0762
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.59995,
+      153.0762
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
