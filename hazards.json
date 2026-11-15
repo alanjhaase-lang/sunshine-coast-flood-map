@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-15T17:46:20+10:00",
- "generated_at_text": "Sun 15 Nov 2026 05:46 PM AEST",
+ "generated_at": "2026-11-16T01:34:14+10:00",
+ "generated_at_text": "Mon 16 Nov 2026 01:34 AM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-15T17:44:08+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-16T01:24:13+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,54 +17,14 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 1,
    "closed": 0,
-   "partial": 2
+   "partial": 1
   }
  ],
- "count": 2,
+ "count": 1,
  "excluded": [],
  "hazards": [
-  {
-   "id": 841904,
-   "road": "Bruce Highway",
-   "description": "Just south of the Yandina Coolum road interchange",
-   "locality": "Yandina",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-15T16:39:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-15T16:43:58+10:00",
-   "last_updated_text": "Sun 15 Nov 2026 04:43 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841904",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.56642,
-    152.96555
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.56642,
-      152.96555
-     ]
-    ],
-    "lines": []
-   }
-  },
   {
    "id": 841838,
    "road": "Sunshine Motorway",
@@ -82,8 +44,8 @@
    "start": "2026-11-15T08:10:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-15T17:12:46+10:00",
-   "last_updated_text": "Sun 15 Nov 2026 05:12 PM AEST",
+   "last_updated": "2026-11-16T00:20:12+10:00",
+   "last_updated_text": "Mon 16 Nov 2026 12:20 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841838",
