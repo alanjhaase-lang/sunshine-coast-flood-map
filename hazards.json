@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-16T17:09:42+10:00",
- "generated_at_text": "Mon 16 Nov 2026 05:09 PM AEST",
+ "generated_at": "2026-11-17T03:05:37+10:00",
+ "generated_at_text": "Tue 17 Nov 2026 03:05 AM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-16T17:08:01+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-17T03:05:19+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -23,6 +25,46 @@
  "count": 3,
  "excluded": [],
  "hazards": [
+  {
+   "id": 842255,
+   "road": "Bruce Highway",
+   "description": "Just before Ilkley Road overpass",
+   "locality": "Tanawha",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Northbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-16T19:09:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-17T00:01:11+10:00",
+   "last_updated_text": "Tue 17 Nov 2026 12:01 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842255",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.70824,
+    153.02031
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.70824,
+      153.02031
+     ]
+    ],
+    "lines": []
+   }
+  },
   {
    "id": 842106,
    "road": "Caloundra Mooloolaba Road (Kawana Way Link Road)",
@@ -42,8 +84,8 @@
    "start": "2026-11-16T12:02:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-16T16:01:59+10:00",
-   "last_updated_text": "Mon 16 Nov 2026 04:01 PM AEST",
+   "last_updated": "2026-11-17T00:18:28+10:00",
+   "last_updated_text": "Tue 17 Nov 2026 12:18 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842106",
@@ -82,8 +124,8 @@
    "start": "2026-11-15T08:10:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-16T15:23:59+10:00",
-   "last_updated_text": "Mon 16 Nov 2026 03:23 PM AEST",
+   "last_updated": "2026-11-17T00:18:04+10:00",
+   "last_updated_text": "Tue 17 Nov 2026 12:18 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841838",
@@ -98,46 +140,6 @@
      [
       -26.59995,
       153.0762
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 842224,
-   "road": "Yandina North Connection Road (Farrell Street)",
-   "description": "Intersection Old Gympie Road and Fleming Street",
-   "locality": "Yandina",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Signal fault",
-   "due_to": "Lights flashing yellow",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "All directions",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-16T16:37:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-16T16:39:49+10:00",
-   "last_updated_text": "Mon 16 Nov 2026 04:39 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842224",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.56265,
-    152.95544
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.56265,
-      152.95544
      ]
     ],
     "lines": []
