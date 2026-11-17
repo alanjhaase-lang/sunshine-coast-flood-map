@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-17T03:05:37+10:00",
- "generated_at_text": "Tue 17 Nov 2026 03:05 AM AEST",
+ "generated_at": "2026-11-17T10:50:08+10:00",
+ "generated_at_text": "Tue 17 Nov 2026 10:50 AM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-17T03:05:19+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-17T10:49:39+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 3,
+   "count": 2,
    "closed": 0,
-   "partial": 3
+   "partial": 2
   }
  ],
- "count": 3,
+ "count": 2,
  "excluded": [],
  "hazards": [
   {
@@ -44,8 +42,8 @@
    "start": "2026-11-16T19:09:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-17T00:01:11+10:00",
-   "last_updated_text": "Tue 17 Nov 2026 12:01 AM AEST",
+   "last_updated": "2026-11-17T10:12:25+10:00",
+   "last_updated_text": "Tue 17 Nov 2026 10:12 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842255",
@@ -60,46 +58,6 @@
      [
       -26.70824,
       153.02031
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 842106,
-   "road": "Caloundra Mooloolaba Road (Kawana Way Link Road)",
-   "description": "1.5km north of Caloundra Road",
-   "locality": "Little Mountain",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-16T12:02:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-17T00:18:28+10:00",
-   "last_updated_text": "Tue 17 Nov 2026 12:18 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842106",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.76915,
-    153.0842
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.76915,
-      153.0842
      ]
     ],
     "lines": []
@@ -124,8 +82,8 @@
    "start": "2026-11-15T08:10:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-17T00:18:04+10:00",
-   "last_updated_text": "Tue 17 Nov 2026 12:18 AM AEST",
+   "last_updated": "2026-11-17T10:12:28+10:00",
+   "last_updated_text": "Tue 17 Nov 2026 10:12 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841838",
