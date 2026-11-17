@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-17T10:50:08+10:00",
- "generated_at_text": "Tue 17 Nov 2026 10:50 AM AEST",
+ "generated_at": "2026-11-17T18:58:45+10:00",
+ "generated_at_text": "Tue 17 Nov 2026 06:58 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-17T10:49:39+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-17T18:57:43+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,93 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 0,
    "closed": 0,
-   "partial": 2
+   "partial": 0
   }
  ],
- "count": 2,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 842255,
-   "road": "Bruce Highway",
-   "description": "Just before Ilkley Road overpass",
-   "locality": "Tanawha",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Northbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-16T19:09:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-17T10:12:25+10:00",
-   "last_updated_text": "Tue 17 Nov 2026 10:12 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842255",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.70824,
-    153.02031
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.70824,
-      153.02031
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 841838,
-   "road": "Sunshine Motorway",
-   "description": "Just prior to Finland Road Overpass",
-   "locality": "Coolum Beach",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Northbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-15T08:10:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-17T10:12:28+10:00",
-   "last_updated_text": "Tue 17 Nov 2026 10:12 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/841838",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.59995,
-    153.0762
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.59995,
-      153.0762
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
