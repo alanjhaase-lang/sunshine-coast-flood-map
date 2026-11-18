@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-18T11:14:37+10:00",
- "generated_at_text": "Wed 18 Nov 2026 11:14 AM AEST",
+ "generated_at": "2026-11-18T18:38:44+10:00",
+ "generated_at_text": "Wed 18 Nov 2026 06:38 PM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -17,7 +17,7 @@
   "traffic": {
    "url": "https://data.qldtraffic.qld.gov.au/webcameras.geojson",
    "stale": false,
-   "count": 16
+   "count": 15
   }
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -27,14 +27,14 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 22
+   "count": 21
   }
  ],
  "counts": {
   "flood": 6,
-  "traffic": 16
+  "traffic": 15
  },
- "count": 22,
+ "count": 21,
  "cameras": [
   {
    "id": 64,
@@ -413,26 +413,6 @@
    "lon": 153.11487,
    "image_ok": true,
    "image_stale": false
-  },
-  {
-   "id": 60,
-   "type": "traffic",
-   "name": "Caloundra - Caloundra Road & Fourth Avenue Intersection - East",
-   "direction": "SouthEast",
-   "locality": "Caloundra",
-   "district": "North Coast",
-   "image_url": "https://cameras.qldtraffic.qld.gov.au/Sunshine_Coast/caloundra-fourth-east.jpg",
-   "image_sourced_from": null,
-   "info": null,
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "distance_km": 19.4,
-   "lat": -26.80397,
-   "lon": 153.1214,
-   "image_ok": true,
-   "image_time": "2026-11-17T14:10:00+10:00",
-   "image_time_text": "Tue 17 Nov 2026 02:10 PM AEST",
-   "image_stale": true
   }
  ]
 }
