@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-10-28T15:48:40+10:00",
- "generated_at_text": "Wed 28 Oct 2026 03:48 PM AEST",
+ "generated_at": "2026-11-19T03:36:50+10:00",
+ "generated_at_text": "Thu 19 Nov 2026 03:36 AM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-10-28T15:44:21+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-19T03:33:41+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,12 +17,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "crashes": []
+ "crashes": [
+  {
+   "id": 842826,
+   "road": "David Low Way",
+   "description": "Havana Road East",
+   "locality": "Coolum Beach",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Crash",
+   "event_subtype": "Multi-vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Unknown",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-18T20:08:00+10:00",
+   "end": null,
+   "priority": "High",
+   "last_updated": "2026-11-19T00:07:59+10:00",
+   "last_updated_text": "Thu 19 Nov 2026 12:07 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842826",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.5038,
+    153.09042
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.5038,
+      153.09042
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }

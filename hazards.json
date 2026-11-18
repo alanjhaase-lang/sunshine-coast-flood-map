@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-18T18:38:41+10:00",
- "generated_at_text": "Wed 18 Nov 2026 06:38 PM AEST",
+ "generated_at": "2026-11-19T03:36:50+10:00",
+ "generated_at_text": "Thu 19 Nov 2026 03:36 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-18T18:37:53+10:00",
+  "feed_published": "2026-11-19T03:33:41+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,53 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 842779,
-   "road": "Maroochy Boulevard",
-   "description": "Intersection with Sunshine Motorway on & off ramp",
-   "locality": "Maroochydore",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Signal fault",
-   "due_to": "Lights flashing yellow",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "All directions",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-18T16:32:00+10:00",
-   "end": null,
-   "priority": "Medium",
-   "last_updated": "2026-11-18T16:33:52+10:00",
-   "last_updated_text": "Wed 18 Nov 2026 04:33 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842779",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.66736,
-    153.08382
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.66736,
-      153.08382
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
