@@ -1,7 +1,7 @@
 {
- "generated_at": "2026-11-18T04:28:05+10:00",
+ "generated_at": "2026-11-18T11:14:39+10:00",
  "stale": false,
- "issued": "2026-11-18T04:21:01+10:00",
+ "issued": "2026-11-18T11:11:01+10:00",
  "source_url": "https://www.bom.gov.au/fwo/IDQ60920.xml",
  "page_url": "https://www.bom.gov.au/qld/observations/seqld.shtml",
  "attribution": "Rainfall observations © Commonwealth of Australia 2026, Bureau of Meteorology",
@@ -22,21 +22,16 @@
    "lat": -26.599,
    "lon": 153.0912,
    "distance_km": 4.0,
-   "obs_time": "2026-11-18T04:20:00+10:00",
+   "obs_time": "2026-11-18T11:10:00+10:00",
    "today_mm": 0.0,
-   "today_start": "2026-11-17T09:00:00+10:00",
-   "today_end": "2026-11-18T04:22:00+10:00",
-   "last_day_mm": 26.4,
-   "last_day_end": "2026-11-17T09:00:00+10:00",
-   "week_mm": 75.8,
-   "week_start": "2026-11-11T09:00:00+10:00",
+   "today_start": "2026-11-18T09:00:00+10:00",
+   "today_end": "2026-11-18T11:13:00+10:00",
+   "last_day_mm": 0.0,
+   "last_day_end": "2026-11-18T09:00:00+10:00",
+   "week_mm": 68.8,
+   "week_start": "2026-11-12T09:00:00+10:00",
    "week_days_missing": [],
    "daily": [
-    {
-     "date": "2026-11-04",
-     "mm": 1.0,
-     "src": "dwo"
-    },
     {
      "date": "2026-11-05",
      "mm": 0.0,
@@ -100,6 +95,11 @@
     {
      "date": "2026-11-17",
      "mm": 26.4,
+     "src": "dwo"
+    },
+    {
+     "date": "2026-11-18",
+     "mm": 0.0,
      "src": "obs"
     }
    ],
@@ -114,23 +114,18 @@
    "lat": -26.6442,
    "lon": 152.9383,
    "distance_km": 14.3,
-   "obs_time": "2026-11-18T04:20:00+10:00",
+   "obs_time": "2026-11-18T11:10:00+10:00",
    "today_mm": 0.0,
-   "today_start": "2026-11-17T09:00:00+10:00",
-   "today_end": "2026-11-18T04:22:00+10:00",
-   "last_day_mm": null,
-   "last_day_end": null,
-   "week_mm": 42.4,
-   "week_start": "2026-11-11T09:00:00+10:00",
+   "today_start": "2026-11-18T09:00:00+10:00",
+   "today_end": "2026-11-18T11:13:00+10:00",
+   "last_day_mm": 0.0,
+   "last_day_end": "2026-11-18T09:00:00+10:00",
+   "week_mm": 31.0,
+   "week_start": "2026-11-12T09:00:00+10:00",
    "week_days_missing": [
     "2026-11-17"
    ],
    "daily": [
-    {
-     "date": "2026-11-03",
-     "mm": 22.2,
-     "src": "dwo"
-    },
     {
      "date": "2026-11-04",
      "mm": 0.4,
@@ -195,6 +190,11 @@
      "date": "2026-11-16",
      "mm": 28.2,
      "src": "dwo"
+    },
+    {
+     "date": "2026-11-18",
+     "mm": 0.0,
+     "src": "obs"
     }
    ],
    "obs_url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.95572.shtml",

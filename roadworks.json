@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-18T04:28:00+10:00",
- "generated_at_text": "Wed 18 Nov 2026 04:28 AM AEST",
+ "generated_at": "2026-11-18T11:14:33+10:00",
+ "generated_at_text": "Wed 18 Nov 2026 11:14 AM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-18T04:27:44+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-18T11:12:33+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -44,8 +42,8 @@
    "start": "2026-10-02T16:07:00+10:00",
    "end": "2027-12-31T16:20:00+10:00",
    "priority": "Low",
-   "last_updated": "2026-11-13T05:32:31+10:00",
-   "last_updated_text": "Fri 13 Nov 2026 05:32 AM AEST",
+   "last_updated": "2026-11-18T05:54:16+10:00",
+   "last_updated_text": "Wed 18 Nov 2026 05:54 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/831820",
@@ -138,30 +136,6 @@
     "lines": [
      [
       [
-       -26.69683,
-       153.1154
-      ],
-      [
-       -26.69753,
-       153.11645
-      ]
-     ],
-     [
-      [
-       -26.68549,
-       153.1051
-      ],
-      [
-       -26.68574,
-       153.10529
-      ],
-      [
-       -26.68698,
-       153.10627
-      ]
-     ],
-     [
-      [
        -26.68698,
        153.10627
       ],
@@ -248,6 +222,30 @@
       [
        -26.69683,
        153.1154
+      ]
+     ],
+     [
+      [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
+      ]
+     ],
+     [
+      [
+       -26.68549,
+       153.1051
+      ],
+      [
+       -26.68574,
+       153.10529
+      ],
+      [
+       -26.68698,
+       153.10627
       ]
      ]
     ]
