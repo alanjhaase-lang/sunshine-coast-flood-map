@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-20T08:05:39+10:00",
- "generated_at_text": "Fri 20 Nov 2026 08:05 AM AEST",
+ "generated_at": "2026-11-20T13:23:54+10:00",
+ "generated_at_text": "Fri 20 Nov 2026 01:23 PM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-20T08:03:53+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-20T13:22:54+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 2,
    "closed": 0,
-   "partial": 1
+   "partial": 2
   }
  ],
- "count": 1,
+ "count": 2,
  "excluded": [],
  "hazards": [
   {
@@ -44,8 +42,8 @@
    "start": "2026-11-19T08:00:00+10:00",
    "end": null,
    "priority": "Low",
-   "last_updated": "2026-11-20T01:52:27+10:00",
-   "last_updated_text": "Fri 20 Nov 2026 01:52 AM AEST",
+   "last_updated": "2026-11-20T12:31:32+10:00",
+   "last_updated_text": "Fri 20 Nov 2026 12:31 PM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
    "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842933",
@@ -60,6 +58,46 @@
      [
       -26.73374,
       153.04686
+     ]
+    ],
+    "lines": []
+   }
+  },
+  {
+   "id": 843294,
+   "road": "Sunshine Motorway",
+   "description": "Off ramp to Mooloolaba",
+   "locality": "Mountain Creek",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
+   "severity": "partial",
+   "direction": "Northbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-20T12:13:00+10:00",
+   "end": null,
+   "priority": "Low",
+   "last_updated": "2026-11-20T12:14:57+10:00",
+   "last_updated_text": "Fri 20 Nov 2026 12:14 PM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843294",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.69558,
+    153.11314
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.69558,
+      153.11314
      ]
     ],
     "lines": []
