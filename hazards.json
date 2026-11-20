@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-20T13:23:54+10:00",
- "generated_at_text": "Fri 20 Nov 2026 01:23 PM AEST",
+ "generated_at": "2026-11-20T22:04:29+10:00",
+ "generated_at_text": "Fri 20 Nov 2026 10:04 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-20T13:22:54+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-20T22:03:38+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,93 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 0,
    "closed": 0,
-   "partial": 2
+   "partial": 0
   }
  ],
- "count": 2,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 842933,
-   "road": "Bruce Highway",
-   "description": "South of Sunshine Motorway on ramp",
-   "locality": "Palmview",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-19T08:00:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-20T12:31:32+10:00",
-   "last_updated_text": "Fri 20 Nov 2026 12:31 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/842933",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.73374,
-    153.04686
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.73374,
-      153.04686
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 843294,
-   "road": "Sunshine Motorway",
-   "description": "Off ramp to Mooloolaba",
-   "locality": "Mountain Creek",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Northbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-20T12:13:00+10:00",
-   "end": null,
-   "priority": "Low",
-   "last_updated": "2026-11-20T12:14:57+10:00",
-   "last_updated_text": "Fri 20 Nov 2026 12:14 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843294",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.69558,
-    153.11314
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.69558,
-      153.11314
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
