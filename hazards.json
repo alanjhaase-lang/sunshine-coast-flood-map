@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-22T12:03:24+10:00",
- "generated_at_text": "Sun 22 Nov 2026 12:03 PM AEST",
+ "generated_at": "2026-11-22T19:50:49+10:00",
+ "generated_at_text": "Sun 22 Nov 2026 07:50 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-22T12:02:59+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-22T19:33:35+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,53 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 843668,
-   "road": "Bruce Highway",
-   "description": "prior to Caloundra exit",
-   "locality": "Meridan Plains",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "No blockage",
-   "impact_type": "No blockage",
-   "severity": "partial",
-   "direction": "Northbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-22T11:13:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-22T11:15:22+10:00",
-   "last_updated_text": "Sun 22 Nov 2026 11:15 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843668",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.78388,
-    153.04464
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.78388,
-      153.04464
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
