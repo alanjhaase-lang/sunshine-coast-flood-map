@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-22T07:55:47+10:00",
- "generated_at_text": "Sun 22 Nov 2026 07:55 AM AEST",
+ "generated_at": "2026-11-22T12:03:24+10:00",
+ "generated_at_text": "Sun 22 Nov 2026 12:03 PM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-22T07:55:09+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-22T12:02:59+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,89 +15,49 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 1,
    "closed": 0,
-   "partial": 2
+   "partial": 1
   }
  ],
- "count": 2,
+ "count": 1,
  "excluded": [],
  "hazards": [
   {
-   "id": 843636,
-   "road": "Mooloolaba Road (Crosby Hill Road)",
-   "description": "just north of Mackenzie Green Road",
-   "locality": "Buderim",
+   "id": 843668,
+   "road": "Bruce Highway",
+   "description": "prior to Caloundra exit",
+   "locality": "Meridan Plains",
    "lga": "Sunshine Coast Regional",
    "event_type": "Hazard",
-   "event_subtype": "Debris on road",
-   "due_to": "Fallen vegetation",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
+   "impact": "No blockage",
+   "impact_type": "No blockage",
    "severity": "partial",
-   "direction": "Both directions",
+   "direction": "Northbound",
    "advice": "Proceed with caution",
    "information": null,
    "status": "Published",
-   "start": "2026-11-22T07:51:00+10:00",
+   "start": "2026-11-22T11:13:00+10:00",
    "end": null,
    "priority": "High",
-   "last_updated": "2026-11-22T07:55:08+10:00",
-   "last_updated_text": "Sun 22 Nov 2026 07:55 AM AEST",
+   "last_updated": "2026-11-22T11:15:22+10:00",
+   "last_updated_text": "Sun 22 Nov 2026 11:15 AM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843636",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843668",
    "region": "twinwaters",
    "region_name": "Twin Waters",
    "marker": [
-    -26.69437,
-    153.04358
+    -26.78388,
+    153.04464
    ],
    "geometry": {
     "points": [
      [
-      -26.69437,
-      153.04358
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 843634,
-   "road": "Roderick Street",
-   "description": "signals flashing yellow at the intersection of Buccleugh Street",
-   "locality": "Moffat Beach",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Signal fault",
-   "due_to": "Lights flashing yellow",
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "All directions",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-22T07:43:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-22T07:44:46+10:00",
-   "last_updated_text": "Sun 22 Nov 2026 07:44 AM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843634",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.78989,
-    153.13826
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.78989,
-      153.13826
+      -26.78388,
+      153.04464
      ]
     ],
     "lines": []
