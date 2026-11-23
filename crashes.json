@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-23T13:39:29+10:00",
- "generated_at_text": "Mon 23 Nov 2026 01:39 PM AEST",
+ "generated_at": "2026-11-23T23:42:34+10:00",
+ "generated_at_text": "Mon 23 Nov 2026 11:42 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-23T13:36:35+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-23T23:42:21+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -15,93 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 0,
    "closed": 0,
-   "partial": 2
+   "partial": 0
   }
  ],
- "count": 2,
+ "count": 0,
  "excluded": [],
- "crashes": [
-  {
-   "id": 843869,
-   "road": "Bruce Highway",
-   "description": "Between Ilkley Road Overpass and Chevallum exit",
-   "locality": "Tanawha",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Crash",
-   "event_subtype": "Multi-vehicle",
-   "due_to": null,
-   "impact": "Left lane blocked",
-   "impact_type": "Lanes blocked",
-   "severity": "partial",
-   "direction": "Northbound",
-   "advice": "Emergency services are on scene/en-route",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-23T12:25:00+10:00",
-   "end": null,
-   "priority": "Medium",
-   "last_updated": "2026-11-23T13:35:09+10:00",
-   "last_updated_text": "Mon 23 Nov 2026 01:35 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843869",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.70166,
-    153.01612
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.70166,
-      153.01612
-     ]
-    ],
-    "lines": []
-   }
-  },
-  {
-   "id": 843879,
-   "road": "Bruce Highway",
-   "description": "near Bli Bli exit",
-   "locality": "Nambour",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Crash",
-   "event_subtype": "Single vehicle",
-   "due_to": null,
-   "impact": "All lanes affected",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "Southbound",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-23T13:09:00+10:00",
-   "end": null,
-   "priority": "High",
-   "last_updated": "2026-11-23T13:13:40+10:00",
-   "last_updated_text": "Mon 23 Nov 2026 01:13 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843879",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.61201,
-    152.97714
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.61201,
-      152.97714
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "crashes": []
 }
