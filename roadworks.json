@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-23T08:51:21+10:00",
- "generated_at_text": "Mon 23 Nov 2026 08:51 AM AEST",
+ "generated_at": "2026-11-23T13:39:29+10:00",
+ "generated_at_text": "Mon 23 Nov 2026 01:39 PM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-23T08:51:02+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-23T13:36:35+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 2,
+   "count": 3,
    "closed": 0,
-   "partial": 2
+   "partial": 3
   }
  ],
- "count": 2,
+ "count": 3,
  "excluded": [],
  "roadworks": [
   {
@@ -104,6 +102,368 @@
    }
   },
   {
+   "id": 843838,
+   "road": "Nicklin Way",
+   "description": "Between Caloundra Road and Beerburrum Street.",
+   "locality": "Battery Hill / Caloundra",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Roadworks",
+   "event_subtype": "Planned roadworks",
+   "due_to": null,
+   "impact": "All lanes affected",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Both directions",
+   "advice": "Changed traffic conditions",
+   "information": "Motorists are advised to expect temporary traffic stoppages of up to 15 minutes between 11pm and 3am on Nicklin Way between Caloundra Road and Beerburrum Street from Monday 7 to Wednesday 9 December 2026, weather and site conditions permitting. The stoppages are required while Energex raises overhead power lines across Nicklin Way as part of the Caloundra Transport Corridor Upgrade. Please allow extra travel time, consider alternative routes where possible and follow traffic control directions.",
+   "status": "Published",
+   "start": "2026-12-07T23:00:00+10:00",
+   "end": "2026-12-09T03:00:00+10:00",
+   "priority": "High",
+   "last_updated": "2026-11-23T10:22:24+10:00",
+   "last_updated_text": "Mon 23 Nov 2026 10:22 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/843838",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.78666,
+    153.12266
+   ],
+   "geometry": {
+    "points": [],
+    "lines": [
+     [
+      [
+       -26.7995,
+       153.11712
+      ],
+      [
+       -26.79941,
+       153.11723
+      ],
+      [
+       -26.79932,
+       153.11732
+      ],
+      [
+       -26.79914,
+       153.11749
+      ],
+      [
+       -26.79911,
+       153.11752
+      ],
+      [
+       -26.79903,
+       153.11759
+      ],
+      [
+       -26.79883,
+       153.11778
+      ],
+      [
+       -26.79825,
+       153.11832
+      ],
+      [
+       -26.79775,
+       153.11877
+      ],
+      [
+       -26.7973,
+       153.11915
+      ],
+      [
+       -26.79683,
+       153.1195
+      ],
+      [
+       -26.79634,
+       153.11982
+      ],
+      [
+       -26.79589,
+       153.12006
+      ],
+      [
+       -26.79579,
+       153.12012
+      ],
+      [
+       -26.79535,
+       153.12032
+      ],
+      [
+       -26.79522,
+       153.12037
+      ],
+      [
+       -26.79482,
+       153.12053
+      ],
+      [
+       -26.79416,
+       153.12072
+      ],
+      [
+       -26.79409,
+       153.12074
+      ],
+      [
+       -26.79358,
+       153.12088
+      ],
+      [
+       -26.7932,
+       153.12098
+      ],
+      [
+       -26.79183,
+       153.12135
+      ],
+      [
+       -26.7918,
+       153.12136
+      ],
+      [
+       -26.79121,
+       153.12152
+      ],
+      [
+       -26.79004,
+       153.12181
+      ],
+      [
+       -26.78974,
+       153.12189
+      ],
+      [
+       -26.78901,
+       153.12207
+      ],
+      [
+       -26.78846,
+       153.1222
+      ],
+      [
+       -26.78828,
+       153.12224
+      ],
+      [
+       -26.78807,
+       153.12229
+      ],
+      [
+       -26.78778,
+       153.12237
+      ],
+      [
+       -26.78666,
+       153.12266
+      ],
+      [
+       -26.78634,
+       153.12273
+      ],
+      [
+       -26.78584,
+       153.12283
+      ],
+      [
+       -26.78484,
+       153.123
+      ],
+      [
+       -26.78418,
+       153.12313
+      ],
+      [
+       -26.78409,
+       153.12314
+      ],
+      [
+       -26.78377,
+       153.12321
+      ],
+      [
+       -26.78359,
+       153.12326
+      ],
+      [
+       -26.78335,
+       153.12333
+      ],
+      [
+       -26.78295,
+       153.12347
+      ],
+      [
+       -26.78293,
+       153.12348
+      ],
+      [
+       -26.7829,
+       153.12349
+      ],
+      [
+       -26.78287,
+       153.12351
+      ],
+      [
+       -26.78284,
+       153.12352
+      ],
+      [
+       -26.78282,
+       153.12353
+      ],
+      [
+       -26.78279,
+       153.12354
+      ],
+      [
+       -26.78276,
+       153.12355
+      ],
+      [
+       -26.78274,
+       153.12356
+      ],
+      [
+       -26.78271,
+       153.12358
+      ],
+      [
+       -26.78268,
+       153.12359
+      ],
+      [
+       -26.78265,
+       153.12361
+      ],
+      [
+       -26.78262,
+       153.12362
+      ],
+      [
+       -26.78259,
+       153.12364
+      ],
+      [
+       -26.78256,
+       153.12365
+      ],
+      [
+       -26.78253,
+       153.12367
+      ],
+      [
+       -26.7825,
+       153.12369
+      ],
+      [
+       -26.78249,
+       153.12369
+      ],
+      [
+       -26.78243,
+       153.12372
+      ],
+      [
+       -26.78227,
+       153.12381
+      ],
+      [
+       -26.78201,
+       153.12396
+      ],
+      [
+       -26.78198,
+       153.12398
+      ],
+      [
+       -26.78194,
+       153.124
+      ],
+      [
+       -26.78191,
+       153.12402
+      ],
+      [
+       -26.78188,
+       153.12403
+      ],
+      [
+       -26.78184,
+       153.12405
+      ],
+      [
+       -26.78181,
+       153.12407
+      ],
+      [
+       -26.78178,
+       153.12409
+      ],
+      [
+       -26.78175,
+       153.12411
+      ],
+      [
+       -26.78172,
+       153.12413
+      ],
+      [
+       -26.7817,
+       153.12415
+      ],
+      [
+       -26.78167,
+       153.12416
+      ],
+      [
+       -26.78165,
+       153.12418
+      ],
+      [
+       -26.78162,
+       153.1242
+      ],
+      [
+       -26.7816,
+       153.12422
+      ],
+      [
+       -26.78157,
+       153.12423
+      ],
+      [
+       -26.78155,
+       153.12425
+      ],
+      [
+       -26.78139,
+       153.12439
+      ],
+      [
+       -26.78125,
+       153.1245
+      ],
+      [
+       -26.78098,
+       153.12475
+      ],
+      [
+       -26.78078,
+       153.12493
+      ]
+     ]
+    ]
+   }
+  },
+  {
    "id": 793568,
    "road": "Nicklin Way / Sunshine Motorway",
    "description": "Sections of the Sunshine Motorway, Nicklin Way and Kawana Way.",
@@ -136,16 +496,6 @@
    "geometry": {
     "points": [],
     "lines": [
-     [
-      [
-       -26.69683,
-       153.1154
-      ],
-      [
-       -26.69753,
-       153.11645
-      ]
-     ],
      [
       [
        -26.68698,
@@ -248,6 +598,16 @@
       [
        -26.68698,
        153.10627
+      ]
+     ],
+     [
+      [
+       -26.69683,
+       153.1154
+      ],
+      [
+       -26.69753,
+       153.11645
       ]
      ]
     ]
