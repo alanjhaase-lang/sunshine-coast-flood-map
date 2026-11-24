@@ -1,14 +1,12 @@
 {
- "generated_at": "2026-11-23T23:42:34+10:00",
- "generated_at_text": "Mon 23 Nov 2026 11:42 PM AEST",
+ "generated_at": "2026-11-24T11:15:35+10:00",
+ "generated_at_text": "Tue 24 Nov 2026 11:15 AM AEST",
  "stale": false,
  "source": {
-  "used": "fallback",
-  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-23T23:42:21+10:00",
-  "errors": [
-   "api: HTTP 429"
-  ]
+  "used": "api",
+  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
+  "feed_published": "2026-11-24T11:14:46+10:00",
+  "errors": []
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -17,12 +15,53 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 0,
+   "count": 1,
    "closed": 0,
-   "partial": 0
+   "partial": 1
   }
  ],
- "count": 0,
+ "count": 1,
  "excluded": [],
- "hazards": []
+ "hazards": [
+  {
+   "id": 844041,
+   "road": "Bradman Avenue",
+   "description": "Near Intersection with Fishermans Road",
+   "locality": "Maroochydore",
+   "lga": "Sunshine Coast Regional",
+   "event_type": "Hazard",
+   "event_subtype": "Debris on road",
+   "due_to": "Spill",
+   "impact": "Lane or lanes reduced",
+   "impact_type": "Lanes affected",
+   "severity": "partial",
+   "direction": "Westbound",
+   "advice": "Proceed with caution",
+   "information": null,
+   "status": "Published",
+   "start": "2026-11-24T08:00:00+10:00",
+   "end": null,
+   "priority": "Medium",
+   "last_updated": "2026-11-24T08:02:08+10:00",
+   "last_updated_text": "Tue 24 Nov 2026 08:02 AM AEST",
+   "provided_by": "Department of Transport and Main Roads",
+   "source_link": "https://qldtraffic.qld.gov.au/",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/844041",
+   "region": "twinwaters",
+   "region_name": "Twin Waters",
+   "marker": [
+    -26.64281,
+    153.05721
+   ],
+   "geometry": {
+    "points": [
+     [
+      -26.64281,
+      153.05721
+     ]
+    ],
+    "lines": []
+   }
+  }
+ ]
 }
