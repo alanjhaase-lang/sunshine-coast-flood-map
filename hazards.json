@@ -1,11 +1,11 @@
 {
- "generated_at": "2026-11-24T21:32:47+10:00",
- "generated_at_text": "Tue 24 Nov 2026 09:32 PM AEST",
+ "generated_at": "2026-11-25T07:33:34+10:00",
+ "generated_at_text": "Wed 25 Nov 2026 07:33 AM AEST",
  "stale": false,
  "source": {
   "used": "fallback",
   "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
-  "feed_published": "2026-11-24T21:31:10+10:00",
+  "feed_published": "2026-11-25T07:33:02+10:00",
   "errors": [
    "api: HTTP 429"
   ]
@@ -17,53 +17,12 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 1,
+   "count": 0,
    "closed": 0,
-   "partial": 1
+   "partial": 0
   }
  ],
- "count": 1,
+ "count": 0,
  "excluded": [],
- "hazards": [
-  {
-   "id": 844219,
-   "road": "Emu Mountain Road",
-   "description": "Near Peregian Springs Drive",
-   "locality": "Peregian Springs",
-   "lga": "Sunshine Coast Regional",
-   "event_type": "Hazard",
-   "event_subtype": "Stationary vehicle",
-   "due_to": null,
-   "impact": "Lane or lanes reduced",
-   "impact_type": "Lanes affected",
-   "severity": "partial",
-   "direction": "Unknown",
-   "advice": "Proceed with caution",
-   "information": null,
-   "status": "Published",
-   "start": "2026-11-24T20:57:00+10:00",
-   "end": null,
-   "priority": "Medium",
-   "last_updated": "2026-11-24T20:59:28+10:00",
-   "last_updated_text": "Tue 24 Nov 2026 08:59 PM AEST",
-   "provided_by": "Department of Transport and Main Roads",
-   "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/844219",
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "marker": [
-    -26.49587,
-    153.08267
-   ],
-   "geometry": {
-    "points": [
-     [
-      -26.49587,
-      153.08267
-     ]
-    ],
-    "lines": []
-   }
-  }
- ]
+ "hazards": []
 }
