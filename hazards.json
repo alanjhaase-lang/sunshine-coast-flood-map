@@ -1,12 +1,14 @@
 {
- "generated_at": "2026-11-24T11:15:35+10:00",
- "generated_at_text": "Tue 24 Nov 2026 11:15 AM AEST",
+ "generated_at": "2026-11-24T21:32:47+10:00",
+ "generated_at_text": "Tue 24 Nov 2026 09:32 PM AEST",
  "stale": false,
  "source": {
-  "used": "api",
-  "url": "https://api.qldtraffic.qld.gov.au/v2/events",
-  "feed_published": "2026-11-24T11:14:46+10:00",
-  "errors": []
+  "used": "fallback",
+  "url": "https://data.qldtraffic.qld.gov.au/events_v2.geojson",
+  "feed_published": "2026-11-24T21:31:10+10:00",
+  "errors": [
+   "api: HTTP 429"
+  ]
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
  "licence": "https://creativecommons.org/licenses/by/4.0/",
@@ -24,40 +26,40 @@
  "excluded": [],
  "hazards": [
   {
-   "id": 844041,
-   "road": "Bradman Avenue",
-   "description": "Near Intersection with Fishermans Road",
-   "locality": "Maroochydore",
+   "id": 844219,
+   "road": "Emu Mountain Road",
+   "description": "Near Peregian Springs Drive",
+   "locality": "Peregian Springs",
    "lga": "Sunshine Coast Regional",
    "event_type": "Hazard",
-   "event_subtype": "Debris on road",
-   "due_to": "Spill",
+   "event_subtype": "Stationary vehicle",
+   "due_to": null,
    "impact": "Lane or lanes reduced",
    "impact_type": "Lanes affected",
    "severity": "partial",
-   "direction": "Westbound",
+   "direction": "Unknown",
    "advice": "Proceed with caution",
    "information": null,
    "status": "Published",
-   "start": "2026-11-24T08:00:00+10:00",
+   "start": "2026-11-24T20:57:00+10:00",
    "end": null,
    "priority": "Medium",
-   "last_updated": "2026-11-24T08:02:08+10:00",
-   "last_updated_text": "Tue 24 Nov 2026 08:02 AM AEST",
+   "last_updated": "2026-11-24T20:59:28+10:00",
+   "last_updated_text": "Tue 24 Nov 2026 08:59 PM AEST",
    "provided_by": "Department of Transport and Main Roads",
    "source_link": "https://qldtraffic.qld.gov.au/",
-   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/844041",
+   "api_url": "https://api.qldtraffic.qld.gov.au/v2/events/844219",
    "region": "twinwaters",
    "region_name": "Twin Waters",
    "marker": [
-    -26.64281,
-    153.05721
+    -26.49587,
+    153.08267
    ],
    "geometry": {
     "points": [
      [
-      -26.64281,
-      153.05721
+      -26.49587,
+      153.08267
      ]
     ],
     "lines": []

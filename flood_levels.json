@@ -71,7 +71,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540089.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540092": {
    "minor": 2.75,
@@ -80,7 +80,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540092.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540093": {
    "minor": 5.5,
@@ -89,7 +89,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540093.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540094": {
    "minor": 1.3,
@@ -278,7 +278,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540347.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540348": {
    "minor": 1.55,
@@ -386,7 +386,7 @@
    "datum": null,
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540461.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540462": {
    "minor": null,
@@ -395,7 +395,7 @@
    "datum": null,
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540462.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540463": {
    "minor": null,
@@ -449,7 +449,7 @@
    "datum": null,
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540599.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540620": {
    "minor": 2.8,
@@ -476,7 +476,7 @@
    "datum": null,
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540764.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-24"
   },
   "540775": {
    "minor": null,
