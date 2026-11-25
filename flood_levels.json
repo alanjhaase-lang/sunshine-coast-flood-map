@@ -44,7 +44,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540083.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-25"
   },
   "540087": {
    "minor": 3.25,
@@ -53,7 +53,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540087.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-25"
   },
   "540088": {
    "minor": 6.85,
@@ -98,7 +98,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540094.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-25"
   },
   "540095": {
    "minor": 2.85,
@@ -134,7 +134,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540222.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-25"
   },
   "540223": {
    "minor": 5.0,
@@ -422,7 +422,7 @@
    "datum": "LGH",
    "source": "bom_station_plot_page",
    "source_url": "https://www.bom.gov.au/fwo/IDQ65390/IDQ65390.540506.plt.shtml",
-   "checked": "2026-10-24"
+   "checked": "2026-11-25"
   },
   "540533": {
    "minor": 2.75,
