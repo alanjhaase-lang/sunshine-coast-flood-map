@@ -1,43 +1,43 @@
 {
- "generated_at": "2026-11-26T01:00:34+10:00",
+ "generated_at": "2026-11-26T09:39:43+10:00",
  "stale": false,
- "forecast_issued": "2026-11-25T20:46:30+10:00",
+ "forecast_issued": "2026-11-26T08:45:27+10:00",
  "forecast_stale": false,
  "forecast": {
   "aac": "QLD_PT002",
   "name": "Maroochydore",
   "days": [
    {
-    "date": "2026-11-25",
-    "min": null,
-    "max": null,
-    "precis": "Partly cloudy.",
-    "icon": 3.0,
-    "pop": "10%"
-   },
-   {
     "date": "2026-11-26",
-    "min": 20,
+    "min": null,
     "max": 27,
     "precis": "Shower or two.",
     "icon": 11.0,
-    "pop": "60%"
+    "pop": "50%"
    },
    {
     "date": "2026-11-27",
     "min": 21,
     "max": 27,
-    "precis": "Shower or two.",
+    "precis": "Showers.",
     "icon": 11.0,
-    "pop": "70%"
+    "pop": "80%"
    },
    {
     "date": "2026-11-28",
     "min": 21,
     "max": 27,
-    "precis": "Shower or two.",
+    "precis": "Showers.",
     "icon": 11.0,
-    "pop": "70%"
+    "pop": "80%"
+   },
+   {
+    "date": "2026-11-29",
+    "min": 21,
+    "max": 27,
+    "precis": "Showers. Storm developing.",
+    "icon": 16.0,
+    "pop": "90%"
    }
   ]
  },
@@ -47,21 +47,21 @@
   "id": "040861",
   "wmo": "94569",
   "name": "Sunshine Coast Airport",
-  "obs_time": "2026-11-26T00:50:00+10:00",
+  "obs_time": "2026-11-26T09:30:00+10:00",
   "lat": -26.599,
   "lon": 153.0912,
   "url": "https://www.bom.gov.au/products/IDQ60801/IDQ60801.94569.shtml",
   "distance_km": 4.0,
-  "temp": 23.2,
+  "temp": 25.6,
   "max": {
-   "value": 25.9,
-   "time": "2026-11-25T16:21:00+10:00",
-   "start": "2026-11-25T06:00:00+10:00",
-   "end": "2026-11-25T21:00:00+10:00"
+   "value": 26.6,
+   "time": "2026-11-26T09:12:00+10:00",
+   "start": "2026-11-26T06:00:00+10:00",
+   "end": "2026-11-26T21:00:00+10:00"
   },
   "min": {
-   "value": 23.0,
-   "time": "2026-11-26T00:28:00+10:00",
+   "value": 22.7,
+   "time": "2026-11-26T04:40:00+10:00",
    "start": "2026-11-25T18:00:00+10:00",
    "end": "2026-11-26T09:00:00+10:00"
   }
