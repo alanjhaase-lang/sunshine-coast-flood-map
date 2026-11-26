@@ -1,6 +1,6 @@
 {
- "generated_at": "2026-11-26T09:39:41+10:00",
- "generated_at_text": "Thu 26 Nov 2026 09:39 AM AEST",
+ "generated_at": "2026-11-26T15:29:43+10:00",
+ "generated_at_text": "Thu 26 Nov 2026 03:29 PM AEST",
  "stale": false,
  "source": {
   "urls": [
@@ -17,7 +17,7 @@
   "traffic": {
    "url": "https://data.qldtraffic.qld.gov.au/webcameras.geojson",
    "stale": false,
-   "count": 15
+   "count": 14
   }
  },
  "attribution": "Road data © State of Queensland (QLDTraffic), CC BY 4.0",
@@ -27,14 +27,14 @@
   {
    "id": "twinwaters",
    "name": "Twin Waters",
-   "count": 21
+   "count": 20
   }
  ],
  "counts": {
   "flood": 6,
-  "traffic": 15
+  "traffic": 14
  },
- "count": 21,
+ "count": 20,
  "cameras": [
   {
    "id": 64,
@@ -71,26 +71,6 @@
    "lon": 153.0894,
    "image_ok": true,
    "image_stale": false
-  },
-  {
-   "id": 65,
-   "type": "traffic",
-   "name": "Maroochydore - Horton Parade & Plaza Parade Intersection - East",
-   "direction": "SouthEast",
-   "locality": "Maroochydore",
-   "district": "North Coast",
-   "image_url": "https://cameras.qldtraffic.qld.gov.au/Sunshine_Coast/horton-first-east.jpg",
-   "image_sourced_from": null,
-   "info": null,
-   "region": "twinwaters",
-   "region_name": "Twin Waters",
-   "distance_km": 2.7,
-   "lat": -26.65627,
-   "lon": 153.09219,
-   "image_ok": true,
-   "image_time": "2026-11-20T10:03:00+10:00",
-   "image_time_text": "Fri 20 Nov 2026 10:03 AM AEST",
-   "image_stale": true
   },
   {
    "id": 66,
